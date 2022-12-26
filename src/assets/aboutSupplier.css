@@ -1,0 +1,269 @@
+._aboutus_content_sup{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-top: 10vw;
+    
+  }
+  /**************** section__upper ********************/
+  ._aboutus_content_sup .section__upper{
+      display: flex;
+      margin-bottom: 11.625vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__home{
+      flex: 40%;
+      margin-left: 4.167vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__home .sec__title{
+      font-size: 6vw;
+      font-weight: bold;
+      color: var(--primary_color);
+      width: 21.71875vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__home .sect__subtitle{
+      position: relative;
+      font-size: 6vw;
+      font-weight: bold;
+      color: var(--primary_color);
+      width: 20vw;
+  }
+  ._aboutus_content_sup .section__upper .section__home .sect__subtitle::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right:0;
+      height: 0.20834vw;
+      background-color: var(--primary_color);
+      width: 5.8125vw;
+    }
+  
+    ._aboutus_content_sup .section__upper .section__home .sec__text{
+      color: #B1B1B1;
+      text-shadow: inset 3px 3px 6px #00000029;
+      font-size: 1.4vw;
+      width: 26vw;
+      margin: 2.0834vw 0;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__home .sec__link{
+      color: var(--primary_color);
+      font-size: 1.3vw;
+      font-weight: 600;
+      text-decoration: none;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image{
+      flex: 40%;
+      position: relative;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .sec__img{
+      width: 35vw;
+      /* height: 35.78125vw; */
+      margin-top: -6.25vw;
+      margin-bottom: 7.8125vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .sec_rect{
+      position: absolute;
+      bottom: 0;
+      height: 3.335vw;
+      background: #0136EE 0% 0% no-repeat padding-box;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .rect_large{
+      width: 25vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .rect_mid{
+      width: 10vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .rect_small{
+      width: 5vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .rect_right{
+      right: -0.5vw;
+  }
+  
+  ._aboutus_content_sup .section__upper .section__image .rect_left{
+      left: -0.5vw;
+  }
+  
+  /***************** section__first *********************/
+  
+  ._aboutus_content_sup .section__first{
+    display: flex;
+    margin-bottom: 11.625vw;
+    align-items: center;
+  }
+  
+  ._aboutus_content_sup .section__first .section__info{
+      flex: 50%;
+      margin-left: 4.6875vw;
+      text-align: center;
+      margin-right: 4.6875vw;
+  }
+  
+  ._aboutus_content_sup .section__first .section__info .sec__title{
+      font-size: 2.4vw;
+      font-weight: bold;
+      color: var(--primary_color);
+      width: 21.71875vw;
+      margin: auto;
+      margin-top: 2.6041665vw;
+  }
+  
+  ._aboutus_content_sup .section__first .section__info .sect__subtitle{
+      font-size: 1.5625vw;
+      color: #B1B1B1;
+      width: 21.71875vw;
+      text-shadow: inset 3px 3px 6px #00000029;
+      margin: auto;
+      margin-top: 3.645835vw;
+      margin-bottom: 3.645835vw;
+  }
+  
+  ._aboutus_content_sup .section__first .section__info .sect__subtitle img{
+      width: 2vw;
+      /* height: 2.5vw; */
+  }
+  
+  ._aboutus_content_sup .section__first .section__info .sec__text{
+    margin: auto;
+    color: #B1B1B1;
+    font-size: 1.5625vw;
+    margin: auto;
+    text-align: center;
+    width: 25vw;
+    /* height: 20.8332vw; */
+    word-break: break-word;
+  }
+  
+  
+  ._aboutus_content_sup .section__first .section__image{
+      flex: 40%;
+      position: relative;
+  }
+  
+  ._aboutus_content_sup .section__first .section__image .sec__img{
+      width: 30vw;
+      /* height: 42.5vw; */
+      margin-top: 0;
+      margin-bottom: 7.8125vw;
+  }
+  
+  /***************** section__second *********************/
+  
+  ._aboutus_content_sup .section__second{
+      display: flex;
+      align-items: center;
+      margin-bottom: 13.625vw;
+  }
+  
+  ._aboutus_content_sup .section__second .section__info{
+      flex: 50%;
+      text-align: center;
+      position: relative;
+  }
+  
+  ._aboutus_content_sup .section__second .section__info .sec__title{
+      position: absolute;
+      font-size: 2.4vw;
+      font-weight: bold;
+      color: var(--primary_color);
+      width: 21.71875vw;
+      top: -8.854166vw;
+      right: 9.375vw;
+  
+      
+  }
+  
+  ._aboutus_content_sup .section__second .section__info .sec__text{
+    color: #B1B1B1;
+    font-size: 1.5625vw;
+    margin: auto;
+    text-align: center;
+    width: 30vw;
+    /* height: 20.8332vw; */
+    margin-top: 7.8125vw;
+    word-break: break-word;
+  }
+  
+  ._aboutus_content_sup .section__second .section__info .sec_shape{
+      width: 30.1875vw;
+      /* height: 38.4375vw; */
+      position: absolute;
+      top: -3.6458335vw;
+      left: -19.791668vw;;
+  
+  }
+  
+  
+  ._aboutus_content_sup .section__second .section__image{
+      flex: 50%;
+      position: relative;
+  }
+  
+  ._aboutus_content_sup .section__second .section__image .sec__img{
+      width: 30vw;
+      /* height: 28.125vw; */
+      margin-top: 0;
+      margin-bottom: 7.8125vw;
+  }
+  
+  /***************** section__third *********************/
+  
+  ._aboutus_content_sup .section__third{
+      display: flex;
+      align-items: center;
+  }
+  
+  ._aboutus_content_sup .section__third .section__info{
+      flex: 50%;
+      text-align: center;
+      position: relative;
+  }
+  
+  ._aboutus_content_sup .section__third .section__info .sec__title{
+      position: absolute;
+      font-size: 2.4vw;
+      font-weight: bold;
+      color: var(--primary_color);
+      width: 23vw;
+      top: -7.8125vw;
+      right: 9.375vw;
+  
+      
+  }
+  
+  ._aboutus_content_sup .section__third .section__info .sec__text{
+      color: #B1B1B1;
+      font-size: 1.5625vw;
+      margin: auto;
+      text-align: center;
+      width: 20vw;
+      margin-top: 2.6041665vw;
+      word-break: break-word;
+  }
+  
+  
+  
+  ._aboutus_content_sup .section__third .section__image{
+      flex: 50%;
+      position: relative;
+  }
+  
+  ._aboutus_content_sup .section__third .section__image .sec__img{
+      width: 35vw;
+      /* height: 21.9791668vw; */
+      margin-top: 0;
+      margin-bottom: 7.8125vw;
+  }

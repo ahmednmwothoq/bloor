@@ -1,0 +1,37 @@
+
+<template>
+    <div :dir="this.$i18n.locale === 'ar' ? 'rtl' : ''">
+        <router-view></router-view>
+    </div>
+    
+</template>
+
+<script>
+import Api from "@/api"
+import cookie from "vue-cookie";
+export default {
+    mounted() {
+        // this.getData()
+        
+        this.$store.dispatch("user/addUser", JSON.parse(cookie.get('userData')))
+        this.$store.dispatch("user/switchLang", cookie.get('lang'))
+        this.$i18n.locale = cookie.get('lang');
+
+        
+    },
+    methods: {
+        // async getData(){
+        //     await Api.user.getUser().then((res)=>{
+        //         if(res.data.status){
+        //             // console.log("user",JSON.stringify(res.data.userData))
+        //             // this.addUser()
+        //             this.$store.dispatch("user/addUser", res.data.userData)
+        //             // console.log("user",this.$store.getters["user/getUser"])
+        //         }
+        //     })
+        // }
+    },
+}
+</script>
+
+

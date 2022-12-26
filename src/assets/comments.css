@@ -1,0 +1,224 @@
+.w-90{
+    width: 90%!important;
+}
+
+.comments_container{
+    width: 80%;
+    margin: auto;
+    height: 50vw;
+    overflow-y: scroll;
+}
+.comments_container::-webkit-scrollbar {
+    display: none;
+}
+.comments_container .list{
+    width: 95%;
+    margin: auto;
+}
+.comments_container .list .item .edit_delete{
+    font-size: 1.7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* color: #b1b1b1; */
+}
+.comments_container .list .item .edit_delete .con{
+    color: #b1b1b1;
+}
+.comments_container .list .item{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    border: 0.5px solid #B1B1B1;
+    padding: 1vw;
+    margin-bottom: 1vw;
+}
+.comments_container .list .item .image{
+    width: 5.211vw !important;
+    height: 5.9927vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+.comments_container .list .item .info{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.comments_container .list .item .info .name{
+    color: #000;
+    font-weight: bold;
+}
+.comments_container .list .item .info .comment{
+    color: #b1b1b1;
+}
+.comments_container .list .item .info .reply{
+    color: #b1b1b1;
+    font-weight: bold;
+    width: 17vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1vw;
+    font-size: 1.5vw;
+}
+.comments_container .list .item .info .reply .show:hover{
+    color: #0136EE;
+    cursor: pointer;
+}
+
+.comments_container .list .item .info .reply .add:hover{
+    color: #0136EE;
+    cursor: pointer;
+}
+
+.comments_container .list .item .date{
+    color: #B1B1B1;
+    font-size: 1.4vw;
+    width: 28%;
+}
+
+.add_comment{
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 14px;
+    border: 1px solid #0136ee;
+    width: 15vw;
+    height: 4vw;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0 10vw;
+    margin-top: 5vw;
+}
+.reply_comment{
+    width: 100%;
+    /* padding: 1vw; */
+    border: 0.5px solid #B1B1B1;
+    transition: all 0.5s ease-in-out;
+    display: none;
+}
+.comment_form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    margin-top: 2.5vw;
+    margin-bottom: 2.5vw;
+    align-items: flex-start;
+    position: relative;
+}
+.comment_form .name_person{
+    border: 0;
+    background: 0;
+    position: absolute;
+    left: 0.5vw;
+    top: 0.2vw;
+    color: #0136EE;
+}
+.comment_form .input{
+    width: 100%;
+    height: 15vw;
+    border: 0;
+    background: #f4f8fc 0% 0% no-repeat padding-box;
+    /* opacity: 0.05; */
+    color: #b1b1b1;
+    padding: 1vw;
+    padding: 1.5vw;
+    padding-top: 2.5vw;
+}
+.comment_form .input:focus{
+    border: 0;
+    outline: none;
+}
+.comment_form .btn{
+    margin-top: 2vw;
+}
+
+.comment_form .btn .btn_comment{
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    border: 1px solid #0136EE;
+    width: 14vw;
+    height: 3.9vw;
+    color: #fff;
+    margin: 0 1vw;
+    cursor: pointer;
+    padding: 0.9vw 5.5vw;
+}
+.comment_form .btn .cancel_btn{
+    background: #fff;
+    color: #b1b1b1;
+    border: 1px solid #b1b1b1;
+}
+
+.add_comment_To{
+    width: 80%;
+    /* padding: 1vw; */
+    margin: auto;
+    border: 0.5px solid #B1B1B1;
+    transition: all 0.5s ease-in-out;
+    display: none;
+}
+
+
+.show_image_ex .text{
+    font-size: 1.8vw;
+}
+.show_image_ex .image{
+    width: 100%;
+    margin-top: 1vw;
+}
+
+
+.item_reply{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    border: 0.5px solid #B1B1B1;
+    padding: 1vw;
+    margin-bottom: 1vw;
+}
+.item_reply .image{
+    width: 5.211vw !important;
+    height: 5.9927vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+.item_reply .info{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.item_reply .info .name{
+    color: #000;
+    font-weight: bold;
+}
+.item_reply .info .comment{
+    color: #b1b1b1;
+}
+.item_reply .info .reply{
+    color: #b1b1b1;
+    font-weight: bold;
+}
+.item_reply .date{
+    color: #B1B1B1;
+    font-size: 1.2vw;
+    width: 28%;
+}
+.reply_comment .btn{
+    margin-top: 2vw;
+}
+
+.item_reply .edit_delete{
+    font-size: 1.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* color: #b1b1b1; */
+}
+.item_reply .edit_delete .con{
+    color: #b1b1b1;
+}
+

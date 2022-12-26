@@ -1,0 +1,102 @@
+._faqs_content {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    position: relative;
+    flex-direction: row;  
+}
+
+._faqs_content .content__left{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    flex: 30%;
+}
+
+
+._faqs_content .content__left .left__title{
+    color: #b1b1b1;
+    font-size: 1.5625vw;
+    font-weight: 500;
+    margin: 0.520834vw 0;
+    cursor: pointer;
+}
+
+._faqs_content .content__left .left__title:hover{
+    color: #707070;
+    transition: all 0.5s ease-in;
+    
+}
+
+
+._faqs_content .content__right{
+    display: flex;
+    flex-direction: column;
+    flex: 80%;
+}
+
+._faqs_content .content__right .right__details{
+    display: flex;
+    flex-direction: column;
+}
+
+._faqs_content .content__right .right__details .right__title{
+    color: #707070;
+    font-size: 1.8229167vw;
+}
+
+._faqs_content .content__right .right__details .right__info{
+    margin: 2.60416665vw 0px;
+}
+
+._faqs_content .content__right .right__details .right__info .info__question{
+    padding: 1.0416667vw 1.3020833vw ;
+    margin: 1.25vw 0;
+    width: 70%;
+    background: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right__info .active{
+    background: #FCFCFC 0% 0% no-repeat padding-box !important;
+    transition: all 0.2s ease-in-out;
+}
+.right__info .active .question .icon{
+    color: #0136EE !important;
+    transition: all 0.2s ease-in-out;
+    transform: rotateX(180deg);
+    margin-bottom: -0.78125vw !important;
+}
+.right__info .active .answer{
+    display:block !important;
+    transition: all 0.2s ease-in-out;
+}
+
+._faqs_content .content__right .right__details .right__info .info__question .question{
+    display: flex;
+    align-items: center;
+}
+
+._faqs_content .content__right .right__details .right__info .info__question .question .title{
+    color: #707070;
+    font-size: 1.3020833vw;
+    margin-right: 1.0416667vw;
+}
+._faqs_content .content__right .right__details .right__info .info__question .icon{
+    font-size: 1.5625vw;
+    margin-bottom: 0.26041667vw;
+    cursor: pointer;
+    color: #B1B1B1;
+}
+
+._faqs_content .content__right .right__details .right__info .info__question .answer{
+    color: #B1B1B1;
+    font-size: 1.3020833vw;
+    display: none;
+}
+
+._faqs_content .content__right .right__details .right__info .info__text{
+    color: #B1B1B1;
+    font-size: 1.3020833vw;
+}

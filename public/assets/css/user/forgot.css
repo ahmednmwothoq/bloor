@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+/*===== Config =====*/
+:root{
+    --primary_color: #0136ee;
+    --background_color: #f4f4f4;
+    --text_color: #b1b1b1;
+  }
+
+  *{
+    font-family: 'Roboto';
+  }
+
+
+  /* Header */
+
+  .__header{
+    padding: 20px 10px;
+    display: flex;
+    background: var(--primary_color);
+    justify-content: flex-end;
+    align-items: center
+  }
+
+  .header__item{
+    color: #fff;
+    margin-right: 16px;
+    display: flex;
+    margin-left: 60px;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .item__icon{
+    margin-right: 5px;
+    position: absolute;
+    font-size: 18px;
+    top: 1px;
+    left: 2px;
+    z-index: 1;
+  }
+
+  .header__item .circle{
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: -34px;
+    /* margin-right: 25px; */
+    z-index: 0;
+}
+
+
+/* Content */
+
+.__content{
+    margin-top: 30px;
+}
+
+.content__img{
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--background_color);
+    margin-bottom: 30px;
+}
+
+.content__title{
+    font-size: 25px;
+    color: var(--primary_color);
+    font-weight: 600;
+}
+
+.content__text{
+    color: var(--text_color);
+}
+
+.content__form{
+    width: 315px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.form__feild{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.form__label{
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.form__input{
+    padding: 7px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(207, 207, 207);
+    box-shadow: 0px 0px 7px 0px rgb(207, 207, 207);
+    outline: 0;
+}
+
+.form__input::placeholder {
+    color: rgb(207, 207, 207);
+}
+
+.form__btn{
+    width: 100%;
+    border-radius: 7px;
+    padding: 5px 0;
+    border: 0;
+    background: var(--primary_color);
+    color: #fff;
+}
+
+.content__back{
+    text-decoration: none;
+    color: #000;
+}
+
+.content__back i {
+    font-size: 15px;
+}

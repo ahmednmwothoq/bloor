@@ -1,0 +1,142 @@
+<template>
+
+    <Header />
+
+    <div class="content_slide">
+        <div class="slidebar">
+           <list-supplier :sideList="sideList" />
+        </div>
+        <div class="all">
+           <div class="all__up">
+            <header-image />
+            <header-icons />
+           </div>
+           <div class="all__down">
+                <div class="section">
+                    <div class="item item__offer" v-for="item in 4" :key="item.id">
+                        <item-offer />
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+
+</template>
+
+<script>
+    import Api from "@/api"
+    import Header from "@/components/Header.vue"
+    import ListSupplier from "@/components/supplier/ListSupplier.vue"
+    import HeaderImage from "@/components/supplier/HeaderImage.vue"
+    import HeaderIcons from "@/components/supplier/HeaderIcons.vue"
+    export default {
+        components: {
+            Header,
+            ListSupplier,
+            HeaderImage,
+            HeaderIcons,
+            // ErrorList
+        },
+        data() {
+            return {
+                showDivAddProduct: false,
+                showOverlay: false,
+                sideList: [
+                    {
+                        id:1,
+                        name: "Overview",
+                        active: '',
+                        url:'/supplier'
+                    },
+                    {
+                        id:2,
+                        name: "Products",
+                        active: '',
+                        url:'/supplier/products'
+                    },
+                    {
+                        id:3,
+                        name: "Offers",
+                        active: 'active',
+                        url:'/supplier/offers'
+                    },
+                    {
+                        id:4,
+                        name: "Chats",
+                        active: '',
+                        url:'/supplier/chats'
+                    },
+                    {
+                        id:5,
+                        name: "Notifications",
+                        active: '',
+                        url:'/supplier/notifications'
+                    },
+                    {
+                        id:6,
+                        name: "Complaints",
+                        active: '',
+                        url:'/supplier/complaints'
+                    },
+                    {
+                        id:7,
+                        name: "FAQs",
+                        active: '',
+                        url:'/supplier/faqs'
+                    },
+                    {
+                        id:8,
+                        name: "Privacy Policy",
+                        active: '',
+                        url:'/supplier/privacy-policy'
+                    },
+                    {
+                        id:9,
+                        name: "Terms & Conditions",
+                        active: '',
+                        url:'/supplier/terms-conditions'
+                    },
+                    {
+                        id:10,
+                        name: "About us",
+                        active: '',
+                        url:'/supplier/about-us'
+                    },
+                    {
+                        id:11,
+                        name: "Contact us",
+                        active: '',
+                        url:'/supplier/contact-us'
+                    },
+                    
+                ],
+            }
+        },
+    }
+</script>
+
+<style scoped>
+.all{
+    display: flex;
+    flex-direction: column;
+}
+.all .all__up{
+    display: flex;
+    justify-content: flex-end;
+    width: 95%;
+    margin: 0 auto;
+}
+.all .all__down{
+    width: 94%;
+    margin: 0 auto;
+}
+.all .all__down .title{
+    letter-spacing: 0px;
+    color: #B1B1B1;
+    font-size: 2.4vw;
+}
+.section{
+    width: 75vw;
+    margin-top: 50px;
+}
+</style>

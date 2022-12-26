@@ -1,0 +1,15 @@
+@import './base.css';
+@import "./TheLoader.css";
+@import "./profile.css";
+@import "./styleSupplier.css";
+@import "./styleUser.css";
+@import "./offerCard.css";
+@import "./aboutUs.css";
+@import "./comments.css";
+@import "./review.css";
+@import "./productReview.css";
+@import "./faqs.css";
+@import "./aboutSupplier.css";
+
+#app {}
+

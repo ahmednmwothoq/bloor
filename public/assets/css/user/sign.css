@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+/*===== Config =====*/
+:root{
+    --primary_color: #0136ee;
+    --background_color: #f4f4f4;
+    --text_color: #b1b1b1;
+  }
+
+  *{
+    font-family: 'Segoe UI'
+  }
+
+  html{
+    scroll-behavior: smooth;
+  }
+  
+  body{
+    background-image: linear-gradient(100deg, #f4f4f4 48%, #FFF 40%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  
+.__content{
+  position: relative;
+  display: flex;
+  height: 110vh;
+  /* padding-bottom: 250px; */
+}
+
+.content__left{
+  flex: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10.1881vw;
+}
+
+.content__left .left__img{
+  width: 20.395833vw;
+  height: 12.708333vw;
+}
+
+.content__left .left__text{
+    color: #0136EE;
+    font-size: 1.0020833vw;
+}
+
+/***************** Right *****************/
+
+.content__right{
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content__right .header__nav{
+  width: 45%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.content__right .header__nav .nav__item{
+    color: #B1B1B1;
+    font-size: 1.42291667vw;
+    text-decoration: none;
+    cursor: pointer;
+}
+.content__right .header__nav .item__active{
+  position: relative;
+  color: #0136EE;
+  font-weight: bold;
+}
+
+.content__right .header__nav .item__active::after{
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right:0;
+  height: 4px;
+  background-color: var(--primary_color);
+  
+}
+
+
+.content__right .form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2.6206897vw;
+  width: 50%;
+    flex-direction: column;
+}
+.content__right .form .form__up{
+  width: 100%;
+}
+
+.content__right .form .form__up .right__title{
+  color: #707070;
+  font-size: 1.74375vw;
+  font-weight: 600;
+}
+
+.content__right .form .form__up .right__text{
+  color: #B1B1B1;
+  font-size: 1.0416667vw;
+}
+
+
+.content__right .form .right__down{
+  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content__right .form .right__down .form__inputs{
+  width: 100%;
+    /* margin: 0 auto; */
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    margin-top: 1.6416667vw;
+}
+
+.form .form__down .input_sm{
+  /* flex: 1% !important; */
+  width: 40% !important;
+}
+
+
+.form .form__down .offset_input{
+     /* flex: 0%; */
+     width: 20%;
+}
+
+.form .form__down .form__field ,
+.form .form__down .form_check_field{
+  display: flex;
+  flex-direction: column;
+  /* flex: 100%; */
+  width: 100%;
+  margin-bottom: 0.8020833vw;
+  position: relative;
+}
+
+.form .form__down .form__field .label{
+  color: #000000;
+  font-size: 1.09375vw;
+  margin-top: 0px;
+  font-weight: 500;
+}
+
+.form .form__down .form__field .input{
+  color: #B1B1B1;
+  font-size: 0.9375vw;
+  border: 0;
+  background: 0;
+  border-bottom: 2px solid #D1D1D1;
+  padding: 0.5416667vw 0;
+}
+
+.form .form__down .form__field .input:focus{
+  outline: none;
+}
+
+.form .form__down .form__field .optional{
+  color: #B1B1B1;
+  font-size: 0.78125vw;
+  font-weight: lighter;
+  position: absolute;
+  left: 6.395833vw;
+  top: 0.26041667vw;
+}
+
+/* password icon eye */
+
+.form .form__down .form__field .field_icon{
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  font-size: 1.0020833vw;
+  cursor: pointer;
+}
+
+.form .form__down .form_check_field{
+  margin-top: -5px;
+  margin-bottom: 28px;
+
+}
+.form__check{
+  position: relative;
+}
+
+.check__field{
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: #000;
+  width: 1.06em;
+  height: 1.15em;
+  border: 0.15em solid #000;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  left: 0;
+}
+
+.check__field::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #000;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.check__field:checked::before {
+  transform: scale(1);
+}
+
+
+.check__text{
+  position: absolute;
+  left: 23px;
+  color: #D40000;
+}
+
+.content__right .form .right__down .form__submit{
+  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.submit__btn{
+  padding: 1.2vh 6vw;
+  border-radius: 10px;
+  font-size: 1.3vw;
+  margin-bottom: 1.0416667vw;
+  border: 0;
+  background: var(--primary_color);
+  color: #fff;
+}
+
+.btn__forgot{
+  color: #D40000;
+  font-size: 1.0416667vw;
+}
+
+
+.content_bottom{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.content_bottom .left__help{
+color: #B1B1B1;
+font-size: 1.4583333vw;
+text-transform: capitalize;
+font-weight: 600;
+text-decoration: underline;
+}
+.content_bottom .icon__text{
+font-size: 1.2583333vw;
+color: #0136EE;
+text-transform: capitalize;
+}
+.content_bottom .icon__text a{
+color: #0136EE;
+}
+
