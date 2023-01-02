@@ -971,6 +971,7 @@
     font-size: 1.8vw;
     color: #B1B1B1;
     margin-top: 1vw;
+    word-break: break-word;
 }
 
 .item__experience .experience__down{

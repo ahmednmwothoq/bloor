@@ -30,10 +30,10 @@
                             <input type="password" v-model="password" class="input__field" placeholder="Enter Your Password">
                         <span class="feedback_error" v-if="v$.password.$error">{{ v$.password.$errors[0].$message }}</span>
                         </div>
-                        <div class="form__check">
+                        <!-- <div class="form__check">
                             <input type="checkbox" class="check__field">
                             <span class="check__text">Remember Me</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="form__submit">
                         <button class="submit__btn" @click="loginForm()" type="submit">Login</button>

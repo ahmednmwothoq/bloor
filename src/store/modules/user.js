@@ -2,6 +2,7 @@ import cookie from "vue-cookie";
 const state = () => ({
   user: {},
   supplier: {},
+  settings: {},
   role: null,
   token: null,
   isLoggedIn: false,
@@ -26,6 +27,9 @@ const mutations = {
   },
   storeLang(state, lang) {
     state.lang = lang;
+  },
+  storeSettings(state, settings) {
+    state.settings = settings;
   }
 };
 
@@ -45,6 +49,10 @@ const actions = {
   addToken({ commit }, event) {
     commit('storeToken', event)
     cookie.set("token", event);
+  },
+  addSettings({ commit }, event) {
+    commit('storeSettings', event)
+    cookie.set("settings", event);
   },
   switchStatus({ commit }, event) {
     commit('switchUserStuts', event)

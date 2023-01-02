@@ -31,10 +31,10 @@
                             <input class="input" type="text" v-model="l_name" placeholder="Last Name">
                             <span class="feedback_error" v-if="v$.l_name.$error">{{ v$.l_name.$errors[0].$message }}</span>
                         </div>
-                        <div class="form_check_field">
+                        <!-- <div class="form_check_field">
                             <input type="checkbox" class="check__field">
                             <span class="check__text">Hide!</span>
-                        </div>
+                        </div> -->
 
                         <div class="form__field input_sm">
                             <label class="label">Phone</label>
@@ -53,16 +53,15 @@
                             <span class="feedback_error" v-if="v$.username.$error">{{ v$.username.$errors[0].$message }}</span>
                         </div>
 
-                        <div class="form__field">
+                        <!-- <div class="form__field">
                             <label class="label">Country</label>
-                            <!-- <input class="input" type="text" v-model="country" placeholder="Country" value="Saudi Arabia" > -->
                             <select class="input">
                                 <option value="saudi-arabia">Saudi Arabia</option>
                                 <option value="egypt">Egypt</option>
                                 <option value="us">US</option>
                                 <option value="uk">UK</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="form__field input_sm">
                             <label class="label">Gender</label>
@@ -90,10 +89,10 @@
                             <input class="input" type="date" v-model="date_of_birth" placeholder="Date Of Birth">
                             <!-- <span class="feedback_error" v-if="v$.date_of_birth.$error">{{ v$.date_of_birth.$errors[0].$message }}</span> -->
                         </div>
-                        <div class="form_check_field">
+                        <!-- <div class="form_check_field">
                             <input type="checkbox" class="check__field">
                             <span class="check__text">Hide!</span>
-                        </div>
+                        </div> -->
 
                         <div class="form__field input_sm">
                             <label class="label">Password</label>

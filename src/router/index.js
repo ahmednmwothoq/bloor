@@ -44,6 +44,7 @@ import SearchExperience from '../views/user/searchExperience.vue'
 
 
 import allOfferUser from '../views/user/allOffer.vue'
+import OfferDetailsUser from '../views/user/offers/offerDetails.vue'
 
 import addReview from '../views/user/review/add.vue'
 import showReview from '../views/user/review/show.vue'
@@ -67,6 +68,8 @@ import SupplierProducts from '../views/supplier/products.vue'
 import SupplierChats from '../views/supplier/chats.vue'
 import SupplierComplaints from '../views/supplier/complaints.vue'
 import SupplierAbout from '../views/supplier/about.vue'
+import SupplierFAQS from '../views/supplier/faqs.vue'
+import SupplierContactUs from '../views/supplier/contactUs.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -108,6 +111,7 @@ const router = createRouter({
 
     // Offer
     { path: '/allOffer', name: 'allOfferUser', component: allOfferUser, meta: { title: 'All Offers' , middleware: log  } },
+    { path: '/offer/:id', name: 'OfferDetailsUser', component: OfferDetailsUser, meta: { title: 'Offer Details' , middleware: log  } },
 
 
      /**  
@@ -129,9 +133,11 @@ const router = createRouter({
       { path: '/supplier/products', name: 'SupplierProducts', component: SupplierProducts, meta: { title: 'Supplier Products' , middleware: auth } },
       { path: '/supplier/chats', name: 'SupplierChats', component: SupplierChats, meta: { title: 'Supplier Chats' , middleware: auth } },
       
-      { path: '/supplier/complaints', name: 'SupplierChats', component: SupplierChats, meta: { title: 'Supplier Chats' , middleware: auth } },
+      { path: '/supplier/complaints', name: 'SupplierComplaints', component: SupplierComplaints, meta: { title: 'Supplier Complaints' , middleware: auth } },
       
       { path: '/supplier/about-us', name: 'SupplierAbout', component: SupplierAbout, meta: { title: 'Supplier About Us' , middleware: auth } },
+      { path: '/supplier/faqs', name: 'SupplierFAQS', component: SupplierFAQS, meta: { title: 'Supplier FAQS' , middleware: auth } },
+      { path: '/supplier/contact-us', name: 'SupplierContactUs', component: SupplierContactUs, meta: { title: 'Supplier Contact Us' , middleware: auth } },
     
   ]
 })

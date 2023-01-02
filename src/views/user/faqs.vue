@@ -12,31 +12,13 @@
             <div class="right__details" id="theDivFAQs">
                 <h2 class="right__title">{{ $t('faqs') }}</h2>
                 <div class="right__info">
-                    <div class="info__question active">
-                        <div class="question">
-                            <span class="title">Can I change my account email ?</span>
-                            <i class="fas fa-sort-down icon"></i>
+                    <div :id="'itm'+index" class="info__question" v-for="(item, index) in bodyFAQ" :key="index">
+                        <div class="question" @click="showHideFAQ('itm'+index)">
+                            <span class="title">{{ item.question }}</span>
+                            <i  class="fas fa-sort-down icon"></i>
                         </div>
                         <p class="answer">
-                            My Expe Lorem Ipsum Is Simply Dummy Text Of The printing and the project he Printing, Typesetting Industry. Lorem Ipsum Has he Printing And Typesetting Industry.
-                        </p>
-                    </div>
-                    <div class="info__question">
-                        <div class="question">
-                            <span class="title">Can I change my account email ?</span>
-                            <i class="fas fa-sort-down icon"></i>
-                        </div>
-                        <p class="answer">
-                            My Expe Lorem Ipsum Is Simply Dummy Text Of The printing and the project he Printing, Typesetting Industry. Lorem Ipsum Has he Printing And Typesetting Industry.
-                        </p>
-                    </div>
-                    <div class="info__question">
-                        <div class="question">
-                            <span class="title">Can I change my account email ?</span>
-                            <i class="fas fa-sort-down icon"></i>
-                        </div>
-                        <p class="answer">
-                            My Expe Lorem Ipsum Is Simply Dummy Text Of The printing and the project he Printing, Typesetting Industry. Lorem Ipsum Has he Printing And Typesetting Industry.
+                            {{ item.answer }}
                         </p>
                     </div>
                 </div>
@@ -71,6 +53,8 @@ import LogoSearch from "@/components/LogoSearch.vue"
             return {
                 bodyPrivacy:'',
                 bodyTerms:'',
+                bodyFAQ:[],
+                fristFAQ:{},
             }
         },
         components:{
@@ -94,22 +78,29 @@ import LogoSearch from "@/components/LogoSearch.vue"
             async getData(){
                 await Api.general.getAllFaqs().then((res)=>{
                     if(res.data.status){
-                        console.log(res)
+                        // console.log(res)
+                        this.bodyFAQ = res.data.body;
+                        this.fristFAQ = this.bodyFAQ[0];
                     }
                 });
                 await Api.general.getPrivcyAndPolicy().then((res)=>{
                     if(res.data.status){
-                        console.log(res)
+                        // console.log(res)
                         this.bodyPrivacy = res.data.body;
                     }
                 });
                 await Api.general.getTermsAndConditions().then((res)=>{
                     if(res.data.status){
-                        console.log(res)
+                        // console.log(res)
                         this.bodyTerms = res.data.body;
                     }
                 });
             },
+            showHideFAQ(item){
+                $("#"+item).toggleClass("active");
+                // console.log("hnkj")
+            }
+            
         },
     }
 </script>

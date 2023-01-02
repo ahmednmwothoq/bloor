@@ -7,23 +7,23 @@
 
 
 <div class="overlayy" v-if="divOverlay" @click="hideAll"></div>
-  <footer class="__footer" style="position: relative;z-index: 5;">
+  <footer class="__footer" style="position: relative;z-index: 5;bottom: -12vw;" v-if="isUser">
 
     <div class="downlist__footer" v-if="divSearch">
           <span class="close" @click="hideAll">X</span>
           <span class="tringle"></span>
           <div class="lists">
-              <a href="pages/user/search_offers.html" class="item__list">
+              <a @click="this.$router.push('/search/offers')" class="item__list">
                   <span class="circle"></span>
                   <span class="list_text">{{ $t('offers') }}</span>
               </a>
-              <a href="pages/user/search_experience.html" class="item__list">
+              <a @click="this.$router.push('/search/experiences')" class="item__list">
                   <span class="circle"></span>
                   <span class="list_text">{{ $t('experiments') }}</span>
               </a>
-              <a href="pages/user/search_reviews.html" class="item__list">
+              <a @click="this.$router.push('/search/products')" class="item__list">
                   <span class="circle"></span>
-                  <span class="list_text">{{ $t('reviews') }}</span>
+                  <span class="list_text">{{ $t('products') }}</span>
               </a>
           </div>
           <a class="done" @click="hideAll">{{ $t('done') }}</a>
@@ -32,22 +32,22 @@
 
         <div class="footer__nav">
             <div class="footer_item">
-                <a href="" class="footer_btn">
+                <a @click="this.$router.push('/user-profile')" class="footer_btn">
                     <i class="fas fa-tag footer_icon"></i>
                 </a>
             </div>
             <div class="footer_item">
-                <a href="" class="footer_btn">
+                <a @click="this.$router.push('/user-profile')" class="footer_btn">
                     <i class="fas fa-comment-alt footer_icon"></i>
                 </a>
             </div>
             <div class="footer_item">
-                <a href="../../index.html" class="footer_btn">
+                <a @click="this.$router.push('/')" class="footer_btn">
                     <img class="logo" src="/assets/images/logo/logo_user.png" alt="logo">
                 </a>
             </div>
             <div class="footer_item">
-                <a href="" class="footer_btn">
+                <a @click="this.$router.push('/user-profile')" class="footer_btn">
                     <i class="fas fa-bell footer_icon"></i>
                 </a>
             </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import cookie from "vue-cookie";
 export default {
     name: "Footer",
     data() {
@@ -69,6 +70,15 @@ export default {
           divOverlay: false,
           divSearch: false,
         };
+    },
+    computed: {
+      isUser() {
+        if (JSON.parse(cookie.get("logged_In")) == true) {
+          return true
+        } else {
+          return false
+        }
+      },
     },
     methods: {
       showAndHideList(){
@@ -96,7 +106,7 @@ export default {
     background: #000000 0% 0% no-repeat padding-box;
     opacity: 0.5;
     z-index:5;
-    height: 170vw;
+    height: 190vw;
     /* display:none; */
   }
 

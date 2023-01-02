@@ -1,6 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 // import TheLoaderVue from './components/TheLoader.vue';
+import Api from "@/api"
 import UserLayout from './layouts/UserLayout.vue'
 import SupplierLayout from './layouts/SupplierLayout.vue'
 import cookie from "vue-cookie";
@@ -97,6 +98,16 @@ export default {
 			// cookie.set('lang', 'ar')
 			this.$store.dispatch("user/switchLang", 'ar')
 		}
+
+		// this.$store.dispatch("user/addSettings", cookie.get('logged_In'))
+
+		Api.general.getSetting().then((res)=>{
+			// console.log("setting",res)
+			// this.aboutUs = res.data.body
+			this.$store.dispatch("user/addSettings", res.data.body)
+		});
+
+
 
 		
 

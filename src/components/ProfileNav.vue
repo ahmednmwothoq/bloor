@@ -4,18 +4,18 @@
         <div class="form_add_opinion">
             <form class="opinin_form">
                 <textarea v-model="bodyEx" placeholder="Enter Your Experiment....." name="" cols="30" rows="10"></textarea>
-                <span class="feedback_error" v-if="v$.bodyEx.$error">{{ v$.bodyEx.$errors[0].$message }}</span>
+                <!-- <span class="feedback_error" v-if="val$.bodyEx.$error">{{ val$.bodyEx.$errors[0].$message }}</span> -->
                 <input id="add_profile_attach" @change="uploadImagesOpin" ref="image" class="input" type="file">
                 <input id="add_profile_attach" @change="uploadImagesOpinFile" ref="file" class="input" type="file">
                 <span class="attach" @click="$refs.image.click()">
-                    <i class="far fa-paperclip icon"></i> Attach Image Product
+                    <i class="far fa-paperclip icon"></i> {{ $t('attach_image_product') }}
                 </span>
                 <span class="attach_file" @click="$refs.file.click()">
-                    <i class="far fa-paperclip icon"></i> Attach file
+                    <i class="far fa-paperclip icon"></i> {{ $t('attach_file') }}
                 </span>
                 <Rating @rate="rate" :grade="0"/>
                 <ul class="list-style" v-if="preview_image || preview_image_file">
-                <span @click="clearUploadImg" class="clear">Clear</span>
+                <span @click="clearUploadImg" class="clear">{{ $t('clear') }}</span>
                     <li class="list" v-if="preview_image">
                         <img :src="preview_image" alt="alt_img" />
                     </li>
@@ -24,7 +24,7 @@
                     </li>
                 </ul>
                 <!-- <input type="checkbox" class="check__field" name=""> -->
-                <button class="btn_submit" @click="addExperimentUser" type="button">Publish</button>
+                <button class="btn_submit" @click="addExperimentUser" type="button">{{ $t('publish') }}</button>
             </form>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="nav__search">
             <img class="image" src="/assets/images/icon/mag2.png" alt="">
             <form action="" class="search_input">
-                <input class="input" type="text" name="search" placeholder="Search......" > 
+                <input class="input" type="text" name="search" :placeholder="$t('search_here')" > 
             </form>
         </div>
     </div>
@@ -77,64 +77,20 @@
     <div class="notif_profile" v-if="showNote" >
         <span class="close">X</span>
         <span class="tringle"></span>
-        <div class="Title">Notifications</div>
+        <div class="Title">{{ $t('notifications') }}</div>
         <div class="content">
             <div class="notif_day">
-                <span class="day">Today</span>
-                <div class="lists">
-                    <div class="item__list">
+                <span class="day">Info</span>
+                <div class="lists" >
+                    <div class="item__list" v-for="item in notifications" :key="item.id">
                         <span class="circle"></span>
                         <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
+                            <span class="notify_person">{{ item.owner_id }}</span>
+                            {{ item.message }}
                         </span>
-                        <span class="time">2:00 pm</span>
+                        <span class="time">{{ item.created_at }}</span>
                     </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                </div>
-            </div>
-            <div class="notif_day">
-                <span class="day">Today</span>
-                <div class="lists">
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -164,12 +120,12 @@ import { useToast } from 'vue-toastification'
         },
         data(){
             return {
-                v$: useValidate(),
+                // val$: useValidate(),
                 showOverlayNote: false,
                 showNote: false,
                 showOverlayOpi: false,
                 showOpi: false,
-                notifications: null,
+                notifications: [],
                 preview_image: null,
                 image_item: null,
                 preview_image_file: null,
@@ -205,11 +161,11 @@ import { useToast } from 'vue-toastification'
             },
             async getNotificationsUser(){
                 await Api.user.userNotfications().then((res)=>{
-                // if(res.data.status){
+                if(res.data.status){
                    
-                //     this.notifications = res.data.userData;
-                // } 
-                console.log(res)
+                    this.notifications = res.data.body.Notfications;
+                } 
+                // console.log(res)
             })
             },
             uploadImagesOpin(event){
@@ -246,8 +202,8 @@ import { useToast } from 'vue-toastification'
             },
             async addExperimentUser(){
                 const toast = useToast()
-                this.v$.$validate();
-                if(!this.v$.$error){
+                // this.val$.$validate();
+                // if(!this.val$.$error){
                     const data = new FormData();
                     data.append('body', this.bodyEx);
                     data.append('rate', this.rateValue);
@@ -262,23 +218,23 @@ import { useToast } from 'vue-toastification'
                         
                     })
 
-                }else{
-                // console.log("fail validate")
-                toast.error(`fail validate`,{
-                    position: "top-right",
-                    timeout: 3048,
-                    closeOnClick: true,
-                    pauseOnFocusLoss: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    draggablePercent: 0.6,
-                    showCloseButtonOnHover: false,
-                    hideProgressBar: true,
-                    closeButton: "button",
-                    icon: true,
-                    rtl: false
-                })
-            }
+            //     }else{
+            //     // console.log("fail validate")
+            //     toast.error(`fail validate`,{
+            //         position: "top-right",
+            //         timeout: 3048,
+            //         closeOnClick: true,
+            //         pauseOnFocusLoss: true,
+            //         pauseOnHover: true,
+            //         draggable: true,
+            //         draggablePercent: 0.6,
+            //         showCloseButtonOnHover: false,
+            //         hideProgressBar: true,
+            //         closeButton: "button",
+            //         icon: true,
+            //         rtl: false
+            //     })
+            // }
 
             }
         }

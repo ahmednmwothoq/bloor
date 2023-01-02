@@ -84,6 +84,34 @@ async function getOurVission() {
         return error
     }
 }
+async function getDetailsOffer(id) {
+    try {
+        return await $axios.get(`suplier/edit/offer/${id}`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+
+async function getSetting() {
+    try {
+        return await $axios.get(`AllSettings`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+async function sendContactUs(payload) {
+    try {
+        return await $axios.post(`contactus`,payload).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
 
 
 
@@ -97,6 +125,10 @@ async function getOurVission() {
     getTermsAndConditions,
     getAboutUs,
     getOurVission,
+
+    getDetailsOffer,
+    getSetting,
+    sendContactUs,
     
   };
   export default general;

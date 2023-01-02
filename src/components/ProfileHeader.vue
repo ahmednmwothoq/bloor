@@ -5,12 +5,12 @@
   <header class="__header">
         <a v-if="RoleUser" @click="redirectToPath({ val: '/user-profile' })" class="header__item">
             <i class="item__icon far fa-user-circle"></i>
-            <span class="item__text">Profile</span>
+            <span class="item__text">{{ $t('profile') }}</span>
         </a>
         <a @click="logoutUser()"  class="header__item">
             <img class="logout_hover_icon item__icon" src="/assets/images/icon/logout_hover2.png"  alt="">
             <img class="logout_icon item__icon" src="/assets/images/icon/logout_hover.png" alt="">
-            <span class="item__text">Logout</span>
+            <span class="item__text">{{ $t('logout') }}</span>
         </a>
         <div v-for="(locale, index) in availableLocales">
           <a class="header__item" @click="changeLocale(locale)" v-if="locale !== this.$i18n.locale">
@@ -55,10 +55,14 @@ export default {
           },
 
           availableLocales () {
-            return this.$i18n.availableLocales.filter(i => i.code !== this.$i18n.locale)
+            if(cookie.get("lang") == null){
+              return ['ar']
+            }else{
+              return this.$i18n.availableLocales.filter(i => i !== this.$i18n.locale)
+            }
           },
           getLocales () {
-            let local = this.$i18n.availableLocales.filter(i => i.code !== this.$i18n.locale)
+            let local = this.$i18n.availableLocales.filter(i => i !== this.$i18n.locale)
             if(local[0].code == 'en'){
               return true
             } else {

@@ -232,12 +232,12 @@
                         active: '',
                         url:'/supplier/chats'
                     },
-                    {
-                        id:5,
-                        name: "Notifications",
-                        active: '',
-                        url:'/supplier/notifications'
-                    },
+                    // {
+                    //     id:5,
+                    //     name: "Notifications",
+                    //     active: '',
+                    //     url:'/supplier/notifications'
+                    // },
                     {
                         id:6,
                         name: "Complaints",
@@ -250,18 +250,18 @@
                         active: '',
                         url:'/supplier/faqs'
                     },
-                    {
-                        id:8,
-                        name: "Privacy Policy",
-                        active: '',
-                        url:'/supplier/privacy-policy'
-                    },
-                    {
-                        id:9,
-                        name: "Terms & Conditions",
-                        active: '',
-                        url:'/supplier/terms-conditions'
-                    },
+                    // {
+                    //     id:8,
+                    //     name: "Privacy Policy",
+                    //     active: '',
+                    //     url:'/supplier/privacy-policy'
+                    // },
+                    // {
+                    //     id:9,
+                    //     name: "Terms & Conditions",
+                    //     active: '',
+                    //     url:'/supplier/terms-conditions'
+                    // },
                     {
                         id:10,
                         name: "About us",

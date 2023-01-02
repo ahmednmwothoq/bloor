@@ -36,15 +36,50 @@
     </header>
 
     <header class="__header" v-if="!isUser">
-        <a @click="redirectTo({ val: 'userLogin' })" class="header__item">
-            <img class="logout_icon item__icon" src="/assets/images/icon/login.png"  alt="">
-            <img class="logout_hover_icon item__icon" src="/assets/images/icon/login_hover.png" alt="">
-            <span class="item__text custom_lang">{{ $t('login') }}</span>
-        </a>
-        <a @click="redirectTo({ val: 'userSignUp' })" class="header__item">
+        <div class="dropdown">
+          <a class="header__item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="item__icon far fa-user-circle"></i>
-            <span class="item__text custom_lang">{{ $t('sign_up') }}</span>
-        </a>
+            <span class="item__text custom_lang">{{ $t('user_list') }}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a @click="redirectTo({ val: 'userSignUp' })" class="dropdown-item">
+                  <!-- <i class="item__icon far fa-user-circle"></i> -->
+                  <span class="item__text custom_lang">{{ $t('sign_up') }}</span>
+              </a>
+            </li>
+            <li>
+              <a @click="redirectTo({ val: 'userLogin' })" class="dropdown-item">
+                <!-- <img class="logout_icon item__icon" src="/assets/images/icon/login.png"  alt="">
+                <img class="logout_hover_icon item__icon" src="/assets/images/icon/login_hover.png" alt=""> -->
+                <span class="item__text custom_lang">{{ $t('login') }}</span>
+            </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <a class="header__item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="item__icon far fa-user-circle"></i>
+            <span class="item__text custom_lang">{{ $t('supplier_list') }}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a @click="this.$router.push('/supplier-signup')" class="dropdown-item">
+                <!-- <i class="item__icon far fa-user-circle"></i> -->
+                <span class="item__text custom_lang">{{ $t('sign_up_supplier') }}</span>
+              </a>
+            </li>
+            <li>
+              <a @click="this.$router.push('/supplier-login')" class="dropdown-item">
+                <!-- <img class="logout_icon item__icon" src="/assets/images/icon/login.png"  alt="">
+                <img class="logout_hover_icon item__icon" src="/assets/images/icon/login_hover.png" alt=""> -->
+                <span class="item__text custom_lang">{{ $t('login_supplier') }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <div v-for="(locale, index) in availableLocales">
           <a class="header__item" @click="changeLocale(locale)" v-if="locale !== this.$i18n.locale">
             <i class="item__icon far fa-globe"></i>
@@ -108,8 +143,8 @@ export default {
 
     },
     mounted() {
-      console.log(cookie.get("token"))
-      console.log(JSON.parse(cookie.get('RoleData')))
+      // console.log(cookie.get("token"))
+      // console.log(JSON.parse(cookie.get('RoleData')))
       // console.log(JSON.parse(cookie.get("token")).length > 0 && )
       // console.log(this.$i18n,this.availableLocales,this.getLocales)
 

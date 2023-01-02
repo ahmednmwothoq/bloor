@@ -17,7 +17,7 @@ const $axios = axios.create({
 });
 // console.log(cookie.get('lang'))
 
-$axios.defaults.headers.common['Language'] = cookie.get('lang');
+$axios.defaults.headers.common['Content-Language'] = cookie.get('lang');
 
 $axios.interceptors.request.use(function (config) {
     // Do something before request is sent return console.log('s')

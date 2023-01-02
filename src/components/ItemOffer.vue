@@ -8,7 +8,7 @@
                     <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="image image_slider">
                     </div> -->
                     <div :class="activeSlider.id == img.id ? `carousel-item active` : `carousel-item` " v-for="img in item.media" :key="img.id">
-                        <img :src="img.original_url" alt="img" class="image image_slider">
+                        <img :src="img.original_url" alt="img" class="image image_slider" @click="this.$router.push({ name: 'OfferDetailsUser', params: { id: item.id }})">
                     </div>
                     <!-- ,  {active: activeSlider.id != img.id ? '' : 'active' }  -->
                     <!-- <div class="carousel-item">
@@ -46,15 +46,23 @@
                         <!-- <img src="/assets/images/avatar/person1.jpg" alt="" class="person"> -->
                         <div class="person_info">
                             <span class="name">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
-                            <span class="number">{{ $t('marouf_number') }} : {{item.known_number}}</span>
-                            <span class="no">{{ $t('commerecial_register_no') }} : {{item.commercial_registration}}</span>
+                            <span class="number">
+                                <span> {{ $t('marouf_number') }} </span>
+                                <span> {{item.known_number}} </span>
+                            </span>
+                            <span class="no">
+                                <span> {{ $t('commerecial_register_no') }} </span>
+                                <span> {{item.commercial_registration}} </span>
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="detail__price">
-                    <span class="detail_title">{{ $t('price') }} :</span>
+                    <span class="detail_title">{{ $t('price') }} : </span>
                     <div class="price_info">
-                        <span class="price">{{ $t('sar') }} {{item.original_price}}</span>
+                        <span class="price"> <span> {{ $t('sar') }} </span>
+                        <span> {{item.original_price}} </span>
+                    </span>
                         <span class="offer" v-if="item.offer_percentage > 0">{{ $t('sar') }} {{(item.offer_percentage/100)* item.original_price}}</span>
                     </div>
                 </div>

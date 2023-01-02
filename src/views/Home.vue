@@ -8,23 +8,23 @@
         <span class="close">X</span>
         <span class="tringle"></span>
         <div class="lists">
-            <a  class="item__list">
+            <a @click="this.$router.push('/about-us')" class="item__list">
                 <span class="circle"></span>
                 <span class="list_text">{{ $t('about_us') }}</span>
             </a>
-            <a href="pages/user/online_complaint.html" class="item__list">
+            <a @click="this.$router.push('/online-complaint')" class="item__list">
                 <span class="circle"></span>
                 <span class="list_text">{{ $t('complaints') }}</span>
             </a>
-            <a href="pages/user/get_touch.html" class="item__list">
+            <a @click="this.$router.push('/contact-us')" class="item__list">
                 <span class="circle"></span>
                 <span class="list_text">{{ $t('contact_us') }}</span>
             </a>
-            <a href="pages/user/faqs.html" class="item__list">
+            <a @click="this.$router.push('/faqs')" class="item__list">
                 <span class="circle"></span>
                 <span class="list_text">{{ $t('faqs') }}</span>
             </a>
-            <a href="pages/user/classification.html" class="item__list">
+            <a @click="this.$router.push('/classification')" class="item__list">
                 <span class="circle"></span>
                 <span class="list_text">{{ $t('classification') }}</span>
             </a>
@@ -168,7 +168,7 @@
             </div>
             <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
                 <slide v-for="item in allProducts" :key="item.id">
-                    <item-product-supplier :item="item" :user="user" />
+                    <item-product-supplier :item="item" :user="user"/>
 
                     <!-- <div v-if="showOverlayRew" @click="showReviewToProduct('theDivAddReview-'+ item.id)" class="overlay"></div>
                     <div :id="'theDivAddReview-'+ item.id" class="add_product" style="display: none;">
@@ -228,7 +228,8 @@
                         <item-offer :user="user" :item="items" v-for="items in allOffer" :key="items.id" />
                     </div>
             </div> -->
-            <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'" :autoplay="5000" :wrap-around="true" >
+            <!-- <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'" :autoplay="5000" :wrap-around="true" > -->
+            <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
                 <slide v-for="items in allOffer" :key="items.id" >
                     <item-offer :user="user" :item="items" />
                 </slide>
@@ -380,7 +381,7 @@
             async getAllOffer(){
                 await Api.general.getAllOffers().then((res)=>{
                     if(res.data.status){
-                        console.log(res)
+                        // console.log(res)
                         this.allOffer = res.data.body
                     }
                     
@@ -389,7 +390,7 @@
             async getAllExperience(){
                 await Api.general.getAllExperiments().then((res)=>{
                     if(res.data.status){
-                        console.log(res)
+                        // console.log(res)
                         this.allExperiences = res.data.body
                     }
                 })
@@ -397,7 +398,7 @@
             async getAllProducts(){
                 await Api.general.getAllProductstoReviews().then((res)=>{
                     if(res.data.status){
-                        console.log(res)
+                        // console.log(res)
                         this.allProducts = res.data.body
                     }else{
                         this.allProductsAllow = false
@@ -429,14 +430,14 @@
   }
 .downlist__home{
     position: absolute;
-    width: 40vw;
-    height: 45vw;
+    width: 30vw;
+    height: 30vw;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border-radius: 11px;
     opacity: 1 !important;
     z-index:6;
     right:2vw;
-    top: 13vw;
+    top: 10vw;
     padding: 5vw 3vw;
     display:none;
   }
@@ -465,20 +466,20 @@
   }
   .downlist__home .tringle{
     position: absolute;
-    top:-2.2vw;
+    top:-1.7vw;
     right:0.5vw;
     width: 0;
     height: 0;
-    border-left: 31px solid transparent;
-    border-right: 31px solid transparent;
-    border-bottom: 28px solid #FFFFFF;
+    border-left: 2vw solid transparent;
+    border-right: 2vw solid transparent;
+    border-bottom: 1.9vw solid #FFFFFF;
   }
   .downlist__home .lists{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    height: 30vw;
+    height: 20vw;
     width: 100%;
   }
   .downlist__home .lists .item__list{
@@ -508,7 +509,7 @@
     border-radius: 50%;
   }
   .downlist__home .lists .item__list .list_text{
-    font-size: 2.5vw;
+    font-size: 1.5vw;
     color: #B1B1B1;
     margin-top: -0.5vw;
     margin: 0 1vw;

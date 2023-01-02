@@ -14,10 +14,18 @@ export default {
         // this.getData()
         
         this.$store.dispatch("user/addUser", JSON.parse(cookie.get('userData')))
-        this.$store.dispatch("user/switchLang", cookie.get('lang'))
-        this.$i18n.locale = cookie.get('lang');
+        console.log(cookie.get('lang'))
 
-        
+        if(cookie.get('lang') == null){
+            this.$store.dispatch("user/switchLang", 'ar')
+            this.$i18n.locale = 'ar';
+        }else{
+            // this.$store.dispatch("user/switchLang", cookie.get('lang'))
+            // this.$i18n.locale = cookie.get('lang');
+            this.$store.dispatch("user/switchLang", cookie.get('lang'))
+            this.$i18n.locale = cookie.get('lang');
+        }
+
     },
     methods: {
         // async getData(){

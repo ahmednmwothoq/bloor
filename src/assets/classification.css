@@ -1,0 +1,69 @@
+
+._classific_content{
+    width: 75%;
+    margin: auto;
+    display: flex;
+    position: relative;
+    flex-direction: row;  
+}
+
+.classification{
+  display: flex;
+  flex-direction: column;
+}
+
+.classification .class__title{
+  font-size: 1.82291667vw;
+  color: #B1B1B1;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 1.5625vw;
+}
+
+.classification .class__title .image{
+  width: 2.34375vw;
+  height: 2.239583vw;
+  position: absolute;
+  top: -1.3020833vw;
+}
+
+.classification .class__content{
+  margin-left: 1.5625vw;
+}
+
+.classification .class__content .con__text{
+  color: #B1B1B1;
+  font-size: 1.3020833vw;
+  margin: 1.5625vw 0;
+}
+
+.classification .class__content .con__text .item__text{
+  position: relative;
+  margin-left: 0.78125vw;
+  margin-right: 0.26041667vw;
+  color: #0136EE;
+}
+.classification .class__content .con__text .item__text::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.78125vw;
+  right:0;
+  bottom: 0;
+  height: 0.3645833vw;
+  width: 0.3645833vw;
+  border-radius: 50%;
+  background-color: #0136EE;
+}
+
+.classification .class__got{
+  color: #0136EE;
+  text-transform: capitalize;
+  font-size: 1.19791667vw;
+  font-weight: 500;
+}
+
+.classification .class__got a{
+  color: #0136EE;
+  text-decoration: underline;
+}

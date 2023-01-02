@@ -10,6 +10,10 @@
 @import "./productReview.css";
 @import "./faqs.css";
 @import "./aboutSupplier.css";
+@import "./offerDetails.css";
+@import "./contactUs.css";
+@import "./classification.css";
+@import "./online.css";
 
 #app {}
 

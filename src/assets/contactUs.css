@@ -1,0 +1,213 @@
+._contact_us_content{
+    width:80% ;
+    margin: auto;
+    display: flex;
+}
+
+  /* left content */
+
+.left_contact_us_content{
+  flex: 30%;
+  margin-right: 5%;
+  
+}
+
+.left_contact_us_content .left__title{
+  text-transform: capitalize;
+  color: var(--primary_color);
+  font-weight: bold;
+  font-size: 2.6vw;
+}
+
+.left_contact_us_content .left__text{
+  text-transform: capitalize;
+  color: #b1b1b1;
+  font-weight: 400;
+  font-size: 1.4vw;
+  margin: 15px 0px;
+  width: 36.9vw;
+}
+
+.left_contact_us_content .left__image{
+  max-width: 100%;
+  height: auto;
+  max-height: 527px;
+  margin: 1vw 0;
+}
+
+.left_contact_us_content .left_icons{
+margin: auto;
+}
+
+.left_contact_us_content .left_icons .icon{
+    margin: 1vw 5px;
+    font-size: 1.7vw;
+    opacity: 25%;
+    cursor: pointer;
+}
+.left_contact_us_content .left_icons .icon:hover{
+  color: #1E6FCC;
+  opacity: 100%;
+}
+
+/******** right content *********/
+
+.right_contact_us_content{
+  flex: 25%;
+}
+
+
+/* icons */
+
+.right_contact_us_content .right__icons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.right_contact_us_content .right__icons .__icon{
+  display:flex;
+  flex-direction: column;
+  width: 10.8vw;
+  height: 11.5vh;
+  padding: 10px 0 ;
+  border: 1px solid #1E6FCC;
+  border-radius: 15px;
+  text-align: center;
+  color: #1E6FCC;
+}
+
+.right_contact_us_content .right__icons .__icon:hover{
+  color: #fff;
+  background: #0136EE;
+  transition: all 0.4s ease-in-out;
+}
+
+.right_contact_us_content .right__icons .__icon .icon{
+  margin: auto;
+  font-size: 1.8vw;
+
+}
+
+.right_contact_us_content .right__icons .__icon .text{
+  font-size: 0.8vw;
+}
+
+
+.right_contact_us_content .right__icons .__icon .email{
+position: relative;
+}
+
+.right_contact_us_content .right__icons .__icon .email .first_icon{
+  z-index: 1;
+}
+
+.right_contact_us_content .right__icons .__icon .email .second_icon{
+  font-size: 1vw;
+  position: absolute;
+    bottom: 0.4vw;
+    left: 1.3vw;
+    z-index: 2;
+    background: #fff;
+    border-radius: 50%;
+    
+}
+
+.right_contact_us_content .right__icons .__icon:hover .email .second_icon{
+  background: #0136EE;
+  
+}
+
+
+/* Form */
+
+.right_contact_us_content .right__form{
+  margin-top: 2.5vw;
+}
+
+
+.right_contact_us_content .right__form .inputs{
+  padding: 30px;
+  background: #0136EE 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  color: #fff;
+  border-radius: 15px;
+  display:flex;
+  flex-direction: column;
+  /* height: 23vw; */
+
+}
+
+.right_contact_us_content .right__form .inputs .inputs_title{
+  font-size: 1.5vw;
+}
+
+
+.right_contact_us_content .right__form .inputs .inputs_fields{
+  display: flex;
+}
+
+
+.right_contact_us_content .right__form .inputs .inputs_fields .fields_left{
+  display: flex;
+  flex-direction: column;
+  flex: 45%;
+  margin-right: 36px;
+}
+
+
+.right_contact_us_content .right__form .inputs .inputs_fields .left_input{
+  display: flex;
+    flex-direction: column;
+}
+
+
+.right_contact_us_content .right__form .inputs .inputs_fields .left_input label , .fields_right label{
+  color: #D1D1D1;
+  margin: 0.52vw 0;
+}
+
+
+.right_contact_us_content .right__form .inputs .inputs_fields .fields_left .left_input input{
+  border-radius: 5px;
+  border: 0;
+  height:  2.2vw;
+  margin-bottom: 0.78125vw;
+  padding-left: 10px;
+}
+.right_contact_us_content .right__form .inputs .inputs_fields .fields_left .left_input input::-webkit-input-placeholder {
+  color: #D1D1D1;
+}
+
+
+.right_contact_us_content .right__form .inputs .inputs_fields .fields_right{
+  display: flex;
+  flex-direction: column;
+  flex: 45%;
+  margin-right: 36px;
+  height: 22vw;
+}
+
+.right_contact_us_content .right__form .inputs .inputs_fields .fields_right textarea{
+  height: 100%;
+  width: 20vw;
+}
+.right_contact_us_content .right__form .inputs .inputs_fields .fields_right textarea::-webkit-input-placeholder {
+  color: #D1D1D1;
+}
+
+
+.right_contact_us_content .right__form .btn_submit{
+  margin-top: 2vw;
+  text-align: center;
+  
+}
+
+.right_contact_us_content .right__form .btn_submit button{
+  padding: 0.416vw 3.6458vw;
+  background: #0136EE 0% 0% no-repeat padding-box;
+  border-radius: 14px;
+  font-size: 1.302vw;
+  color: #fff;
+  font-weight: 100;
+  border: 0;
+}

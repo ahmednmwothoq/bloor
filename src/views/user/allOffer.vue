@@ -12,7 +12,7 @@
         </div>
         <div class="item" v-else>
             <div class="alert alert-primary text-center mb-5" role="alert">
-                {{ $t('no_data_here') }}offers_exchange
+                {{ $t('no_data_here') }}
             </div>
         </div>
     </div>

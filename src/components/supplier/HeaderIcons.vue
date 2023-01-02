@@ -102,61 +102,17 @@
         <div class="Title">Notifications</div>
         <div class="content">
             <div class="notif_day">
-                <span class="day">Today</span>
+                <span class="day">Info</span>
                 <div class="lists">
-                    <div class="item__list">
+                    <div class="item__list" v-for="item in notifications" :key="item.id">
                         <span class="circle"></span>
                         <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
+                            <span class="notify_person">{{ item.owner_id }}</span>
+                            {{ item.message }}
                         </span>
-                        <span class="time">2:00 pm</span>
+                        <span class="time">{{ item.created_at }}</span>
                     </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                </div>
-            </div>
-            <div class="notif_day">
-                <span class="day">Today</span>
-                <div class="lists">
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -191,7 +147,8 @@ import { useToast } from 'vue-toastification'
                     gender: '',
                     matrial_status: '',
                     username: '',
-                }
+                },
+                notifications:[]
                 
             }
         },
@@ -293,7 +250,16 @@ import { useToast } from 'vue-toastification'
                     rtl: false
                 })
             }
-        }
+        },
+        async getNotificationsUser(){
+                await Api.user.userNotfications().then((res)=>{
+                if(res.data.status){
+                   
+                    this.notifications = res.data.body.Notfications;
+                } 
+                // console.log(res)
+            })
+            },
         },
     }
 </script>

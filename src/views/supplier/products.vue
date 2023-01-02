@@ -131,12 +131,12 @@
                         active: '',
                         url:'/supplier/chats'
                     },
-                    {
-                        id:5,
-                        name: "Notifications",
-                        active: '',
-                        url:'/supplier/notifications'
-                    },
+                    // {
+                    //     id:5,
+                    //     name: "Notifications",
+                    //     active: '',
+                    //     url:'/supplier/notifications'
+                    // },
                     {
                         id:6,
                         name: "Complaints",
@@ -149,18 +149,18 @@
                         active: '',
                         url:'/supplier/faqs'
                     },
-                    {
-                        id:8,
-                        name: "Privacy Policy",
-                        active: '',
-                        url:'/supplier/privacy-policy'
-                    },
-                    {
-                        id:9,
-                        name: "Terms & Conditions",
-                        active: '',
-                        url:'/supplier/terms-conditions'
-                    },
+                    // {
+                    //     id:8,
+                    //     name: "Privacy Policy",
+                    //     active: '',
+                    //     url:'/supplier/privacy-policy'
+                    // },
+                    // {
+                    //     id:9,
+                    //     name: "Terms & Conditions",
+                    //     active: '',
+                    //     url:'/supplier/terms-conditions'
+                    // },
                     {
                         id:10,
                         name: "About us",
@@ -196,7 +196,7 @@
             async getDataProducts(){
                 await Api.supplier.supplierGetProducts().then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         this.products = res.data.body
                     }
                 });
@@ -235,7 +235,7 @@
                     
                     //     this.notifications = res.data.userData;
                     // } 
-                    console.log(res)
+                    // console.log(res)
                 })
             }
         },
