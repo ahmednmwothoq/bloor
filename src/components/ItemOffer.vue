@@ -47,11 +47,11 @@
                         <div class="person_info">
                             <span class="name">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
                             <span class="number">
-                                <span> {{ $t('marouf_number') }} </span>
+                                <span> {{ $t('marouf_number') }} :</span>
                                 <span> {{item.known_number}} </span>
                             </span>
                             <span class="no">
-                                <span> {{ $t('commerecial_register_no') }} </span>
+                                <span> {{ $t('commerecial_register_no') }} :</span>
                                 <span> {{item.commercial_registration}} </span>
                             </span>
                         </div>
@@ -189,6 +189,21 @@ import cookie from "vue-cookie";
 <style  scoped>
     .image_slider{
         height: 14.1vw!important;
+    }
+    @media only screen and (max-width: 600px){
+        .image_slider {
+            height: 26vw!important;
+        }
+    }
+    @media only screen and (min-width: 600px){
+        .image_slider {
+            height: 26vw!important;
+        }
+    }
+    @media only screen and (min-width: 768px){
+        .image_slider {
+            height: 17vw!important;
+        }
     }
     .btn_supplier{
         padding: 0.6vw 2.4vw!important;

@@ -91,5 +91,6 @@
     "phone_item":"Phone",
     "message_item":"Message",
     "online_complaint_po":"Online Complaint Portal",
-    "online_complaint_con":"The only place where your complaints are precious to us !If you have a complaint against any private entity. You are at the right place."
+    "online_complaint_con":"The only place where your complaints are precious to us !If you have a complaint against any private entity. You are at the right place.",
+    "login_first":"Login in first"
 }

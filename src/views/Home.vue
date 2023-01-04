@@ -164,7 +164,7 @@
                 <h2 class="offers__title">
                     <a style="text-decoration: none;color: #707070;" href="pages/user/offers.html">{{ $t('product_to_review') }}</a>
                 </h2>
-                <img src="/assets/images/icon/search.png" alt="" class="icon__search">
+                <img @click="this.$router.push('/search/products')" src="/assets/images/icon/search.png" alt="" class="icon__search">
             </div>
             <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
                 <slide v-for="item in allProducts" :key="item.id">
@@ -221,7 +221,7 @@
                 <h2 class="offers__title">
                     <a style="text-decoration: none;color: #707070;" href="pages/user/offers.html">{{ $t('offers') }}</a>
                 </h2>
-                <img src="/assets/images/icon/search.png" alt="" class="icon__search">
+                <img @click="this.$router.push('/search/offers')" src="/assets/images/icon/search.png" alt="" class="icon__search">
             </div>
             <!-- <div class="owl-carousel owl-theme">
                     <div class="d-flex justify-content-between">
@@ -258,7 +258,7 @@
         <div class="content__experiences _home_section">
             <div class="section_nav">
                 <h2 class="section__title">{{ $t('experience_of_your') }}</h2>
-                <img  class="icon__search" src="/assets/images/icon/search.png" alt="">
+                <img @click="this.$router.push('/search/experiences')"  class="icon__search" src="/assets/images/icon/search.png" alt="">
             </div>
             <!-- <div class="owl-carousel owl-theme"> -->
                 <!-- <div class="item item__experience" v-for="item in allExperiences" :key="item.id">
@@ -410,110 +410,5 @@
 </script>
 
 <style  scoped>
-.overlay{
-    position: absolute;
-    top:3vw;
-    left:0;
-    right:0;
-    bottom:0;
-    background: #000000 0% 0% no-repeat padding-box;
-    opacity: 0.5;
-    z-index:5;
-    display:none;
-  }
 
-  
-
-  [dir="rtl"] .downlist__home{
-    left:2vw;
-    right:auto
-  }
-.downlist__home{
-    position: absolute;
-    width: 30vw;
-    height: 30vw;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border-radius: 11px;
-    opacity: 1 !important;
-    z-index:6;
-    right:2vw;
-    top: 10vw;
-    padding: 5vw 3vw;
-    display:none;
-  }
-
-  [dir="rtl"] .downlist__home .close{
-    right:-0.5vw;
-    left:auto
-  }
-  .downlist__home .close{
-    position: absolute;
-    top:-29px;
-    left:-0.5vw;
-    padding:1px 15px;
-    font-size:33px;
-    font-weight: bold;
-    color: #0136EE;
-    border-radius: 50%;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    cursor: pointer;
-  }
-
-  [dir="rtl"] .downlist__home .tringle{
-    right:auto;
-    left:0.5vw;
-  }
-  .downlist__home .tringle{
-    position: absolute;
-    top:-1.7vw;
-    right:0.5vw;
-    width: 0;
-    height: 0;
-    border-left: 2vw solid transparent;
-    border-right: 2vw solid transparent;
-    border-bottom: 1.9vw solid #FFFFFF;
-  }
-  .downlist__home .lists{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 20vw;
-    width: 100%;
-  }
-  .downlist__home .lists .item__list{
-    display: flex;
-    justify-content: flex-start;
-    /* width: 228px; */
-    align-items: center;
-    text-decoration: none;
-  }
-
-  .downlist__home .lists .item__list:hover .circle{
-    background: #0136EE;
-    border:0;
-    transition: all 0.2s ease-in-out;
-  }
-  .downlist__home .lists .item__list:hover .list_text{
-    color: #0136EE;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .downlist__home .lists .item__list .circle{
-    border: 2px solid #707070;
-    opacity: 1;
-    margin-right: 27px;
-    width: 1.5vw;
-    height: 1.5vw;
-    border-radius: 50%;
-  }
-  .downlist__home .lists .item__list .list_text{
-    font-size: 1.5vw;
-    color: #B1B1B1;
-    margin-top: -0.5vw;
-    margin: 0 1vw;
-  }
-
-  
 </style>

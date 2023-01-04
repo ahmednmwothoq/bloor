@@ -1,11 +1,11 @@
-import { createI18n } from 'vue-i18n'
+import { createI18n } from 'vue-i18n/dist/vue-i18n.cjs'
 import langEn from '../locales/en.json'
 import langAr from '../locales/ar.json'
 
 const i18n = createI18n({
     locale: 'ar', // set locale
     fallbackLocale: 'en', // set fallback locale
-    allowComposition: true,
+    
     messages: {
         en: langEn,
         ar: langAr

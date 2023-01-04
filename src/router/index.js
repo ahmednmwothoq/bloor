@@ -101,9 +101,9 @@ const router = createRouter({
     // Experience
     { path: '/experiment/:id', name: 'ExperienceDetails', component: ExperienceDetails, meta: { title: 'Experience Details' , middleware: auth } },
     // Review
-    { path: '/review/:id', name: 'ReviewDetails', component: ReviewDetails, meta: { title: 'Review Details' , middleware: auth } },
+    { path: '/review/:id', name: 'ReviewDetails', component: ReviewDetails, meta: { title: 'Review Details' , middleware: log } },
     { path: '/add-review/:id', name: 'addReview', component: addReview, meta: { title: 'add Review' , middleware: auth } },
-    { path: '/show-review/:id', name: 'showReview', component: showReview, meta: { title: 'show Review' , middleware: auth } },
+    { path: '/show-review/:id', name: 'showReview', component: showReview, meta: { title: 'show Review' , middleware: log } },
     // Search
     { path: '/search/products', name: 'SearchProduct', component: SearchProduct, meta: { title: 'Search Products' , middleware: log } },
     { path: '/search/offers', name: 'SearchOffers', component: SearchOffers, meta: { title: 'Search Offers' , middleware: log } },

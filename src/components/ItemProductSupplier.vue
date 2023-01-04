@@ -7,7 +7,7 @@
             <img class="image" :src="item.media[0].original_url" alt="">
         </div>
         <div class="offer__info">
-            <div>
+            <div class="content">
                 <h3 class="info__title">{{getLocales ? item.product_ar : item.product_en }}</h3>
                 <span class="info__date"><CreateAt :create="item.created_at" /></span>
                 <div class="info__details">
@@ -41,7 +41,12 @@
             </div>
             <div class="offer_request" v-else>
                 <!-- <a class="request__btn"  @click="showReviewToProduct('theDivAddReview-'+ item.id)" >Review</a> -->
-                <a class="request__btn" @click="this.$router.push({ name: 'addReview', params: { id: item.id }})" >{{ $t('review') }}</a>
+                <!-- <button class="request__btn" @click="this.$router.push({ name: 'addReview', params: { id: item.id }})" >{{ $t('review') }}</button> -->
+                <!-- <router-link :to="`/books/${item.id}`">asdasd</router-link> -->
+                <!-- <router-link class="request__btn" :to="`/books/${item.id}`">{{ $t('review') }}</router-link> -->
+                <!-- <router-link class="request__btn" :to="`/add-review/${item.id}`">{{ $t('review') }}</router-link> -->
+                <!-- <router-link class="request__btn btn_supplier" :to="`/show-review/${item.id}`">{{ $t('show_reviews') }}</router-link> -->
+                <a class="request__btn" @click="this.$router.push({ name: 'addReview', params: { id: item.id }})">{{ $t('review') }}</a>
                 <a class="request__btn btn_supplier" @click="this.$router.push({ name: 'showReview', params: { id: item.id }})" >{{ $t('show_reviews') }}</a>
             </div>
         </div>

@@ -9,12 +9,15 @@
                         <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
                         <div class="up__info">
                             <span class="name">{{item.username}}</span>
-                            <span
-                                v-if="userLogin.id != item.user_id" 
-                                class="follow"
-                                @click="makeUserFollowUser(item.user_id)"
-                                >Follow
-                            </span>
+                            <div v-if="userLogin">
+                                <span
+                                    v-if="userLogin.id != item.user_id"
+                                    class="follow"
+                                    @click="makeUserFollowUser(item.user_id)"
+                                    >Follow
+                                </span>
+                            </div>
+                            
                         </div>
                         <div class="up__rate">
                             <i
@@ -83,13 +86,15 @@
                                         <CreateAt :create="comment.created_at" />
                                     </span>
                                 </div>
-                                <div class="edit_delete" v-if="userLogin.id == comment.user_id">
-                                    <a data-bs-toggle="modal" :data-bs-target="`#deleteModalComment${comment.id}`"  class="con">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                    <a @click="showEditCommentDiv('theDivComEdit-'+ comment.id)" class="con">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
+                                <div v-if="userLogin">
+                                    <div class="edit_delete" v-if="userLogin.id == comment.user_id">
+                                        <a data-bs-toggle="modal" :data-bs-target="`#deleteModalComment${comment.id}`"  class="con">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                        <a @click="showEditCommentDiv('theDivComEdit-'+ comment.id)" class="con">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Modal -->
@@ -141,13 +146,15 @@
                                             </span>
                                             
                                         </div>
-                                        <div class="edit_delete" v-if="userLogin.id == com.user_id">
-                                            <a data-bs-toggle="modal" :data-bs-target="`#deleteModalCommentReply${com.id}`" class="con">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                            <a @click="showEditReplayCommentDiv('theDivReplayComEdit-'+ com.id)"  class="con">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                        <div v-if="userLogin">
+                                            <div class="edit_delete" v-if="userLogin.id == com.user_id">
+                                                <a data-bs-toggle="modal" :data-bs-target="`#deleteModalCommentReply${com.id}`" class="con">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                                <a @click="showEditReplayCommentDiv('theDivReplayComEdit-'+ com.id)"  class="con">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
 

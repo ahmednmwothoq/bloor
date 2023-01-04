@@ -191,30 +191,29 @@ export default {
 
 <style scoped>
  /* Header */
-
  .__header{
     padding: 0 0.5208334vw;
-    height:  3.05835vw;
+    height:  2.5vw;
     display: flex;
     background: var(--primary_color);
     justify-content: flex-end;
     align-items: center;
     z-index: -1;
   }
-
   .header__item{
     color: #fff;
     margin-right: 0.83334vw;
     display: flex;
     align-items: center;
     margin-left: 3.125vw;
-    font-size: 1.21875vw;
+    font-size: 1vw;
     flex-direction: row;
     justify-content: flex-end;
     position: relative;
     text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
   }
-
   .header__item .logout_hover_icon {
     display: none;  
   }
@@ -224,23 +223,136 @@ export default {
   .header__item:hover .logout_icon {
     display: none;  
   }
-
   .header__item:hover{
     color: rgb(59, 59, 59)   ;
   }
-
   .header__item .item__icon{
-    width: 1.4667vw;
-    height: 1.4667vw;
+    width: 1.3vw;
+    height: 1.3vw;
     margin-right: 0.3604167vw;
     z-index: 1;
     margin-bottom: -0.26041667vw;
   }
-
   .custom_lang{
     text-transform: capitalize;
     margin-top: 3px!important;
     margin: 0 5px;
+  }
+
+  /****************************** Responsive ******************************/
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .__header{
+      padding: 0 1vw;
+      height:  7vw;
+    }
+    .header__item{
+      margin-right: 0.83334vw;
+      margin-left: 3.125vw;
+      font-size: 3vw;
+    }
+    .header__item .item__icon{
+      width: 3vw;
+      height: 3vw;
+      margin-right: 2vw;
+      z-index: 1;
+    }
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .__header{
+      padding: 0 1vw;
+      height:  6vw;
+    }
+    .header__item{
+      margin-right: 0.83334vw;
+      margin-left: 3.125vw;
+      font-size: 2vw;
+    }
+    .header__item .item__icon{
+      width: 3vw;
+      height: 3vw;
+      margin-right: 2vw;
+      z-index: 1;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .__header{
+      padding: 0 1vw;
+      height:  5vw;
+    }
+    .header__item{
+      margin-right: 0.83334vw;
+      margin-left: 3.125vw;
+      font-size: 1.7vw;
+    }
+    .header__item .item__icon{
+      width: 2.5vw;
+      height: 2.5vw;
+      margin-right: 2vw;
+      z-index: 1;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .__header{
+      padding: 0 1vw;
+      height:  5vw;
+    }
+    .header__item{
+      margin-right: 0.83334vw;
+      margin-left: 3.125vw;
+      font-size: 1.5vw;
+    }
+    .header__item .item__icon{
+      width: 2.2vw;
+      height: 2.2vw;
+      margin-right: 1vw;
+      z-index: 1;
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .__header{
+      padding: 0 1vw;
+      height:  4vw;
+    }
+    .header__item{
+      margin-right: 0.83334vw;
+      margin-left: 3vw;
+      font-size: 1.2vw;
+    }
+    .header__item .item__icon{
+      width: 1.8vw;
+      height: 1.8vw;
+      margin-right: 1vw;
+      z-index: 1;
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1500px and up) */
+  @media only screen and (min-width: 1500px) {
+    .__header{
+      padding: 0 1vw;
+      height:  3.2vw;
+    }
+    .header__item{
+      margin-right: 0.83334vw;
+      margin-left: 3vw;
+      font-size: 1vw;
+    }
+    .header__item .item__icon{
+      width: 1.2vw;
+      height: 1.2vw;
+      margin-right: 0;
+      z-index: 1;
+    }
+
   }
 
 </style>
