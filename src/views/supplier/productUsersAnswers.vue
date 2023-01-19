@@ -228,7 +228,7 @@
 }
 .all .all__down .title{
     letter-spacing: 0px;
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 2vw;
 }
 .section{

@@ -319,17 +319,13 @@ import { useToast } from 'vue-toastification'
         computed: {
             paginatedData(){
                 const numberOfPages = Math.ceil(this.allExperiences.length / this.page_size);
-                
                 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-                const start = random(this.page_index , numberOfPages ) * this.page_size,
+                const start = random(this.page_index , numberOfPages) * this.page_size,
                     end = start + this.page_size;
                 return this.allExperiences.slice(start, end);
             }
         },
         mounted() {
-            // const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-            // console.log(this.allExperiences.length / this.page_size)
-            // console.log(random(1 , Math.ceil(this.allExperiences.length / this.page_size)))
             this.getSingleExperience()
             this.getAllExperience()
         },
@@ -369,7 +365,7 @@ import { useToast } from 'vue-toastification'
             },
             callFunctionGo(itemEx){
                 // console.log(itemEx)
-                this.$router.push({ name: 'experienceDetailsChange', params: { id: itemEx }})
+                this.$router.push({ name: 'ExperienceDetails', params: { id: itemEx }})
                 // this.$router.go()
             },
             showCommentsDiv() {

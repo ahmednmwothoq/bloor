@@ -2,18 +2,18 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
 
     --unnamed-color-f2f2f2: #F2F2F2;
     --unnamed-color-0136ee: #0136EE;
     --unnamed-color-f7f7f7: #F7F7F7;
-    --unnamed-color-d1d1d1: #D1D1D1;
+    --unnamed-color-d1d1d1: #818181;
     --unnamed-color-3869a1: #3869A1;
     --unnamed-color-00244d: #00244D;
     --unnamed-color-1e6fcc: #1E6FCC;
     --unnamed-color-ffffff: #FFFFFF;
     --unnamed-color-000000: #000000;
-    --unnamed-color-b1b1b1: #B1B1B1;
+    --unnamed-color-b1b1b1: #6e6e6e;
     --unnamed-color-d40000: #D40000;
     --unnamed-color-707070: #707070;
   }
@@ -28,7 +28,7 @@
       color: #c5c5c5;
   }
   .gray{
-    color:#B1B1B1
+    color:#6e6e6e
   }
 
 .no_bg{
@@ -77,7 +77,7 @@ z-index: -1;
   }
 
   .header__item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     margin-right: 0.83334vw;
     display: flex;
     align-items: center;
@@ -192,7 +192,7 @@ z-index: -1;
     bottom: 30px;
     left: 20px;
     font-size: 13px;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .btn_content{
@@ -230,18 +230,18 @@ z-index: -1;
 .nav__title{
     font-size: 35px;
     font-weight:normal;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .nav__btn{
     padding: 3px 10px;
-    border: 1px solid #B1B1B1;
+    border: 1px solid #6e6e6e;
     border-radius: 5px;
     font-size: 20px;
     text-decoration: none;
     width: 133px;
     height: 43px;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .nav__btn:hover{
@@ -315,7 +315,7 @@ z-index: -1;
 
 .item_review .review__up .contan .up__info .follow{
     font-size: 1.4583333vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
     /* color: #698eb8; */
 }
 
@@ -324,12 +324,12 @@ z-index: -1;
     font-size: 1.82291667vw;
     margin-left: 2.08334vw;
     font-weight: bold;
-    color: #b1b1b1;
+    color: #6e6e6e;
 }
 
 .item_review .review__up .up__time{
     font-size: 1.4583333vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .item_review .review_mid{
@@ -352,14 +352,14 @@ z-index: -1;
 .item_review .review_mid .mid__left .car{
     font-size: 1.4583333vw;
     font-weight: bold;
-    color: #b1b1b1;
+    color: #6e6e6e;
     margin-bottom: -0.26041667vw;
 }
 
 .item_review .review_mid .mid__left .edit{
     font-size: 1.3020833vw;
     /* opacity: 0.3; */
-    color: #D1D1D1;
+    color: #818181;
 }
 
 .item_review .review_mid .mid__rigth{
@@ -428,7 +428,7 @@ z-index: -1;
 .item_review .review__down .down__comment .comment_mid .text{
     font-size: 0.78125vw;
     margin-bottom: 0.26041667vw;
-    color: #D1D1D1;
+    color: #818181;
 }
 
 .item_review .review__down .down__comment .comment_down{
@@ -437,7 +437,7 @@ z-index: -1;
 }
 
 .item_review .review__down .down__comment .comment_down a{
-    color: #D1D1D1;
+    color: #818181;
     font-size: 1.3020833vw;
     text-decoration: underline;
 }

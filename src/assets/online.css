@@ -28,7 +28,7 @@
   
   ._online_content .left__content .left__text{
     text-transform: capitalize;
-    color: #D1D1D1;
+    color: #818181;
     font-weight: 400;
     font-size: 1.2vw;
     margin: 3.125vw 0px;
@@ -52,7 +52,7 @@
   }
   
   ._online_content .left__content .left__form .form__textarea::-webkit-input-placeholder {
-    color: #D1D1D1;
+    color: #818181;
     font-size: 0.78125vw;
   }
   

@@ -14,7 +14,7 @@
 
 .classification .class__title{
   font-size: 1.82291667vw;
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-weight: 500;
   position: relative;
   margin-bottom: 1.5625vw;
@@ -32,7 +32,7 @@
 }
 
 .classification .class__content .con__text{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.3020833vw;
   margin: 1.5625vw 0;
 }

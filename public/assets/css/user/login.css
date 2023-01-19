@@ -3,7 +3,7 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
   }
 
   *{
@@ -68,7 +68,7 @@
   justify-content: space-evenly;
 }
 .content__right .header__nav .nav__item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.72291667vw;
     text-decoration: none;
     cursor: pointer;
@@ -109,7 +109,7 @@
 }
 
 .content__right .form .form__up .right__text{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.0416667vw;
 }
 
@@ -139,7 +139,7 @@
 
 .content__right .form .right__down .form__inputs .form__input .input__field{
   border: 0;
-  border-bottom: 2px solid #D1D1D1;
+  border-bottom: 2px solid #818181;
   margin-bottom: 1.278056vw;
   padding: 0.426959vw;
   outline: none;
@@ -225,7 +225,7 @@
 }
 
 .content_bottom .left__help{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.4583333vw;
   text-transform: capitalize;
   font-weight: 600;

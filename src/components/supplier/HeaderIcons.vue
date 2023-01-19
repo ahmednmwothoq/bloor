@@ -295,7 +295,7 @@ import { useToast } from 'vue-toastification'
 }
 .icons .item .icon {
     font-size: 1.3458333vw;
-    color: #b1b1b1;
+    color: #6e6e6e;
 
 }
 
@@ -386,7 +386,7 @@ import { useToast } from 'vue-toastification'
   }
 
   .notif_profile .content .notif_day .day{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.5246459vw;
     font-weight: 500;
     margin-left: 1.04107649vw;
@@ -417,19 +417,19 @@ import { useToast } from 'vue-toastification'
   }
 
   .notif_profile .content .notif_day .lists .item__list .list_text{
-    color: #D1D1D1;
+    color: #818181;
     font-size: 1.3830028vw;
     width: 85%;
   }
 
 .notif_profile .content .notif_day .lists .item__list .list_text .notify_person{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.4246459vw;
     font-weight: 500;
 }
 
   .notif_profile .content .notif_day .lists .item__list .time{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.11643059vw;
   }
 </style>

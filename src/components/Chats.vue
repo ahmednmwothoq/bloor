@@ -43,7 +43,7 @@
     position: relative;
 }
 .chat .date {
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.4583333vw;
     font-weight: 400;
     position: absolute;
@@ -98,14 +98,14 @@
     color: #fff;
 }
 .chat .chats_persons .chat_header .person_info .message {
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
 }
 .chat .chats_persons .chat_header:hover .person_info .message{
     color: #fff;
 }
 .chat .chats_persons .chat_header .time {
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     margin-top: -2.60416665vw;
 }

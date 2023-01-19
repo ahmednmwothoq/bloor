@@ -15,7 +15,7 @@
 
 
 ._faqs_content .content__left .left__title{
-    color: #b1b1b1;
+    color: #6e6e6e;
     font-size: 1.5625vw;
     font-weight: 500;
     margin: 0.520834vw 0;
@@ -87,16 +87,16 @@
     font-size: 1.5625vw;
     margin-bottom: 0.26041667vw;
     cursor: pointer;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 ._faqs_content .content__right .right__details .right__info .info__question .answer{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.3020833vw;
     display: none;
 }
 
 ._faqs_content .content__right .right__details .right__info .info__text{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.3020833vw;
 }

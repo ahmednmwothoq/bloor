@@ -95,7 +95,7 @@ import Pagination from 'v-pagination-3';
 
 <style  scoped>
 .item{
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-top: 3vw;
 }

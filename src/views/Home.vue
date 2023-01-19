@@ -51,9 +51,9 @@
         </div>
         
         <div class="content__cards">
-            <h2 class="cards__title">{{ $t('explore_best_prod_rate') }}</h2>
+            <h2 class="cards__title" @click="this.$router.push('/search/products')" src="/assets/images/icon/search.png">{{ $t('explore_best_prod_rate') }}</h2>
             <div class="__cards">
-                <div class="__card" v-for="item_c in allProducts" :key="item_c.id" @click="this.$router.push({ name: 'showReview', params: { id: item_c.id }})">
+                <div class="__card" v-for="item_c in paginatedData" v-if="paginatedData.length > 0" :key="item_c.id" @click="this.$router.push({ name: 'showReview', params: { id: item_c.id }})">
                     <img :src="item_c.media[0].original_url" alt="" class="card__logo">
                     <div class="card__name">
                         <span class="name__car" v-if="item_c.product_ar.length > 40 || item_c.product_en.length > 40">{{ getLocales ? item_c.product_ar.slice(0,40) + '...' : item_c.product_en.slice(0,40) + '...'  }}</span>
@@ -66,12 +66,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="m-auto w-90 custom_pagination_card" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+                <pagination-card 
+                    v-if="allProducts.length > 0" 
+                    v-model="page_index" 
+                    :records="allProducts.length" 
+                    :per-page="page_size" 
+                    :options="{ template: MyPagination }" 
+                    @paginate="myCallback"
+                />
+            </div>
             
             <img class="shape_path" src="/assets/images/gallary/Path.png" alt="">
         </div>
 
         <div class="content__reviews">
-            <h2 class="reviews__title"><a style="text-decoration: none;color: #707070;">{{ $t('recent_reviews') }}</a></h2>
+            <h2 class="reviews__title"><a style="text-decoration: none;color: #6e6e6e;">{{ $t('recent_reviews') }}</a></h2>
             <div class="reviews__slider">
                 <carousel :items-to-show="2" :breakpoints="breakpointsReview" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
                     <slide v-for="item in allReviews" :key="item.id" >
@@ -110,7 +121,7 @@
         <div class="content__offers">
             <div class="offers_nav">
                 <h2 class="offers__title">
-                    <a style="text-decoration: none;color: #707070;" @click="this.$router.push('/allOffer')">{{ $t('offers') }}</a>
+                    <a style="text-decoration: none;color: #6e6e6e;" @click="this.$router.push('/allOffer')">{{ $t('offers') }}</a>
                 </h2>
                 <img @click="this.$router.push('/search/offers')" src="/assets/images/icon/search.png" alt="" class="icon__search">
             </div>
@@ -135,7 +146,7 @@
 
         <div class="content__suppliers">
             <div class="suppliers_nav">
-                <h2 class="suppliers__title">Suppliers</h2>
+                <h2 class="suppliers__title">{{ $t('suppliers') }}</h2>
                 <!-- <img  class="icon__search" src="/assets/images/icon/search.png" alt=""> -->
             </div>
             <!-- <div class="owl-carousel owl-theme">
@@ -144,7 +155,7 @@
                 </div>
                 
             </div> -->
-            <carousel :items-to-show="3" v-bind:style="'text-align: unset;'" :wrap-around="true">
+            <carousel :items-to-show="1.5" :breakpoints="breakpointsSupplier" v-bind:style="'text-align: unset;'" :wrap-around="true">
                 <slide v-for="item in allSuppliers" :key="item.id" >
                     <item-supplier :item="item" />
                     <!-- <item-supplier :item="item" /> -->
@@ -236,6 +247,7 @@
 
 <script>
     import Api from "@/api"
+    import { markRaw } from "vue";
     import { mapActions } from 'vuex'
     import cookie from "vue-cookie";
     // components
@@ -247,8 +259,10 @@
     import ItemSupplier from "@/components/ItemSupplier.vue"
     import ItemExperience from "@/components/ItemExperience.vue"
     import LogoSearch from "@/components/LogoSearch.vue"
+    import MyPagination from "@/components/MyPagination.vue";
     import 'vue3-carousel/dist/carousel.css';
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+    import PaginationCard from 'v-pagination-3';
     // import ErrorList from "../components/ErrorList.vue"
     export default {
         name: "Home",
@@ -269,6 +283,13 @@
                 showOverlay: false,
                 divOverlay: false,
                 divSearch: false,
+
+                Component: markRaw(MyPagination),
+
+                page_index: 1,
+                page_size: 8,
+
+
                 breakpointsReview: {
                     // 700px and up
                     500: {
@@ -297,6 +318,35 @@
                         
                     },
                 },
+
+                breakpointsSupplier: {
+                    // 700px and up
+                    500: {
+                        itemsToShow: 1.5,
+                        
+                    },
+
+                    700: {
+                        itemsToShow: 2,
+                        
+                    },
+
+                    900: {
+                        itemsToShow: 2.5,
+                        
+                    },
+
+                    // 1024 and up
+                    1100: {
+                        itemsToShow: 3,
+                        
+                    },
+
+                    1200: {
+                        itemsToShow: 3,
+                        
+                    },
+                },
             }
         },
         components: {
@@ -312,25 +362,11 @@
             Pagination,
             Navigation,
             LogoSearch,
+            PaginationCard,
             // ErrorList
         },
         setup() {
-            // const offer = Api.general.getAllOffers().then((res)=>{
-            //     // console.log(res)
-            //     const allOffer = res.data.body
-            //     return allOffer
-            // })
-            // const experience = Api.general.getAllExperiments().then((res)=>{
-            //     // console.log(res)
-            //     const allExperiences = res.data.body
-            //     return allExperiences
-            // })
-            // const responsesOffer = Promise.all([offer,experience])
-            // const responses = new Promise((resolve, reject) => resolve('success')).then(res => console.log(res))
-            return {
-                // responsesOffer,
-                //  responsesExperience
-            }
+            return { MyPagination };
         },
         mounted(){
             // let user = localStorage.getItem("userToken")
@@ -359,6 +395,12 @@
             activeSlider: function () {
                 return this.allOffer[0];
             },
+
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.allProducts.slice(start, end);
+            }
             
             
         },
@@ -373,6 +415,10 @@
                 if(even){
                     this.getAllFollowsDataContent()
                 }
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
             },
             
             // startTransitionModal() {
@@ -483,6 +529,10 @@
     opacity: 0.5;
     z-index: 5;
     height: 200vw;
+}
+
+.custom_pagination_card .VuePagination .VuePagination__count{
+    display: none!important;
 }
 
 

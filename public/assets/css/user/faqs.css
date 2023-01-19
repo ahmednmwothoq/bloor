@@ -2,18 +2,18 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
 
     --unnamed-color-f2f2f2: #F2F2F2;
     --unnamed-color-0136ee: #0136EE;
     --unnamed-color-f7f7f7: #F7F7F7;
-    --unnamed-color-d1d1d1: #D1D1D1;
+    --unnamed-color-d1d1d1: #818181;
     --unnamed-color-3869a1: #3869A1;
     --unnamed-color-00244d: #00244D;
     --unnamed-color-1e6fcc: #1E6FCC;
     --unnamed-color-ffffff: #FFFFFF;
     --unnamed-color-000000: #000000;
-    --unnamed-color-b1b1b1: #B1B1B1;
+    --unnamed-color-b1b1b1: #6e6e6e;
     --unnamed-color-d40000: #D40000;
     --unnamed-color-707070: #707070;
   }
@@ -28,7 +28,7 @@
       color: #c5c5c5;
   }
   .gray{
-    color:#B1B1B1
+    color:#6e6e6e
   }
 
 .no_bg{
@@ -137,7 +137,7 @@ a{
 
 
 .__content .content__left .left__title{
-    color: #b1b1b1;
+    color: #6e6e6e;
     font-size: 1.5625vw;
     font-weight: 500;
     margin: 0.520834vw 0;
@@ -209,17 +209,17 @@ a{
     font-size: 1.5625vw;
     margin-bottom: 0.26041667vw;
     cursor: pointer;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .__content .content__right .right__details .right__info .info__question .answer{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.3020833vw;
     display: none;
 }
 
 .__content .content__right .right__details .right__info .info__text{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.3020833vw;
 }
 

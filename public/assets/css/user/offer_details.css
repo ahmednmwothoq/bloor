@@ -2,18 +2,18 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
 
     --unnamed-color-f2f2f2: #F2F2F2;
     --unnamed-color-0136ee: #0136EE;
     --unnamed-color-f7f7f7: #F7F7F7;
-    --unnamed-color-d1d1d1: #D1D1D1;
+    --unnamed-color-d1d1d1: #818181;
     --unnamed-color-3869a1: #3869A1;
     --unnamed-color-00244d: #00244D;
     --unnamed-color-1e6fcc: #1E6FCC;
     --unnamed-color-ffffff: #FFFFFF;
     --unnamed-color-000000: #000000;
-    --unnamed-color-b1b1b1: #B1B1B1;
+    --unnamed-color-b1b1b1: #6e6e6e;
     --unnamed-color-d40000: #D40000;
     --unnamed-color-707070: #707070;
   }
@@ -114,13 +114,13 @@
 }
 
 .offer__details .details__nav .nav__left .nav__title{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-weight: bold;
     font-size: 2.604166vw;
 }
 
 .offer__details .details__nav .nav__left .info__date{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 0.8854vw;
 }
 
@@ -161,7 +161,7 @@
   flex-direction: row;
 }
 .offer__details .details__desc .desc_title{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.197916vw;
   margin-right: 2.08334vw;
 }
@@ -169,7 +169,7 @@
   width: 28.64583vw;
   height: 4.375vw;
   font-size: 1.09375vw;
-  color: #D1D1D1;
+  color: #818181;
 }
 
 
@@ -270,7 +270,7 @@
     width: 12.1875vw;
     height: 14.79166vw;
     transform: skew(338deg);
-    background: #D1D1D1 0% 0% no-repeat padding-box;
+    background: #818181 0% 0% no-repeat padding-box;
     box-shadow: 3px 3px 6px #00000029;
     position: absolute;
     top: -3.4375vw;
@@ -320,7 +320,7 @@
   display: flex;
 }
 .details__bottom .details__added .detail_title{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.1979167vw;
     margin-right: 1.5625vw;
 }
@@ -340,12 +340,12 @@
 }
 .details__bottom .details__added .added__person .person_info .name{
   font-weight: 500;
-  color: #B1B1B1;
+  color: #6e6e6e;
 }
 .details__bottom .details__added .added__person .person_info .number ,
 .details__bottom .details__added .added__person .person_info .no
 {
-  color: #D1D1D1;
+  color: #818181;
 }
 
 
@@ -356,7 +356,7 @@
 }
 .offer__details .details__bottom .detail__price .price_info{}
 .offer__details .details__bottom .detail__price .price_info .price{
-      color: #B1B1B1;
+      color: #6e6e6e;
       font-size: 2.34375vw;
       font-weight: bold;
       margin-right: 0.520834vw;

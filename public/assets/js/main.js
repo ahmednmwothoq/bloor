@@ -19,7 +19,7 @@ $( document ).ready(function() {
         $('.downlist__home').css({
             'display':'none'
         });
-        $('#open_home_list').css({"border": "1px solid #b1b1b1" , "color": "#b1b1b1"});
+        $('#open_home_list').css({"border": "1px solid #6e6e6e" , "color": "#6e6e6e"});
     });
 
     // down list in home footer 

@@ -48,13 +48,13 @@
     margin-top: 0.93799vw;
     font-size: 1.71965vw;
     font-weight: normal;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 .slider__text {
     margin: 1.302762vw 0;
     font-size: 0.88588vw;
     font-weight: lighter;
-    color: #B1B1B1;
+    color: #6e6e6e;
     width: 90%;
 }
 </style>

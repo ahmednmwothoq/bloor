@@ -34,7 +34,7 @@
 }
 
 .profile_detail_content .person__info .name__job .job{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.458333vw;
 }
 
@@ -79,16 +79,16 @@
 }
 
 .profile_detail_content .person__details .form .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.458333vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 1.0416667vw 0;
 }
 
 .profile_detail_content .person__details .form .form__field .optional{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.197916667vw;
     font-weight: lighter;
     position: absolute;
@@ -107,7 +107,7 @@
 .profile_detail_content .person__details .form .form__field .files{
     width: 32.86458336vw;
     height: 11.82291666vw;
-    border: 2px dashed #D1D1D1;
+    border: 2px dashed #818181;
     margin: auto;
     background: #f4f8fc 0% 0% no-repeat padding-box;
     /* opacity: 0.05; */
@@ -165,7 +165,7 @@
 }
 
 .profile_edit_content .person__info .name__job .job{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.458333vw;
 }
 
@@ -251,11 +251,11 @@
 }
 
 .profile_edit_content .person__details .form .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.458333vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 1.0416667vw 0;
 }
 
@@ -264,7 +264,7 @@
 }
 
 .profile_edit_content .person__details .form .form__field .optional{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.197916667vw;
     font-weight: lighter;
     position: absolute;
@@ -286,7 +286,7 @@
 .profile_edit_content .person__details .form .form__field .files{
     width: 32.86458336vw;
     height: 11.82291666vw;
-    border: 2px dashed #D1D1D1;
+    border: 2px dashed #818181;
     margin: auto;
     background: #f4f8fc 0% 0% no-repeat padding-box;
     /* opacity: 0.05; */
@@ -372,7 +372,7 @@
 }
 
 .profile_chat_content .chats .chat .date{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.4583333vw;
     font-weight: 400;
     position: absolute;
@@ -440,12 +440,12 @@
 }
 
 .profile_chat_content .chats .chat .chats_persons .chat_header .person_info .message{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
 }
 
 .profile_chat_content .chats .chat .chats_persons .chat_header .time{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     margin-top: -2.60416665vw;
 }
@@ -525,7 +525,7 @@
     border: 1px solid #707070;
 }
 .profile_chat_content .chat_details .chat_person .messages .message_item .person .time{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     margin-top: 0.26041667vw;
 }
@@ -605,7 +605,7 @@
 }
 
 .profile_chat_content .chat_details .chat_person .send_form_msg .input_form .input::placeholder{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     font-weight: 300;
 }

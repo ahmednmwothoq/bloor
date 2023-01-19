@@ -29,13 +29,13 @@
 }
 
 .offer__details .details__nav .nav__left .nav__title{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-weight: bold;
     font-size: 2.604166vw;
 }
 
 .offer__details .details__nav .nav__left .info__date{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 0.8854vw;
 }
 
@@ -76,7 +76,7 @@
   flex-direction: row;
 }
 .offer__details .details__desc .desc_title{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.197916vw;
   margin-right: 2.08334vw;
   margin-left: 2.08334vw;
@@ -85,7 +85,7 @@
   width: 28.64583vw;
   height: 6.375vw;
   font-size: 1.09375vw;
-  color: #D1D1D1;
+  color: #818181;
   word-break: break-word;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
@@ -214,7 +214,7 @@
     width: 15vw;
     height: 18vw;
     transform: skew(338deg);
-    background: #D1D1D1 0% 0% no-repeat padding-box;
+    background: #818181 0% 0% no-repeat padding-box;
     box-shadow: 3px 3px 6px #00000029;
     position: absolute;
     top: -3.4375vw;
@@ -280,7 +280,7 @@
   display: flex;
 }
 .details__bottom .details__added .detail_title{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.1979167vw;
     margin-right: 1.5625vw;
     margin-left: 1.5625vw;
@@ -303,19 +303,19 @@
 }
 .details__bottom .details__added .added__person .person_info .name{
   font-weight: 500;
-  color: #B1B1B1;
+  color: #6e6e6e;
 }
 
 [dir="rtl"] .details__bottom .details__added .added__person .person_info .number ,
 [dir="rtl"] .details__bottom .details__added .added__person .person_info .no
 {
-  color: #D1D1D1;
+  color: #818181;
   display: flex;
 }
 .details__bottom .details__added .added__person .person_info .number ,
 .details__bottom .details__added .added__person .person_info .no
 {
-  color: #D1D1D1;
+  color: #818181;
 }
 
 
@@ -337,7 +337,7 @@
 }
 
 .offer__details .details__bottom .detail__price .price_info .price{
-      color: #B1B1B1;
+      color: #6e6e6e;
       font-size: 2.34375vw;
       font-weight: bold;
       margin-right: 0.520834vw;

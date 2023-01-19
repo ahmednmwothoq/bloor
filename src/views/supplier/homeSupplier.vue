@@ -535,7 +535,7 @@
 }
 .all .all__down .title{
     letter-spacing: 0px;
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 2.4vw;
 }
 .card_info{
@@ -560,12 +560,12 @@
     margin: 0 auto;
 }
 .card_info .card_info_con .num{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.8vw;
     font-weight: 500;
 }
 .card_info .card_info_con .text{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.8vw;
     font-weight: 500;
 }
@@ -611,7 +611,7 @@
 @media only screen and (max-width: 600px) {
     .all .all__down .title{
         letter-spacing: 0px;
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 4.5vw;
         margin-top: 2vw;
     }
@@ -659,7 +659,7 @@
 @media only screen and (min-width: 600px) {
     .all .all__down .title{
         letter-spacing: 0px;
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 4.5vw;
         margin-top: 2vw;
     }
@@ -705,7 +705,7 @@
 @media only screen and (min-width: 768px) {
     .all .all__down .title{
         letter-spacing: 0px;
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 3.5vw;
         margin-top: 2vw;
     }
@@ -752,7 +752,7 @@
 @media only screen and (min-width: 992px) {
     .all .all__down .title{
         letter-spacing: 0px;
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 3vw;
         margin-top: 2vw;
     }
@@ -799,7 +799,7 @@
 @media only screen and (min-width: 1200px) {
     .all .all__down .title{
         letter-spacing: 0px;
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2vw;
         margin-top: 2vw;
     }
@@ -846,7 +846,7 @@
 @media only screen and (min-width: 1500px) {
     .all .all__down .title{
         letter-spacing: 0px;
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.7vw;
         margin-top: 2vw;
     }

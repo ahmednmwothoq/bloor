@@ -38,6 +38,7 @@ import ProfileExperiment from '../views/user/profile/profileExperiment.vue'
 import ProfileEditExperiment from '../views/user/profile/editExperiment.vue'
 
 import ExperienceDetails from '../views/user/experience/experienceDetails.vue'
+import experienceDetailsChange from '../views/user/experience/experienceDetailsChange.vue'
 import ReviewDetails from '../views/user/review/reviewDetails.vue'
 
 
@@ -110,6 +111,7 @@ const router = createRouter({
     { path: '/user-edit-experiment/:id', name: 'ProfileEditExperiment', component: ProfileEditExperiment, meta: { title: 'Profile Edit Experiment' , middleware: auth } },
     // Experience
     { path: '/experiment/:id', name: 'ExperienceDetails', component: ExperienceDetails, meta: { title: 'Experience Details' , middleware: log } },
+    { path: '/experiments/:id', name: 'experienceDetailsChange', component: experienceDetailsChange, meta: { title: 'Experience Details' , middleware: log } },
     { path: '/allExperiment', name: 'allExperiencesUser', component: allExperiencesUser, meta: { title: 'All Experiences' , middleware: log } },
     // Review
     { path: '/review/:id', name: 'ReviewDetails', component: ReviewDetails, meta: { title: 'Review Details' , middleware: log } },

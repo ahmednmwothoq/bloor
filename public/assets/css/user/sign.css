@@ -3,7 +3,7 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
   }
 
   *{
@@ -70,7 +70,7 @@
   justify-content: space-evenly;
 }
 .content__right .header__nav .nav__item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.72291667vw;
     text-decoration: none;
     cursor: pointer;
@@ -113,7 +113,7 @@
 }
 
 .content__right .form .form__up .right__text{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.0416667vw;
 }
 
@@ -163,11 +163,11 @@
 }
 
 .form .form__down .form__field .input{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 0.9375vw;
   border: 0;
   background: 0;
-  border-bottom: 2px solid #D1D1D1;
+  border-bottom: 2px solid #818181;
   padding: 0.5416667vw 0;
 }
 
@@ -180,7 +180,7 @@
   left: auto;
 } */
 .form .form__down .form__field .optional{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 0.78125vw;
   font-weight: lighter;
   /* position: absolute; */
@@ -279,7 +279,7 @@
 }
 
 .content_bottom .left__help{
-color: #B1B1B1;
+color: #6e6e6e;
 font-size: 1.4583333vw;
 text-transform: capitalize;
 font-weight: 600;
@@ -420,11 +420,11 @@ color: #0136EE;
   }
   
   .form .form__down .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 3.6vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 1vw 0;
   }
 
@@ -580,11 +580,11 @@ color: #0136EE;
   }
   
   .form .form__down .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 2.8vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 1vw 0;
   }
 
@@ -740,11 +740,11 @@ color: #0136EE;
   }
   
   .form .form__down .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 2.5vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 0.8vw 0;
   }
 
@@ -900,11 +900,11 @@ color: #0136EE;
   }
   
   .form .form__down .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 2.1vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 0.8vw 0;
   }
 
@@ -1064,11 +1064,11 @@ color: #0136EE;
   }
   
   .form .form__down .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.4vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 0.8vw 0;
   }
 
@@ -1229,11 +1229,11 @@ color: #0136EE;
   }
   
   .form .form__down .form__field .input{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.1vw;
     border: 0;
     background: 0;
-    border-bottom: 2px solid #D1D1D1;
+    border-bottom: 2px solid #818181;
     padding: 0.8vw 0;
   }
 

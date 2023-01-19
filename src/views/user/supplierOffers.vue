@@ -4,10 +4,10 @@
 
     <div class="supplier_info">
         <div class="info">
-            <img src="/assets/images/avatar/person2.jpg" alt="" class="image">
+            <img src="/assets/images/avatar/avatar-image.png" alt="" class="image">
             <span class="name">{{ nameSupplier }}</span>
         </div>
-        <a  class="follow">Follow</a>
+        <a  class="follow">{{ $t('follow') }}</a>
     </div>
 
     <div class="search__content">
@@ -163,36 +163,295 @@ import Pagination from 'v-pagination-3';
 }
 
 .supplier_info .info .image{
-    width: 142px;
-    height: 163px;
+    width: 10vw;
+    height: 12vw;
     border-radius: 50%;
     box-shadow: 5px 5px 6px #00000029;
-    border: 1px solid #D3D3D3;
+    /* border: 1px solid #D3D3D3; */
 }
 
 .supplier_info .info .name{
-    color: #000000;
+    color: #6e6e6e;
     font-size: 45px;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 2vw;
+    margin-right:2vw
 }
 
 .supplier_info .follow{
     width: 7.8125vw;
-    color: #0136EE;
+    /* height: 53px; */
+    padding: 0.4vw 2vw;
+    color: #fff;
     text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
     border-radius: 29px;
     font-size: 1.458333vw;
-    margin-bottom: 1.6055vw;
-    height: 53px;
-    border: 1px solid #0136EE;
-    padding: 0.208334vw 1.80334vw;
-    font-weight: 500;
+    margin-bottom: 1.3vw;
 }
 
 .item{
     width: 80%;
     margin: auto;
     margin-top: 3vw;
+}
+
+/****************************** Responsive ******************************/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .supplier_info{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin: auto;
+    margin-top: 51px;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.supplier_info .info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.supplier_info .info .image{
+    width: 10vw;
+    height: 12vw;
+}
+
+.supplier_info .info .name{
+    color: #6e6e6e;
+    font-size: 5vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right:2vw
+}
+.supplier_info .follow {
+    width: 15vw;
+    /* height: 53px; */
+    padding: 0.9vw 4vw;
+    color: #fff;
+    text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    font-size: 2.7vw;
+    margin-bottom: 1.3vw;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .supplier_info{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin: auto;
+    margin-top: 51px;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.supplier_info .info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.supplier_info .info .image{
+    width: 9.5vw;
+    height: 11.5vw;
+}
+
+.supplier_info .info .name{
+    color: #6e6e6e;
+    font-size: 4.5vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right:2vw
+}
+.supplier_info .follow {
+    width: 14.5vw;
+    /* height: 53px; */
+    padding: 0.9vw 4vw;
+    color: #fff;
+    text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    font-size: 2.2vw;
+    margin-bottom: 1.3vw;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .supplier_info{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin: auto;
+    margin-top: 51px;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.supplier_info .info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.supplier_info .info .image{
+    width: 8vw;
+    height: 10vw;
+}
+
+.supplier_info .info .name{
+    color: #6e6e6e;
+    font-size: 4.1vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right:2vw
+}
+.supplier_info .follow {
+    width: 14vw;
+    /* height: 53px; */
+    padding: 0.9vw 4vw;
+    color: #fff;
+    text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    font-size: 2.2vw;
+    margin-bottom: 0.2vw;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .supplier_info{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin: auto;
+    margin-top: 51px;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.supplier_info .info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.supplier_info .info .image{
+    width: 6vw;
+    height: 8vw;
+}
+
+.supplier_info .info .name{
+    color: #6e6e6e;
+    font-size: 3.3vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right:2vw
+}
+.supplier_info .follow {
+    width: 12vw;
+    /* height: 53px; */
+    padding: 0.8vw 3.7vw;
+    color: #fff;
+    text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    font-size: 1.8vw;
+    margin-bottom: 0.2vw;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .supplier_info{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin: auto;
+    margin-top: 51px;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.supplier_info .info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.supplier_info .info .image{
+    width: 5.5vw;
+    height: 7vw;
+}
+
+.supplier_info .info .name{
+    color: #6e6e6e;
+    font-size: 2.7vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right:2vw
+}
+.supplier_info .follow {
+    width: 10vw;
+    /* height: 53px; */
+    padding: 0.8vw 3.2vw;
+    color: #fff;
+    text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    font-size: 1.4vw;
+    margin-bottom: 0.2vw;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1500px and up) */
+@media only screen and (min-width: 1500px) {
+    .supplier_info{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin: auto;
+    margin-top: 51px;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.supplier_info .info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.supplier_info .info .image{
+    width: 4.5vw;
+    height: 6vw;
+}
+
+.supplier_info .info .name{
+    color: #6e6e6e;
+    font-size: 2.2vw;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right:2vw
+}
+.supplier_info .follow {
+    width: 8vw;
+    /* height: 53px; */
+    padding: 0.8vw 2.5vw;
+    color: #fff;
+    text-decoration: none;
+    background: #0136EE 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    font-size: 1.2vw;
+    margin-bottom: 0.2vw;
+}
 }
 </style>

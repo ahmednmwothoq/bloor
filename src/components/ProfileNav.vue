@@ -397,7 +397,7 @@ import { useToast } from 'vue-toastification'
 }
 .logo__content .icons .item .icon{
     font-size: 1.1458333vw;
-    color: #b1b1b1;
+    color: #6e6e6e;
 }
 .logo__content .icons .item .icon:hover{
     color:#0136EE;
@@ -427,7 +427,7 @@ import { useToast } from 'vue-toastification'
     margin-bottom: 3.125vw;
 }
 .nav__content .nav__list .item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.5625vw;
     margin-right: 8.33333334vw;
     cursor: pointer;
@@ -458,7 +458,7 @@ import { useToast } from 'vue-toastification'
     height: 100%;
     padding-left: 3.125vw;
     font-size: 1.82291667vw;
-    border: 2px solid #B1B1B1;
+    border: 2px solid #6e6e6e;
     background: #F2F2F2;
     cursor: pointer;
 }
@@ -468,7 +468,7 @@ import { useToast } from 'vue-toastification'
 .nav__content .nav__search .search_input .input::placeholder{
     font-size: 1.82291667vw;
     font-weight: lighter;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .overlay_not{
@@ -564,7 +564,7 @@ import { useToast } from 'vue-toastification'
   }
 
   .notif_profile .content .notif_day .day{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.5246459vw;
     font-weight: 500;
     margin-left: 1.04107649vw;
@@ -596,19 +596,19 @@ import { useToast } from 'vue-toastification'
   }
 
   .notif_profile .content .notif_day .lists .item__list .list_text{
-    color: #D1D1D1;
+    color: #818181;
     font-size: 1.3830028vw;
     width: 85%;
   }
 
 .notif_profile .content .notif_day .lists .item__list .list_text .notify_person{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.4246459vw;
     font-weight: 500;
 }
 
   .notif_profile .content .notif_day .lists .item__list .time{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.11643059vw;
   }
 
@@ -658,7 +658,7 @@ import { useToast } from 'vue-toastification'
     }
 
     .nav__content .nav__list .item{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 3.5vw;
         margin-right: 8vw;
         cursor: pointer;
@@ -699,7 +699,7 @@ import { useToast } from 'vue-toastification'
         padding-left: 2vw;
         padding-right: 2vw;
         font-size: 3.5vw;
-        border: 2px solid #B1B1B1;
+        border: 2px solid #6e6e6e;
         background: #F2F2F2;
         cursor: pointer;
     }
@@ -707,7 +707,7 @@ import { useToast } from 'vue-toastification'
     .nav__content .nav__search .search_input .input::placeholder{
         font-size: 3.5vw;
         font-weight: lighter;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
 
     [dir="rtl"] .notif_profile{
@@ -848,7 +848,7 @@ import { useToast } from 'vue-toastification'
     }
 
     .nav__content .nav__list .item{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 3vw;
         margin-right: 8vw;
         cursor: pointer;
@@ -889,7 +889,7 @@ import { useToast } from 'vue-toastification'
         padding-left: 2vw;
         padding-right: 2vw;
         font-size: 3vw;
-        border: 2px solid #B1B1B1;
+        border: 2px solid #6e6e6e;
         background: #F2F2F2;
         cursor: pointer;
     }
@@ -897,7 +897,7 @@ import { useToast } from 'vue-toastification'
     .nav__content .nav__search .search_input .input::placeholder{
         font-size: 3vw;
         font-weight: lighter;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
 
     [dir="rtl"] .notif_profile{
@@ -1036,7 +1036,7 @@ import { useToast } from 'vue-toastification'
     }
 
     .nav__content .nav__list .item{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2.5vw;
         margin-right: 8vw;
         cursor: pointer;
@@ -1077,7 +1077,7 @@ import { useToast } from 'vue-toastification'
         padding-left: 2vw;
         padding-right: 2vw;
         font-size: 2.5vw;
-        border: 2px solid #B1B1B1;
+        border: 2px solid #6e6e6e;
         background: #F2F2F2;
         cursor: pointer;
     }
@@ -1085,7 +1085,7 @@ import { useToast } from 'vue-toastification'
     .nav__content .nav__search .search_input .input::placeholder{
         font-size: 2.5vw;
         font-weight: lighter;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
 
     [dir="rtl"] .notif_profile{
@@ -1224,7 +1224,7 @@ import { useToast } from 'vue-toastification'
     }
 
     .nav__content .nav__list .item{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2vw;
         margin-right: 5vw;
         cursor: pointer;
@@ -1264,7 +1264,7 @@ import { useToast } from 'vue-toastification'
         padding-left: 2vw;
         padding-right: 2vw;
         font-size: 2vw;
-        border: 2px solid #B1B1B1;
+        border: 2px solid #6e6e6e;
         background: #F2F2F2;
         cursor: pointer;
     }
@@ -1272,7 +1272,7 @@ import { useToast } from 'vue-toastification'
     .nav__content .nav__search .search_input .input::placeholder{
         font-size: 2vw;
         font-weight: lighter;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
 
     [dir="rtl"] .notif_profile{
@@ -1411,7 +1411,7 @@ import { useToast } from 'vue-toastification'
     }
 
     .nav__content .nav__list .item{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.5vw;
         margin-right: 5vw;
         cursor: pointer;
@@ -1452,7 +1452,7 @@ import { useToast } from 'vue-toastification'
         padding-left: 2vw;
         padding-right: 2vw;
         font-size: 1.5vw;
-        border: 2px solid #B1B1B1;
+        border: 2px solid #6e6e6e;
         background: #F2F2F2;
         cursor: pointer;
     }
@@ -1460,7 +1460,7 @@ import { useToast } from 'vue-toastification'
     .nav__content .nav__search .search_input .input::placeholder{
         font-size: 1.5vw;
         font-weight: lighter;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
 
     [dir="rtl"] .notif_profile{
@@ -1599,7 +1599,7 @@ import { useToast } from 'vue-toastification'
     }
 
     .nav__content .nav__list .item{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.2vw;
         margin-right: 5vw;
         cursor: pointer;
@@ -1640,7 +1640,7 @@ import { useToast } from 'vue-toastification'
         padding-left: 2vw;
         padding-right: 2vw;
         font-size: 1.2vw;
-        border: 2px solid #B1B1B1;
+        border: 2px solid #6e6e6e;
         background: #F2F2F2;
         cursor: pointer;
     }
@@ -1648,7 +1648,7 @@ import { useToast } from 'vue-toastification'
     .nav__content .nav__search .search_input .input::placeholder{
         font-size: 1.2vw;
         font-weight: lighter;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
 
 

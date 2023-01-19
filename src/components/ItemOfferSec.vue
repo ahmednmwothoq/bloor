@@ -47,10 +47,25 @@
                     <span class="detail_title">{{ $t('added_by_off') }} :</span>
                     <div class="added__person">
                         <!-- <img src="/assets/images/avatar/person1.jpg" alt="" class="person"> -->
-                        <div class="person_info">
+                        <!-- <div class="person_info">
                             <span class="name">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
                             <span class="number">{{ $t('marouf_number') }} : {{item.known_number}}</span>
                             <span class="no">{{ $t('commerecial_register_no') }} : {{item.commercial_registration}}</span>
+                        </div> -->
+                        <div class="person_info edit_in_person">
+                            <img src="/assets/images/avatar/avatar-image.png" alt="" class="person">
+                            <span class="name" style="margin-right: 0.2vw;margin-left: 0.2vw;" v-if="user == 'supplier'">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
+                            <span class="name" style="margin-right: 0.2vw;margin-left: 0.2vw;" v-if="user == 'user'">{{ item.user.f_name }} {{ item.user.l_name }}</span>
+                        </div>
+                        <div class="person_info">
+                            <span class="number">
+                                <span> {{ $t('marouf_number') }} :</span>
+                                <span> {{item.known_number}} </span>
+                            </span>
+                            <span class="no">
+                                <span> {{ $t('commerecial_register_no') }} :</span>
+                                <span> {{item.commercial_registration}} </span>
+                            </span>
                         </div>
                     </div>
                 </div>

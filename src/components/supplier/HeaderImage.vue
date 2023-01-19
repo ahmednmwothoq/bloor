@@ -42,7 +42,7 @@ import cookie from "vue-cookie";
 .cardProfile .up__info .name {
     font-size: 1.52291667vw;
     font-weight: bold;
-    color: #b1b1b1;
+    color: #6e6e6e;
     margin-bottom: 0.05211vw;
 }
 

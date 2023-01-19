@@ -7,7 +7,7 @@
                 <div class="d-flex">
                     <div class="form__feild">
                         <select class="form-control feild__select" @change="onChange($event)" id="">
-                            <option value="" selected>{{ $t('type') }}.</option>
+                            <option value="" selected>{{ $t('select_form') }}</option>
                             <option value="white">{{ $t('white') }}</option>
                             <option value="blue">{{ $t('blue') }}</option>
                             <option value="gold">{{ $t('gold') }}</option>
@@ -20,7 +20,7 @@
                     </div> -->
                     
                 </div>
-            <button class="btn_content" @click="DoTheSearch">{{ $t('search') }}</button>
+            <!-- <button class="btn_content" @click="DoTheSearch">{{ $t('search') }}</button> -->
             </form>
         </div>
 

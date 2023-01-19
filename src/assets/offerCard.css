@@ -71,14 +71,14 @@
 }
 
 .item__offer .offer__info .info__title{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-weight: bold;
     font-size: 1.35487vw;
     margin-bottom: 0;
 }
 
 .item__offer .offer__info .info__date{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 0.8vw;
     font-weight: normal;
 }
@@ -103,7 +103,7 @@
     margin-right: 2.13653vw;
     /* flex: 15%; */
     font-size: 1.0943vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
     margin-left: 2.13653vw
 }
 
@@ -113,7 +113,7 @@
 .item__offer .offer__info .info__details .detail__desc .desc__text{
     margin-left: 0.46899vw;
     margin-bottom: 0;
-    color: #D1D1D1;
+    color: #818181;
     font-size: 0.9399478vw;
     word-break: break-word;
     height: 5vw;
@@ -126,30 +126,49 @@
 .item__offer .offer__info .info__details .detail__added{
     display: flex;
 }
+
+[dir='rtl'] .item__offer .offer__info .info__details .detail__added .added__person{
+    align-items: flex-end;
+}
 .item__offer .offer__info .info__details .detail__added .added__person{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .item__offer .offer__info .info__details .detail__added .added__person .person{
     width: 1.30276vw;
     height: 1.5633142vw;
     border-radius: 50%;
 }
+
+[dir="rtl"] .item__offer .offer__info .info__details .detail__added .added__person .edit_in_person{
+    flex-direction: row-reverse !important;
+    margin: 0px;
+}
+
+.item__offer .offer__info .info__details .detail__added .added__person .edit_in_person{
+    flex-direction: row !important;
+    margin: 0px;
+}
+
+
+[dir="rtl"] .item__offer .offer__info .info__details .detail__added .added__person .person_info{
+    text-align: right;
+}
 .item__offer .offer__info .info__details .detail__added .added__person .person_info{
     display: flex;
     flex-direction: column;
-    margin-left: 1.04221vw;
+    /* margin-left: 1.04221vw; */
 }
 .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
     font-size: 1.2vw;
     font-weight: 500;
     margin-bottom: 0.26055vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
 .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
     font-size: 0.937989vw;
-    color: #D1D1D1;
+    color: #818181;
 }
 
 
@@ -160,7 +179,7 @@
 }
 
 .item__offer .offer__info .info__details .detail__price .price_info .price{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.45909vw;
     font-weight: bold;
 }
@@ -202,7 +221,7 @@
 }
 
 .item__offer .offer__rate span{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-weight: bold;
     font-size: 1.51120vw;
     margin-left: 0.26055vw;
@@ -226,7 +245,7 @@
 
 .offer_header .title{
     position: absolute;
-    color: #D1D1D1;
+    color: #818181;
     font-size: 2.978vw;
     bottom: 15.7110vw;
     left: 5.88235vw;
@@ -247,7 +266,7 @@
 
     .offer_header .title{
         position: absolute;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 4vw;
         font-weight: 700;
         bottom: 8vw;
@@ -314,14 +333,14 @@
     }
 
     .item__offer .offer__info .info__title{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 4vw;
         margin-bottom: 0;
     }
 
     .item__offer .offer__info .info__date{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2.5vw;
         font-weight: normal;
     }
@@ -346,7 +365,7 @@
         margin-right: 2.13653vw;
         /* flex: 15%; */
         font-size: 2.5vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         margin-left: 2.13653vw
     }
 
@@ -356,7 +375,7 @@
     .item__offer .offer__info .info__details .detail__desc .desc__text{
         margin-left: 0.46899vw;
         margin-bottom: 0;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 2.5vw;
         word-break: break-word;
         height: 13vw;
@@ -371,7 +390,7 @@
     }
     .item__offer .offer__info .info__details .detail__added .added__person{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person{
         width: 1.30276vw;
@@ -381,18 +400,18 @@
     .item__offer .offer__info .info__details .detail__added .added__person .person_info{
         display: flex;
         flex-direction: column;
-        margin-left: 1.04221vw;
+        /* margin-left: 1.04221vw; */
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
         font-size: 2.5vw;
         font-weight: 500;
         margin-bottom: 0.26055vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
         font-size: 2.5vw;
-        color: #D1D1D1;
+        color: #818181;
     }
 
 
@@ -403,7 +422,7 @@
     }
 
     .item__offer .offer__info .info__details .detail__price .price_info .price{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 3vw;
         font-weight: bold;
     }
@@ -443,7 +462,7 @@
 
     .offer_header .title{
         position: absolute;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 4.1vw;
         font-weight: 700;
         bottom: 8vw;
@@ -510,14 +529,14 @@
     }
 
     .item__offer .offer__info .info__title{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 3.9vw;
         margin-bottom: 0;
     }
 
     .item__offer .offer__info .info__date{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2.4vw;
         font-weight: normal;
     }
@@ -542,7 +561,7 @@
         margin-right: 2.13653vw;
         /* flex: 15%; */
         font-size: 2.4vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         margin-left: 2.13653vw
     }
 
@@ -552,7 +571,7 @@
     .item__offer .offer__info .info__details .detail__desc .desc__text{
         margin-left: 0.46899vw;
         margin-bottom: 0;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 2.4vw;
         word-break: break-word;
         height: 13vw;
@@ -567,7 +586,7 @@
     }
     .item__offer .offer__info .info__details .detail__added .added__person{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person{
         width: 1.30276vw;
@@ -577,18 +596,18 @@
     .item__offer .offer__info .info__details .detail__added .added__person .person_info{
         display: flex;
         flex-direction: column;
-        margin-left: 1.04221vw;
+        /* margin-left: 1.04221vw; */
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
         font-size: 2.4vw;
         font-weight: 500;
         margin-bottom: 0.26055vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
         font-size: 2.4vw;
-        color: #D1D1D1;
+        color: #818181;
     }
 
 
@@ -599,7 +618,7 @@
     }
 
     .item__offer .offer__info .info__details .detail__price .price_info .price{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2.9vw;
         font-weight: bold;
     }
@@ -638,7 +657,7 @@
 
     .offer_header .title{
         position: absolute;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 3.5vw;
         font-weight: 700;
         bottom: 8vw;
@@ -705,14 +724,14 @@
     }
 
     .item__offer .offer__info .info__title{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 3.5vw;
         margin-bottom: 0.5vw;
     }
 
     .item__offer .offer__info .info__date{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2vw;
         font-weight: normal;
     }
@@ -737,7 +756,7 @@
         margin-right: 2.13653vw;
         /* flex: 15%; */
         font-size: 2vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         margin-left: 2.13653vw
     }
 
@@ -747,7 +766,7 @@
     .item__offer .offer__info .info__details .detail__desc .desc__text{
         margin-left: 0.46899vw;
         margin-bottom: 0;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 2vw;
         word-break: break-word;
         height: 15vw;
@@ -762,7 +781,7 @@
     }
     .item__offer .offer__info .info__details .detail__added .added__person{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person{
         width: 1.30276vw;
@@ -772,18 +791,18 @@
     .item__offer .offer__info .info__details .detail__added .added__person .person_info{
         display: flex;
         flex-direction: column;
-        margin-left: 1.04221vw;
+        /* margin-left: 1.04221vw; */
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
         font-size: 2vw;
         font-weight: 500;
         margin-bottom: 0.26055vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
         font-size: 2vw;
-        color: #D1D1D1;
+        color: #818181;
     }
 
 
@@ -794,7 +813,7 @@
     }
 
     .item__offer .offer__info .info__details .detail__price .price_info .price{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2.4vw;
         font-weight: bold;
     }
@@ -833,7 +852,7 @@
 
     .offer_header .title{
         position: absolute;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 3.2vw;
         font-weight: 600;
         bottom: 8vw;
@@ -900,14 +919,14 @@
     }
 
     .item__offer .offer__info .info__title{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 3vw;
         margin-bottom: 0.5vw;
     }
 
     .item__offer .offer__info .info__date{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.6vw;
         font-weight: normal;
     }
@@ -932,7 +951,7 @@
         margin-right: 2.13653vw;
         /* flex: 15%; */
         font-size: 1.7vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         margin-left: 2.13653vw
     }
 
@@ -942,7 +961,7 @@
     .item__offer .offer__info .info__details .detail__desc .desc__text{
         margin-left: 0.46899vw;
         margin-bottom: 0;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 1.7vw;
         word-break: break-word;
         height: 11vw;
@@ -957,7 +976,7 @@
     }
     .item__offer .offer__info .info__details .detail__added .added__person{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person{
         width: 1.30276vw;
@@ -967,18 +986,18 @@
     .item__offer .offer__info .info__details .detail__added .added__person .person_info{
         display: flex;
         flex-direction: column;
-        margin-left: 1.04221vw;
+        /* margin-left: 1.04221vw; */
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
         font-size: 1.7vw;
         font-weight: 500;
         margin-bottom: 0.26055vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
         font-size: 1.7vw;
-        color: #D1D1D1;
+        color: #818181;
     }
 
 
@@ -989,7 +1008,7 @@
     }
 
     .item__offer .offer__info .info__details .detail__price .price_info .price{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 2.1vw;
         font-weight: bold;
     }
@@ -1028,7 +1047,7 @@
 
     .offer_header .title{
         position: absolute;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 2.5vw;
         font-weight: 600;
         bottom: 12vw;
@@ -1100,14 +1119,14 @@
     }
     
     .item__offer .offer__info .info__title{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 1.9vw;
         margin-bottom: 0;
     }
     
     .item__offer .offer__info .info__date{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.2vw;
         font-weight: normal;
     }
@@ -1132,7 +1151,7 @@
         margin-right: 2.13653vw;
         /* flex: 15%; */
         font-size: 1.3vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         margin-left: 2.13653vw
     }
     
@@ -1142,7 +1161,7 @@
     .item__offer .offer__info .info__details .detail__desc .desc__text{
         margin-left: 0.46899vw;
         margin-bottom: 0;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 1.3vw;
         word-break: break-word;
         height: 5vw;
@@ -1154,18 +1173,18 @@
     .item__offer .offer__info .info__details .detail__added .added__person .person_info{
         display: flex;
         flex-direction: column;
-        margin-left: 1.04221vw;
+        /* margin-left: 1.04221vw; */
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
         font-size: 1.3vw;
         font-weight: 500;
         margin-bottom: 0.26055vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
         font-size: 1.2vw;
-        color: #D1D1D1;
+        color: #818181;
     }
     
     
@@ -1176,7 +1195,7 @@
     }
     
     .item__offer .offer__info .info__details .detail__price .price_info .price{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.7vw;
         font-weight: bold;
     }
@@ -1219,7 +1238,7 @@
     }
     
     .item__offer .offer__rate span{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 1.51120vw;
         margin-left: 0.26055vw;
@@ -1239,7 +1258,7 @@
 
     .offer_header .title{
         position: absolute;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 2.5vw;
         font-weight: 600;
         bottom: 12vw;
@@ -1310,14 +1329,14 @@
     }
     
     .item__offer .offer__info .info__title{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 1.8vw;
         margin-bottom: 0;
     }
     
     .item__offer .offer__info .info__date{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.1vw;
         font-weight: normal;
     }
@@ -1342,7 +1361,7 @@
         margin-right: 2.13653vw;
         /* flex: 15%; */
         font-size: 1.1vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         margin-left: 2.13653vw
     }
     
@@ -1352,7 +1371,7 @@
     .item__offer .offer__info .info__details .detail__desc .desc__text{
         margin-left: 0.46899vw;
         margin-bottom: 0;
-        color: #D1D1D1;
+        color: #818181;
         font-size: 1.2vw;
         word-break: break-word;
         height: 5vw;
@@ -1364,18 +1383,18 @@
     .item__offer .offer__info .info__details .detail__added .added__person .person_info{
         display: flex;
         flex-direction: column;
-        margin-left: 1.04221vw;
+        /* margin-left: 1.04221vw; */
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .name{
         font-size: 1.2vw;
         font-weight: 500;
         margin-bottom: 0.26055vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .number ,
     .item__offer .offer__info .info__details .detail__added .added__person .person_info .no{
         font-size: 1.1vw;
-        color: #D1D1D1;
+        color: #818181;
     }
     
     
@@ -1386,7 +1405,7 @@
     }
     
     .item__offer .offer__info .info__details .detail__price .price_info .price{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-size: 1.6vw;
         font-weight: bold;
     }
@@ -1429,7 +1448,7 @@
     }
     
     .item__offer .offer__rate span{
-        color: #B1B1B1;
+        color: #6e6e6e;
         font-weight: bold;
         font-size: 1.51120vw;
         margin-left: 0.26055vw;

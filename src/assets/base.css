@@ -2,18 +2,18 @@
 :root{
   --primary_color: #0136ee;
   --background_color: #f4f4f4;
-  --text_color: #b1b1b1;
+  --text_color: #6e6e6e;
 
   --unnamed-color-f2f2f2: #F2F2F2;
   --unnamed-color-0136ee: #0136EE;
   --unnamed-color-f7f7f7: #F7F7F7;
-  --unnamed-color-d1d1d1: #D1D1D1;
+  --unnamed-color-d1d1d1: #818181;
   --unnamed-color-3869a1: #3869A1;
   --unnamed-color-00244d: #00244D;
   --unnamed-color-1e6fcc: #1E6FCC;
   --unnamed-color-ffffff: #FFFFFF;
   --unnamed-color-000000: #000000;
-  --unnamed-color-b1b1b1: #B1B1B1;
+  --unnamed-color-b1b1b1: #6e6e6e;
   --unnamed-color-d40000: #D40000;
   --unnamed-color-707070: #707070;
 }
@@ -34,7 +34,7 @@
   color: #000;
 }
 .gray{
-  color:#B1B1B1
+  color:#6e6e6e
 }
 
 .no_bg{
@@ -307,7 +307,7 @@ padding: 10px 15px;
 }
 .all .all__down .title{
   letter-spacing: 0px;
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 2.4vw;
 }
 
@@ -334,12 +334,12 @@ padding: 10px 15px;
   margin: 0 auto;
 }
 .card_info .card_info_con .num{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.8vw;
   font-weight: 500;
 }
 .card_info .card_info_con .text{
-  color: #B1B1B1;
+  color: #6e6e6e;
   font-size: 1.8vw;
   font-weight: 500;
 }
@@ -449,7 +449,7 @@ padding: 10px 15px;
   bottom: 3.2vw;
   left: 1vw;
   font-size: 1.2vw;
-  color: #B1B1B1;
+  color: #6e6e6e;
 }
 
 .search__content .btn_content{
@@ -511,11 +511,11 @@ color: #888;
 
 .filter__nav .nav__btn{
   padding: 0.75vw 1.5vw;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #818181;
   border-radius: 5px;
   font-size: 1vw;
   text-decoration: none;
-  color:#d1d1d1;
+  color:#818181;
 }
 
 .filter__nav .nav__btn .nav__icon{
@@ -568,9 +568,13 @@ color: #888;
       justify-content: space-between;
     }
     
+    [dir='rtl'] .search__content .form_content .form__feild .icon{
+      right: auto;
+      left: auto;
+    }
     .search__content .form_content .form__feild .icon{
       position: absolute;
-      right: 0.5vw;
+      right: 8vw;
       top: 20%;
       font-size: 3vw;
     }
@@ -603,6 +607,7 @@ color: #888;
       padding-right: 1vw;
       margin-right: 2vw;
       margin-left: 2vw;
+      margin-top: 0.5vw;
     }
     
 
@@ -613,10 +618,10 @@ color: #888;
     }
     .search__content .form_content .form__feild .label{
       position: absolute;
-      bottom: 5vw;
+      bottom: 5.1vw;
       left: 2vw;
       font-size: 2vw;
-      color: #B1B1B1;
+      color: #6e6e6e;
     }
     
     .search__content .btn_content{
@@ -756,7 +761,7 @@ color: #888;
       bottom: 5vw;
       left: 2vw;
       font-size: 1.7vw;
-      color: #B1B1B1;
+      color: #6e6e6e;
     }
     
     .search__content .btn_content{
@@ -895,7 +900,7 @@ color: #888;
       bottom: 3.7vw;
       left: 2vw;
       font-size: 1.5vw;
-      color: #B1B1B1;
+      color: #6e6e6e;
     }
     
     .search__content .btn_content{
@@ -1035,7 +1040,7 @@ color: #888;
       bottom: 3.7vw;
       left: 2vw;
       font-size: 1.5vw;
-      color: #B1B1B1;
+      color: #6e6e6e;
     }
     
     .search__content .btn_content{
@@ -1178,7 +1183,7 @@ color: #888;
       bottom: 3.7vw;
       left: 2vw;
       font-size: 1.5vw;
-      color: #B1B1B1;
+      color: #6e6e6e;
     }
     
     .search__content .btn_content{
@@ -1322,7 +1327,7 @@ color: #888;
       bottom: 3.7vw;
       left: 2vw;
       font-size: 1.5vw;
-      color: #B1B1B1;
+      color: #6e6e6e;
     }
     
     .search__content .btn_content{

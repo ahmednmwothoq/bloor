@@ -2,18 +2,18 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
 
     --unnamed-color-f2f2f2: #F2F2F2;
     --unnamed-color-0136ee: #0136EE;
     --unnamed-color-f7f7f7: #F7F7F7;
-    --unnamed-color-d1d1d1: #D1D1D1;
+    --unnamed-color-d1d1d1: #818181;
     --unnamed-color-3869a1: #3869A1;
     --unnamed-color-00244d: #00244D;
     --unnamed-color-1e6fcc: #1E6FCC;
     --unnamed-color-ffffff: #FFFFFF;
     --unnamed-color-000000: #000000;
-    --unnamed-color-b1b1b1: #B1B1B1;
+    --unnamed-color-b1b1b1: #6e6e6e;
     --unnamed-color-d40000: #D40000;
     --unnamed-color-707070: #707070;
   }
@@ -28,7 +28,7 @@
       color: #c5c5c5;
   }
   .gray{
-    color:#B1B1B1
+    color:#6e6e6e
   }
 
 .no_bg{
@@ -106,7 +106,7 @@ z-index: -1;
   }
 
   .header__item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     margin-right: 0.83334vw;
     display: flex;
     align-items: center;
@@ -166,7 +166,7 @@ z-index: -1;
 
 .logo__content .icons .item .icon{
     font-size: 1.1458333vw;
-    color: #b1b1b1;
+    color: #6e6e6e;
 }
 
 .logo__content .icons .item .icon:hover{
@@ -203,7 +203,7 @@ z-index: -1;
 }
 
 .nav__content .nav__list .item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.5625vw;
     margin-right: 8.33333334vw;
 }
@@ -237,7 +237,7 @@ z-index: -1;
     height: 100%;
     padding-left: 3.125vw;
     font-size: 1.82291667vw;
-    border: 2px solid #B1B1B1;
+    border: 2px solid #6e6e6e;
     background: #F2F2F2;
     cursor: pointer;
 }
@@ -249,7 +249,7 @@ z-index: -1;
 .nav__content .nav__search .search_input .input::placeholder{
     font-size: 1.82291667vw;
     font-weight: lighter;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 
@@ -285,7 +285,7 @@ z-index: -1;
 }
 
 .profile_chat_content .chats .chat .date{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.4583333vw;
     font-weight: 400;
     position: absolute;
@@ -353,12 +353,12 @@ z-index: -1;
 }
 
 .profile_chat_content .chats .chat .chats_persons .chat_header .person_info .message{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
 }
 
 .profile_chat_content .chats .chat .chats_persons .chat_header .time{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     margin-top: -2.60416665vw;
 }
@@ -438,7 +438,7 @@ z-index: -1;
     border: 1px solid #707070;
 }
 .profile_chat_content .chat_details .chat_person .messages .message_item .person .time{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     margin-top: 0.26041667vw;
 }
@@ -518,7 +518,7 @@ z-index: -1;
 }
 
 .profile_chat_content .chat_details .chat_person .send_form_msg .input_form .input::placeholder{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.0416667vw;
     font-weight: 300;
 }

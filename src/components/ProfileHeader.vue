@@ -157,7 +157,7 @@ export default {
   }
 
   .header__item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     margin-right: 0.83334vw;
     display: flex;
     align-items: center;

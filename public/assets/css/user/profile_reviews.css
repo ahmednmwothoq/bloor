@@ -2,18 +2,18 @@
 :root{
     --primary_color: #0136ee;
     --background_color: #f4f4f4;
-    --text_color: #b1b1b1;
+    --text_color: #6e6e6e;
 
     --unnamed-color-f2f2f2: #F2F2F2;
     --unnamed-color-0136ee: #0136EE;
     --unnamed-color-f7f7f7: #F7F7F7;
-    --unnamed-color-d1d1d1: #D1D1D1;
+    --unnamed-color-d1d1d1: #818181;
     --unnamed-color-3869a1: #3869A1;
     --unnamed-color-00244d: #00244D;
     --unnamed-color-1e6fcc: #1E6FCC;
     --unnamed-color-ffffff: #FFFFFF;
     --unnamed-color-000000: #000000;
-    --unnamed-color-b1b1b1: #B1B1B1;
+    --unnamed-color-b1b1b1: #6e6e6e;
     --unnamed-color-d40000: #D40000;
     --unnamed-color-707070: #707070;
   }
@@ -28,7 +28,7 @@
       color: #c5c5c5;
   }
   .gray{
-    color:#B1B1B1
+    color:#6e6e6e
   }
 
 .no_bg{
@@ -103,7 +103,7 @@ z-index: -1;
   }
 
   .header__item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     margin-right: 0.83334vw;
     display: flex;
     align-items: center;
@@ -163,7 +163,7 @@ z-index: -1;
 
 .logo__content .icons .item .icon{
     font-size: 1.1458333vw;
-    color: #b1b1b1;
+    color: #6e6e6e;
 }
 
 .logo__content .icons .item .icon:hover{
@@ -198,7 +198,7 @@ z-index: -1;
 }
 
 .nav__content .nav__list .item{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.5625vw;
 }
 
@@ -230,7 +230,7 @@ z-index: -1;
     height: 100%;
     padding-left: 3.125vw;
     font-size: 1.82291667vw;
-    border: 2px solid #B1B1B1;
+    border: 2px solid #6e6e6e;
     background: #F2F2F2;
 }
 
@@ -241,7 +241,7 @@ z-index: -1;
 .nav__content .nav__search .search_input .input::placeholder{
     font-size: 1.82291667vw;
     font-weight: lighter;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 
@@ -281,7 +281,7 @@ z-index: -1;
 }
 
 .person__info .name__job .job{
-    color: #B1B1B1;
+    color: #6e6e6e;
     font-size: 1.458333vw;
 }
 
@@ -344,7 +344,7 @@ z-index: -1;
 
 .reviews__details .item_review .review__up .contan .up__info .follow{
     font-size: 1.4583333vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
     /* color: #698eb8; */
 }
 
@@ -358,7 +358,7 @@ z-index: -1;
 
 .reviews__details .item_review .review__up .up__time{
     font-size: 1.4583333vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .reviews__details .item_review .review_mid{
@@ -462,7 +462,7 @@ z-index: -1;
 .reviews__details .item_review .review__down .down__comment .comment_mid .text{
     font-size: 0.78125vw;
     margin-bottom: 0.26041667vw;
-    color: #D1D1D1;
+    color: #818181;
 }
 
 .reviews__details .item_review .review__down .down__comment .comment_down{

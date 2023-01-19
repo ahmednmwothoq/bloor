@@ -43,13 +43,13 @@
 .item_review .review__up .contan .up__info .name{
     font-size: 1.82291667vw;
     font-weight: bold;
-    color: #b1b1b1;
+    color: #6e6e6e;
     margin-bottom: 0.052083336vw;
 }
 
 .item_review .review__up .contan .up__info .follow{
     font-size: 1.4583333vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
     /* color: #698eb8; */
 }
 
@@ -58,12 +58,12 @@
     font-size: 1.82291667vw;
     margin-left: 2.08334vw;
     font-weight: bold;
-    color: #b1b1b1;
+    color: #6e6e6e;
 }
 
 .item_review .review__up .up__time{
     font-size: 1.5vw;
-    color: #B1B1B1;
+    color: #6e6e6e;
 }
 
 .item_review .review_mid{
@@ -86,14 +86,14 @@
 .item_review .review_mid .mid__left .car{
     font-size: 1.4583333vw;
     font-weight: bold;
-    color: #b1b1b1;
+    color: #6e6e6e;
     margin-bottom: -0.26041667vw;
 }
 
 .item_review .review_mid .mid__left .edit{
     font-size: 1.3020833vw;
     /* opacity: 0.3; */
-    color: #D1D1D1;
+    color: #818181;
 }
 
 .item_review .review_mid .mid__rigth{
@@ -162,7 +162,7 @@
 .item_review .review__down .down__comment .comment_mid .text{
     font-size: 0.78125vw;
     margin-bottom: 0.26041667vw;
-    color: #D1D1D1;
+    color: #818181;
 }
 
 .item_review .review__down .down__comment .comment_down{
@@ -171,7 +171,7 @@
 }
 
 .item_review .review__down .down__comment .comment_down a{
-    color: #D1D1D1;
+    color: #818181;
     font-size: 1.3020833vw;
     text-decoration: underline;
 }
@@ -214,13 +214,13 @@
     .item_review .review__up .contan .up__info .name{
         font-size: 2.8vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
         margin-bottom: 0.052083336vw;
     }
     
     .item_review .review__up .contan .up__info .follow{
         font-size: 2.4vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         /* color: #698eb8; */
     }
     
@@ -230,7 +230,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
     }
     .item_review .review__up .contan .up__rate .icon{
         font-size: 2.8vw;
@@ -238,7 +238,7 @@
     
     .item_review .review__up .up__time{
         font-size: 2vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     
     .item_review .review_mid{
@@ -313,7 +313,7 @@
     }
     
     .item_review .review__down .down__comment .comment_down a{
-        color: #b1b1b1;
+        color: #6e6e6e;
         font-size: 2vw;
         text-decoration: underline;
     }
@@ -387,13 +387,13 @@
     .item_review .review__up .contan .up__info .name{
         font-size: 2.8vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
         margin-bottom: 0.052083336vw;
     }
     
     .item_review .review__up .contan .up__info .follow{
         font-size: 2.4vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         /* color: #698eb8; */
     }
     
@@ -403,7 +403,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
     }
     .item_review .review__up .contan .up__rate .icon{
         font-size: 2.8vw;
@@ -411,7 +411,7 @@
     
     .item_review .review__up .up__time{
         font-size: 2.2vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     
     .item_review .review_mid{
@@ -486,7 +486,7 @@
     }
     
     .item_review .review__down .down__comment .comment_down a{
-        color: #b1b1b1;
+        color: #6e6e6e;
         font-size: 2vw;
         text-decoration: underline;
     }
@@ -559,13 +559,13 @@
     .item_review .review__up .contan .up__info .name{
         font-size: 2.4vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
         margin-bottom: 0.052083336vw;
     }
     
     .item_review .review__up .contan .up__info .follow{
         font-size: 2vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         /* color: #698eb8; */
     }
     
@@ -575,7 +575,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
     }
     .item_review .review__up .contan .up__rate .icon{
         font-size: 2.4vw;
@@ -583,7 +583,7 @@
     
     .item_review .review__up .up__time{
         font-size: 1.8vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     
     .item_review .review_mid{
@@ -658,7 +658,7 @@
     }
     
     .item_review .review__down .down__comment .comment_down a{
-        color: #b1b1b1;
+        color: #6e6e6e;
         font-size: 1.8vw;
         text-decoration: underline;
     }
@@ -731,13 +731,13 @@
     .item_review .review__up .contan .up__info .name{
         font-size: 2vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
         margin-bottom: 0.052083336vw;
     }
     
     .item_review .review__up .contan .up__info .follow{
         font-size: 1.6vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         /* color: #698eb8; */
     }
     
@@ -747,7 +747,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
     }
     .item_review .review__up .contan .up__rate .icon{
         font-size: 2vw;
@@ -755,7 +755,7 @@
     
     .item_review .review__up .up__time{
         font-size: 1.5vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     
     .item_review .review_mid{
@@ -830,7 +830,7 @@
     }
     
     .item_review .review__down .down__comment .comment_down a{
-        color: #b1b1b1;
+        color: #6e6e6e;
         font-size: 1.5vw;
         text-decoration: underline;
     }
@@ -903,13 +903,13 @@
     .item_review .review__up .contan .up__info .name{
         font-size: 1.8vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
         margin-bottom: 0.052083336vw;
     }
     
     .item_review .review__up .contan .up__info .follow{
         font-size: 1.4vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         /* color: #698eb8; */
     }
     
@@ -919,7 +919,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
     }
     .item_review .review__up .contan .up__rate .icon{
         font-size: 1.8vw;
@@ -927,7 +927,7 @@
     
     .item_review .review__up .up__time{
         font-size: 1.3vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     
     .item_review .review_mid{
@@ -1002,7 +1002,7 @@
     }
     
     .item_review .review__down .down__comment .comment_down a{
-        color: #b1b1b1;
+        color: #6e6e6e;
         font-size: 1.3vw;
         text-decoration: underline;
     }
@@ -1075,13 +1075,13 @@
     .item_review .review__up .contan .up__info .name{
         font-size: 1.4vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
         margin-bottom: 0.052083336vw;
     }
     
     .item_review .review__up .contan .up__info .follow{
         font-size: 1vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
         /* color: #698eb8; */
     }
     
@@ -1091,7 +1091,7 @@
         margin-left: 1vw;
         margin-right: 1vw;
         font-weight: bold;
-        color: #b1b1b1;
+        color: #6e6e6e;
     }
     .item_review .review__up .contan .up__rate .icon{
         font-size: 1.4vw;
@@ -1099,7 +1099,7 @@
     
     .item_review .review__up .up__time{
         font-size: 1vw;
-        color: #B1B1B1;
+        color: #6e6e6e;
     }
     
     .item_review .review_mid{
@@ -1174,7 +1174,7 @@
     }
     
     .item_review .review__down .down__comment .comment_down a{
-        color: #b1b1b1;
+        color: #6e6e6e;
         font-size: 0.9vw;
         text-decoration: underline;
     }
