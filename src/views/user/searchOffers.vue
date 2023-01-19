@@ -19,17 +19,27 @@
                     </div>
                     
                 </div>
-            <button class="btn_content" type="submit">{{ $t('search') }}</button>
+                <!-- <button class="btn_content" type="submit">{{ $t('search') }}</button> -->
             </form>
         </div>
 
-        <div class="item" v-for="item in filteredList" :key="item.id" v-if="filteredList.length > 0">
+        <div class="item" v-for="item in paginatedData" :key="item.id" v-if="paginatedData.length > 0">
             <item-offer :user="user" :item="item" />
         </div>
         <div class="item" v-else>
             <div class="alert alert-primary text-center mb-5" role="alert">
                 {{ $t('no_data_here') }}
             </div>
+        </div>
+
+        <div class="m-auto w-90" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+            <pagination 
+                v-if="allOffer.length > 0" 
+                v-model="page_index" 
+                :records="allOffer.length" 
+                :per-page="page_size" 
+                @paginate="myCallback"
+            />
         </div>
 
         <!-- <div class="item" v-for="item in allOffer" :key="item.id">
@@ -52,12 +62,15 @@ import FooterVue from '@/components/Footer.vue';
 import OnlyLogo from "@/components/OnlyLogo.vue"
 import ItemOffer from "@/components/ItemOffer.vue"
 import { useToast } from 'vue-toastification'
+import Pagination from 'v-pagination-3';
     export default {
         data() {
             return {
                 allOffer: [],
                 search:'',
                 user:'user',
+                page_index: 1,
+                page_size: 4
             }
         },
         components:{
@@ -66,6 +79,7 @@ import { useToast } from 'vue-toastification'
             OnlyLogo,
             CreateAt,
             ItemOffer,
+            Pagination,
         },
         computed: {
             filteredList() {
@@ -88,6 +102,11 @@ import { useToast } from 'vue-toastification'
                 } else {
                 return false
                 }
+            },
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.filteredList.slice(start, end);
             }
         },
         mounted() {
@@ -97,9 +116,13 @@ import { useToast } from 'vue-toastification'
         methods: {
             async getAllOffer(){
                 await Api.general.getAllOffers().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.allOffer = res.data.body
                 })
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
             },
         },
     }

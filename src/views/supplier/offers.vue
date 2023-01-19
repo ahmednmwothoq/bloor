@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -207,6 +210,7 @@
                 showDivAddOffer: false,
                 showDivEditOffer: false,
                 showOverlay: false,
+                isActive: false,
                 sideList: [
                     {
                         id:1,
@@ -463,7 +467,8 @@
 
 .section{
     width: 75vw;
-    margin-top: 50px;
+    margin-top: 50px!important;
+    margin: 0 auto;
 }
 
 .overlay{
@@ -476,6 +481,103 @@
   opacity: 0.5;
   z-index: 2;
   display: block !important;
+}
+
+/****************************** Responsive ******************************/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .overlay{
+        position: absolute;
+        top: 7vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 230vw;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .overlay{
+        position: absolute;
+        top: 6vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 230vw;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .overlay{
+        position: absolute;
+        top: 5vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 130vw;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .overlay{
+        position: absolute;
+        top: 5vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 130vw;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .overlay{
+        position: absolute;
+        top: 4vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 105vw;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1500px and up) */
+@media only screen and (min-width: 1500px) {
+    .overlay{
+        position: absolute;
+        top: 3.2vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 97vw;
+    }
 }
 
 

@@ -7,7 +7,7 @@
         <span class="title">{{ $t('offers_exchange') }}</span>
     </div>
     <div class="contentStander mt-1 w-100">
-        <div class="item" v-for="item in allOffer" :key="item.id" v-if="allOffer.length > 0">
+        <div class="item" v-for="item in paginatedData" :key="item.id" v-if="paginatedData.length > 0">
             <item-offer-sec :user="user" :item="item" />
         </div>
         <div class="item" v-else>
@@ -15,6 +15,17 @@
                 {{ $t('no_data_here') }}
             </div>
         </div>
+
+        <div class="m-auto w-90" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+            <pagination 
+                v-if="allOffer.length > 0" 
+                v-model="page_index" 
+                :records="allOffer.length" 
+                :per-page="page_size" 
+                @paginate="myCallback"
+            />
+        </div>
+
     </div>
     <FooterVue />
 </template>
@@ -28,12 +39,15 @@ import FooterVue from '@/components/Footer.vue';
 import LogoSearch from "@/components/LogoSearch.vue"
 import ItemOfferSec from "@/components/ItemOfferSec.vue"
 import { useToast } from 'vue-toastification'
+import Pagination from 'v-pagination-3';
     export default {
         data() {
             return {
                 allOffer: [],
                 search:'',
                 user:'user',
+                page_index: 1,
+                page_size: 4
             }
         },
         components:{
@@ -42,6 +56,7 @@ import { useToast } from 'vue-toastification'
             LogoSearch,
             CreateAt,
             ItemOfferSec,
+            Pagination,
         },
         computed: {
             getLocales () {
@@ -52,6 +67,11 @@ import { useToast } from 'vue-toastification'
                 } else {
                 return false
                 }
+            },
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.allOffer.slice(start, end);
             }
         },
         mounted() {
@@ -64,6 +84,10 @@ import { useToast } from 'vue-toastification'
                     console.log(res)
                     this.allOffer = res.data.body
                 })
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
             },
         },
     }

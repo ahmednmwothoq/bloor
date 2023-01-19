@@ -8,22 +8,26 @@
         <div class="chats">
             <div class="chat">
                 <dis class="date">
-                    Chats
+                    {{ $t('chats') }}
                 </dis>
                 <dis class="chats_persons">
                     <div
                         v-for="chatHeader in chats" :key="chatHeader.id"
-                        :onclick="'openChat(event, `chats-'+ chatHeader.id +'`)'" class="chat_header online"
+                        :onclick="'openChat(event, `chats-'+ chatHeader.id +'`)'" class="chat_header"
                         @click="showChat(chatHeader.id)"
                     >
-                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
+                        <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
                         <div class="person_info">
                             <span class="name">{{chatHeader.providername}}</span>
                             <span class="message">{{chatHeader.request_message}}</span>
                         </div>
-                        <span class="time">09:08</span>
+                        <span class="time">
+                            <span class="date">{{ CreateAtDate(chatHeader.created_at) }}</span>
+                            <span>{{ CreateAtTime(chatHeader.created_at) }}</span>
+                            
+                        </span>
                     </div>
-                    <!-- <div onclick="openChat(event, 'chat2')" class="chat_header">
+                    <!-- <div onclick="openChat(event, 'chat2')" class="chat_header online">
                         <img class="image" src="/assets/images/avatar/person4.jpg" alt="">
                         <div class="person_info">
                             <span class="name">Ahmed</span>
@@ -60,15 +64,21 @@
                                     </div>
                                     <div class="person">
                                         <span class="time">{{item.sendername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                                        <span class="time">09:08</span>
+                                        <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                        <span class="time">
+                                            <span>{{ CreateAtDate(item.created_at) }}</span><br>
+                                            <span>{{ CreateAtTime(item.created_at) }}</span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="d-flex" v-else>
                                     <div class="person">
                                         <span class="time">{{item.recievername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                                        <span class="time">09:08</span>
+                                        <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                        <span class="time">
+                                            <span>{{ CreateAtDate(item.created_at) }}</span><br>
+                                            <span>{{ CreateAtTime(item.created_at) }}</span>
+                                        </span>
                                     </div>
                                     <div class="message">
                                         <p class="msg">{{item.message}}</p>
@@ -88,15 +98,21 @@
                                     </div>
                                     <div class="person">
                                         <span class="time">{{item.sendername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                                        <span class="time">09:08</span>
+                                        <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                        <span class="time">
+                                            <span>{{ CreateAtDate(item.created_at) }}</span><br>
+                                            <span>{{ CreateAtTime(item.created_at) }}</span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="d-flex" v-else>
                                     <div class="person">
                                         <span class="time">{{item.recievername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                                        <span class="time">09:08</span>
+                                        <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                        <span class="time">
+                                            <span>{{ CreateAtDate(item.created_at) }}</span><br>
+                                            <span>{{ CreateAtTime(item.created_at) }}</span>
+                                        </span>
                                     </div>
                                     <div class="message">
                                         <p class="msg">{{item.message}}</p>
@@ -133,20 +149,20 @@
                             </div>
                         </div> -->
                     </div>
-                    <form action="" class="send_form_msg">
+                    <div action="" class="send_form_msg">
                         <div class="input_form">
-                            <input class="input" type="text" v-model="msgSender" placeholder="Type your message">
-                            <span class="icons">
+                            <input class="input" v-on:keyup.enter="sendMsgToUser(chatHeader.id)" type="text" v-model="msgSender" :placeholder="$t('enter_your_message')">
+                            <!-- <span class="icons">
                                 <i class="fal fa-smile"></i>
                             </span>
                             <span class="file">
                                 <i class="far fa-paperclip"></i>
-                            </span>
+                            </span> -->
                         </div>
                         <span class="btn_submit_chat" @click="sendMsgToUser(chatHeader.id)">
                             <img class="icon" src="/assets/images/icon/sent.png" alt="sent">
                         </span>
-                    </form>
+                    </div>
                     <!-- <span onclick="openRate('supplier1')" class="rate_review">Rate and review ?</span> -->
                 </div>
             
@@ -378,7 +394,9 @@ import FooterVue from '@/components/Footer.vue';
                         // this.$store.dispatch("user/addUser", res.data.userData)
                         // console.log("user",this.$store.getters["user/getUser"])
                         this.chats = res.data.body;
-                        // this.CreateAtDate(this.profile.date_of_birth)
+
+                        // console.log(this.CreateAtDate(this.chats[0].created_at))
+                        // console.log(this.CreateAtTime(this.chats[0].created_at))
                     }
                 })
             },
@@ -415,7 +433,39 @@ import FooterVue from '@/components/Footer.vue';
                         this.msgSender = ''
                     }
                 })
-            }
+            },
+            CreateAtDate(create_at){
+                const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                const date = create_at.split('.')[0].split('T')[0]
+
+                const today = new Date()
+                const d = new Date(`${date}`);
+                const month = months[d.getMonth()];
+                const last = `${d.getDate()}, ${month}, ${d.getFullYear()}`
+                if (today.getDate() === d.getDate()) {
+                    return (this.$i18n.locale === 'en' ? 'Today' : 'اليوم')
+                }else{
+                    return last
+                }
+                
+            },
+            CreateAtTime(create_at){
+
+                const time = create_at.split('.')[0].split('T')[1]
+
+                const timeHour = time.slice(0, 2);
+                const timeMin = time.slice(3, 5);
+                const timeMinSec = time.slice(2);
+                // console.log(timeHour, timeMinSec,"...",timeMin)
+                // const last = "";
+                if(timeHour > 12){
+                const last = `${timeHour - 12}:${timeMin} PM`
+                return last
+                }else{
+                const last = `${timeHour}:${timeMin} AM`
+                return last
+                }
+            },
             
         }
     }

@@ -2,10 +2,26 @@
     <div class="item__experience">
         <div class="experience__up">
             <div class="contan">
-                <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
+                <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
                 <div class="up__info">
                     <span class="name">{{ item.user.f_name }} {{ item.user.l_name }}</span>
-                    <span class="follow">{{ $t('follow') }}</span>
+                    <!-- <span class="follow">{{ $t('follow') }}</span> -->
+                    <div v-if="userLogin != null">
+                        <span
+                            v-if="userLogin.id != item.user_id"
+                            class="follow"
+                            @click="makeUserFollowUser(item.user_id)"
+                            >{{ $t('follow') }}
+                        </span>
+                    </div>
+                    <div v-else-if="supplierLogin != null">
+                        <span
+                            v-if="supplierLogin.id != item.user_id"
+                            class="follow"
+                            @click="makeUserFollowUser(item.user_id)"
+                            >{{ $t('follow') }}
+                        </span>
+                    </div>
                 </div>
                 <div class="up__rate">
                         <i
@@ -44,7 +60,7 @@
                     <i class="fas fa-comment-alt icon"></i>
                     <span>{{item.comments.length}}</span>
                 </div>
-                <div class="icons">
+                <div class="icons" @click="makeUserLikeExperiment(item.id)">
                     <i class="fas fa-heart icon"></i>
                     <span>{{item.countLikes}}</span>
                 </div>
@@ -56,16 +72,22 @@
 </template>
 
 <script>
+import Api from "@/api"
 import CreateAt from "@/components/CreateAt.vue"
+import cookie from "vue-cookie";
+import { useToast } from 'vue-toastification'
     export default {
         data() {
             return {
                 halfBody: '',
+                userLogin: JSON.parse(cookie.get('userData')) ,
+                supplierLogin: JSON.parse(cookie.get('SupplierData')) ,
             }
         },
         components:{
             CreateAt,
         },
+        emits: ["reload" , "reloadTwo"],
         props:{
             item:{
                 type:Object,
@@ -79,6 +101,46 @@ import CreateAt from "@/components/CreateAt.vue"
                 this.halfBody = this.item.body
             }
         },
+        methods:{
+            async makeUserLikeExperiment(id){
+                // console.log(id)
+                await Api.user.userLikeExperiment(id).then((res)=>{
+                    if(res.data.status){
+                        // console.log(this.userLogin)
+                        // console.log(this.supplierLogin != null ? 'not null' : 'null')
+                        // this.$router.go()
+                        this.$emit('reload', true)
+                        this.$emit('reloadTwo', true)
+                    }
+                });
+            },
+
+            async makeUserFollowUser(id){
+                // console.log(id)
+                const toast = useToast()
+                await Api.user.userFollowAnotherUser(id).then((res)=>{
+                    console.log(res.data)
+                    if(res.data.status){
+                        // this.$router.go()
+                        
+                        toast.success(`${res.data.msg}`,{
+                            position: "top-right",
+                            timeout: 3048,
+                            closeOnClick: true,
+                            pauseOnFocusLoss: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            draggablePercent: 0.6,
+                            showCloseButtonOnHover: false,
+                            hideProgressBar: true,
+                            closeButton: "button",
+                            icon: true,
+                            rtl: false
+                        })
+                    }
+                });
+            } 
+        }
     }
 </script>
 

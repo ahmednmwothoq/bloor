@@ -1,8 +1,10 @@
 <template>
     <!-- <link rel="stylesheet" href="/assets/css/user/style.css"> -->
     <Header />
+    
     <!-- <ErrorList /> -->
 
+    <div class="overlay_delete" v-if="showOverlay" @click="showRequestOffer"></div>
     <div class="overlay"></div>
     <div class="downlist__home">
         <span class="close">X</span>
@@ -34,11 +36,13 @@
 
     <main class="_Home_content">
         <div class="content__home mr-2">
+            
             <div class="home__nav">
-                <img src="/assets/images/logo/logo_user.png" alt="" class="nav__img">
+                <!-- <img src="/assets/images/logo/logo_user.png" alt="" class="nav__img">
                 <button class="nav__btn" id="open_home_list">
                     <i class="fa fa-question" aria-hidden="true"></i>
-                </button>
+                </button> -->
+                <logo-search/>
             </div>
             <h1 class="home__title">{{ $t('title_home') }}</h1>
             <div class="home_f_triangle"></div>
@@ -46,180 +50,67 @@
             <div class="home_t_triangle"></div>
         </div>
         
-        <!-- <div class="content__cards">
-            <h2 class="cards__title">Explore Best Car Rating</h2>
+        <div class="content__cards">
+            <h2 class="cards__title">{{ $t('explore_best_prod_rate') }}</h2>
             <div class="__cards">
-                <div  class="__card" onclick="goToURL('pages/user/search_reviews.html')">
-                    <img src="/assets/images/icon/ferrari.png" alt="" class="card__logo">
+                <div class="__card" v-for="item_c in allProducts" :key="item_c.id" @click="this.$router.push({ name: 'showReview', params: { id: item_c.id }})">
+                    <img :src="item_c.media[0].original_url" alt="" class="card__logo">
                     <div class="card__name">
-                        <span class="name__car">Ferrari</span>
-                        <span class="name__num">7,5K units</span>
+                        <span class="name__car" v-if="item_c.product_ar.length > 40 || item_c.product_en.length > 40">{{ getLocales ? item_c.product_ar.slice(0,40) + '...' : item_c.product_en.slice(0,40) + '...'  }}</span>
+                        <span class="name__car" v-else >{{ getLocales ? item_c.product_ar : item_c.product_en  }}</span>
+                        <!-- <span class="name__num">7,5K units</span> -->
                     </div>
                     <div class="card__rate">
                         <i class="icon fa fa-star yellow" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-                <div class="__card">
-                    <img src="/assets/images/icon/mercedes.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">Mercedes</span>
-                        <span class="name__num">6,9K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="fa fa-star yellow" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-                <div class="__card">
-                    <img src="/assets/images/icon/peugeot.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">Peugeot</span>
-                        <span class="name__num ">5,4K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="far fa-star white" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-
-                <div class="__card">
-                    <img src="/assets/images/icon/porsche.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">Porsche</span>
-                        <span class="name__num">5,9K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="fa fa-star blue" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-
-                <div class="__card">
-                    <img src="/assets/images/icon/volkswagen.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">Volkswagen</span>
-                        <span class="name__num">15,9K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="fa fa-star blue" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-                <div class="__card">
-                    <img src="/assets/images/icon/toyota.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">Toyota</span>
-                        <span class="name__num">7K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="fa fa-star yellow" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-                <div class="__card">
-                    <img src="/assets/images/icon/bmw.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">BMW</span>
-                        <span class="name__num ">7K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="far fa-star white" aria-hidden="true"></i>
-                        <span>4.7</span>
-                    </div>
-                </div>
-
-                <div class="__card">
-                    <img src="/assets/images/icon/hyundai.png" alt="" class="card__logo">
-                    <div class="card__name">
-                        <span class="name__car">Hyundai</span>
-                        <span class="name__num">15,3K units</span>
-                    </div>
-                    <div class="card__rate">
-                        <i class="fa fa-star blue" aria-hidden="true"></i>
-                        <span>4.7</span>
+                        <span>{{ item_c.averagerate.toFixed(1) }}</span>
                     </div>
                 </div>
             </div>
             
             <img class="shape_path" src="/assets/images/gallary/Path.png" alt="">
-        </div> -->
+        </div>
 
-        <!-- <div class="content__reviews">
-            <h2 class="reviews__title"><a style="text-decoration: none;color: #707070;">Recent Reviews</a></h2>
+        <div class="content__reviews">
+            <h2 class="reviews__title"><a style="text-decoration: none;color: #707070;">{{ $t('recent_reviews') }}</a></h2>
             <div class="reviews__slider">
-                <div class="owl-carousel owl-theme">
-                    <div class="item item__slider" v-for="item in 4" :key="item.id" >
-                        <item-product-person />
-                    </div>
-                    
-                    
-                </div>
+                <carousel :items-to-show="2" :breakpoints="breakpointsReview" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
+                    <slide v-for="item in allReviews" :key="item.id" >
+                        <item-product-person :item="item" :allProducts="allProducts" />
+                    </slide>
+
+                    <template #addons>
+                    <!-- <navigation /> -->
+                    <pagination />
+                    </template>
+                </carousel>
             </div>
-        </div> -->
+        </div>
 
 
-        <div class="content__offers" v-if="allProductsAllow">
+        <!-- <div class="content__offers" v-if="allProductsAllow">
             <div class="offers_nav">
                 <h2 class="offers__title">
-                    <a style="text-decoration: none;color: #707070;" href="pages/user/offers.html">{{ $t('product_to_review') }}</a>
+                    <a style="text-decoration: none;color: #707070;" >{{ $t('product_to_review') }}</a>
                 </h2>
                 <img @click="this.$router.push('/search/products')" src="/assets/images/icon/search.png" alt="" class="icon__search">
             </div>
             <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
-                <slide v-for="item in allProducts" :key="item.id">
-                    <item-product-supplier :item="item" :user="user"/>
-
-                    <!-- <div v-if="showOverlayRew" @click="showReviewToProduct('theDivAddReview-'+ item.id)" class="overlay"></div>
-                    <div :id="'theDivAddReview-'+ item.id" class="add_product" style="display: none;">
-                        <h2 class="title_add">Add Review</h2>
-                        <div class="form">
-                            <form class="">
-                                <div class="row">
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
-                                        <QuillEditor theme="snow" toolbar="full" v-model:content="item.questionnaire_ar" contentType="html"  />
-                                    </div>
-                                </div>
-                                <div class="raw">
-                                    <div class="upload-images mb-4">
-                                        <div class="imgs-uploaded" v-if="image_file_review">
-                                        <ul class="list-style">
-                                            <li class="list">
-                                                <img :src="image_file_review" alt="avatar" v-if="image_file_review"/>
-                                            </li>
-                                        </ul>
-                                        </div>
-                                        <label for="upload-label-edit" :class="{'absolute_label mt-5': image_file_review}">
-                                            <div>
-                                                Upload Image
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="fill: #A0AEC0;"><path d="M20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.996.996 0 0 0-.707.293L6.586 5H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-8 12c-2.71 0-5-2.29-5-5 0-2.711 2.29-5 5-5s5 2.289 5 5c0 2.71-2.29 5-5 5z"></path><path d="M13 9h-2v2H9v2h2v2h2v-2h2v-2h-2z"></path></svg>
-                                            </div>
-                                            <input type="file" accept="image/*" @change="uploadImageItemReview" id="upload-label-edit">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="raw">
-                                    <button @click.prevent="editProductForm(item.id)" class="form__btn" type="submit">Next</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div> -->
+                <slide v-for="item in allProducts" :key="item.id" >
+                    <item-product-supplier :item="item" :user="user" />
                 </slide>
-
                 <template #addons>
-                <!-- <navigation /> -->
                 <pagination />
                 </template>
             </carousel>
             
-        </div>
+        </div> -->
 
 
 
         <div class="content__offers">
             <div class="offers_nav">
                 <h2 class="offers__title">
-                    <a style="text-decoration: none;color: #707070;" href="pages/user/offers.html">{{ $t('offers') }}</a>
+                    <a style="text-decoration: none;color: #707070;" @click="this.$router.push('/allOffer')">{{ $t('offers') }}</a>
                 </h2>
                 <img @click="this.$router.push('/search/offers')" src="/assets/images/icon/search.png" alt="" class="icon__search">
             </div>
@@ -231,7 +122,7 @@
             <!-- <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'" :autoplay="5000" :wrap-around="true" > -->
             <carousel :items-to-show="1" :transition="500" v-bind:style="'text-align: unset;'"  :wrap-around="true" >
                 <slide v-for="items in allOffer" :key="items.id" >
-                    <item-offer :user="user" :item="items" />
+                    <item-offer :user="user" :item="items" @requestOffer="requestOffer" />
                 </slide>
 
                 <template #addons>
@@ -242,22 +133,33 @@
             
         </div>
 
-        <!-- <div class="content__suppliers">
+        <div class="content__suppliers">
             <div class="suppliers_nav">
                 <h2 class="suppliers__title">Suppliers</h2>
-                <img  class="icon__search" src="/assets/images/icon/search.png" alt="">
+                <!-- <img  class="icon__search" src="/assets/images/icon/search.png" alt=""> -->
             </div>
-            <div class="owl-carousel owl-theme">
+            <!-- <div class="owl-carousel owl-theme">
                 <div class="item item__supplier" v-for="item in 1" :key="item.id">
                     <item-supplier />
                 </div>
                 
-            </div>
-        </div> -->
+            </div> -->
+            <carousel :items-to-show="3" v-bind:style="'text-align: unset;'" :wrap-around="true">
+                <slide v-for="item in allSuppliers" :key="item.id" >
+                    <item-supplier :item="item" />
+                    <!-- <item-supplier :item="item" /> -->
+                </slide>
+
+                <template #addons>
+                <!-- <navigation /> -->
+                <pagination />
+                </template>
+            </carousel>
+        </div>
 
         <div class="content__experiences _home_section">
             <div class="section_nav">
-                <h2 class="section__title">{{ $t('experience_of_your') }}</h2>
+                <h2 class="section__title" @click="this.$router.push('/allExperiment')">{{ $t('experience_of_your') }}</h2>
                 <img @click="this.$router.push('/search/experiences')"  class="icon__search" src="/assets/images/icon/search.png" alt="">
             </div>
             <!-- <div class="owl-carousel owl-theme"> -->
@@ -276,17 +178,57 @@
                     </div>
                 </div>   -->
             <!-- </div> -->
-            <carousel :autoplay="5000" :transition="500" :items-to-show="1" v-bind:style="'text-align: unset;'" :wrap-around="true">
-                <slide v-for="item in allExperiences" :key="item.id" >
-                    <item-experience :item="item"  />
-                </slide>
+            <!-- <carousel :autoplay="5000" :transition="500" :items-to-show="1" v-bind:style="'text-align: unset;'" :wrap-around="true"> -->
+            <div v-if="allFollowExperiments.length > 0">
+                <carousel :items-to-show="1" v-bind:style="'text-align: unset;'" :wrap-around="true">
+                    <slide v-for="item in allFollowExperiments" :key="item.id" >
+                        <item-experience :item="item" @reloadTwo="reloadTwo"  />
+                    </slide>
 
-                <template #addons>
-                <!-- <navigation /> -->
-                <pagination />
-                </template>
-            </carousel>
+                    <template #addons>
+                    <!-- <navigation /> -->
+                    <pagination />
+                    </template>
+                </carousel>
+            </div>
+            <div v-else>
+                <carousel :items-to-show="1" v-bind:style="'text-align: unset;'" :wrap-around="true">
+                    <slide v-for="item in allExperiences" :key="item.id" >
+                        <item-experience :item="item" @reload="reload"  />
+                    </slide>
+
+                    <template #addons>
+                    <!-- <navigation /> -->
+                    <pagination />
+                    </template>
+                </carousel>
+            </div>
+
         </div>
+
+           
+        <!-- Modal-->
+        <transition @enter="startTransitionModal" @after-enter="endTransitionModal" @before-leave="endTransitionModal" @after-leave="startTransitionModal">
+            <div class="modal fade" v-if="showModal" ref="modal">
+            <div class="modal-dialog" role="document" style="margin: 20vw auto;">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ $t('enter_your_message') }}</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" v-model="requestMess" class="form-control" placeholder=".....">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @click="showRequestOffer">{{ $t('cancel') }}</button>
+                    <button class="btn btn-primary" @click="requstOfferUser(this.idRequestOffer)">{{ $t('request') }}</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </transition>
+        <div class="modal-backdrop fade d-none" ref="backdrop"></div>
+
+        
     </main>
 
     <Footer />
@@ -295,6 +237,7 @@
 <script>
     import Api from "@/api"
     import { mapActions } from 'vuex'
+    import cookie from "vue-cookie";
     // components
     import ItemProductSupplier from "@/components/ItemProductSupplier.vue"
     import Header from "@/components/Header.vue"
@@ -303,6 +246,7 @@
     import ItemOffer from "@/components/ItemOffer.vue"
     import ItemSupplier from "@/components/ItemSupplier.vue"
     import ItemExperience from "@/components/ItemExperience.vue"
+    import LogoSearch from "@/components/LogoSearch.vue"
     import 'vue3-carousel/dist/carousel.css';
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
     // import ErrorList from "../components/ErrorList.vue"
@@ -313,8 +257,46 @@
                 allOffer: [],
                 allExperiences: [],
                 allProducts: [],
+                allSuppliers: [],
+                allFollowExperiments: [],
+                allFollowProducts: [],
+                allReviews: [],
                 allProductsAllow: true,
                 user: 'user',
+                idRequestOffer: '',
+                requestMess: '',
+                showModal: false,
+                showOverlay: false,
+                divOverlay: false,
+                divSearch: false,
+                breakpointsReview: {
+                    // 700px and up
+                    500: {
+                        itemsToShow: 2,
+                        
+                    },
+
+                    700: {
+                        itemsToShow: 2.5,
+                        
+                    },
+
+                    900: {
+                        itemsToShow: 3,
+                        
+                    },
+
+                    // 1024 and up
+                    1100: {
+                        itemsToShow: 4,
+                        
+                    },
+
+                    1200: {
+                        itemsToShow: 5,
+                        
+                    },
+                },
             }
         },
         components: {
@@ -329,6 +311,7 @@
             Slide,
             Pagination,
             Navigation,
+            LogoSearch,
             // ErrorList
         },
         setup() {
@@ -358,6 +341,9 @@
             this.getAllOffer()
             this.getAllExperience()
             this.getAllProducts()
+            this.getAllsSuppliers()
+            this.getAllFollowsDataContent()
+            this.getAllsReviews()
             // console.log(this.responsesOffer)
         },
         computed: {
@@ -378,10 +364,44 @@
         },
         methods:{
             ...mapActions(['redirectTo']),
+            reload(even){
+                if(even){
+                    this.getAllExperience()
+                }
+            },
+            reloadTwo(even){
+                if(even){
+                    this.getAllFollowsDataContent()
+                }
+            },
+            
+            // startTransitionModal() {
+            //     this.$refs.backdrop.classList.toggle("d-block");
+            //     this.$refs.modal.classList.toggle("d-block");
+            // },
+            // endTransitionModal() {
+            //     this.$refs.backdrop.classList.toggle("show");
+            //     this.$refs.modal.classList.toggle("show");
+            // },
+            startTransitionModal() {   
+                this.$refs.backdrop.classList.toggle("d-block");   
+                if (this.$refs.modal) 
+                this.$refs.modal.classList.toggle("d-block"); 
+            }, 
+            endTransitionModal() {   
+                this.$refs.backdrop.classList.toggle("show");   
+                if (this.$refs.modal) 
+                this.$refs.modal.classList.toggle("show"); 
+            },
+            showRequestOffer() {
+                this.showOverlay = !this.showOverlay
+                this.showModal = !this.showModal
+                this.requestMess = ''
+            },
             async getAllOffer(){
                 await Api.general.getAllOffers().then((res)=>{
                     if(res.data.status){
-                        // console.log(res)
+                        console.log("getAllOffer",res)
                         this.allOffer = res.data.body
                     }
                     
@@ -390,7 +410,7 @@
             async getAllExperience(){
                 await Api.general.getAllExperiments().then((res)=>{
                     if(res.data.status){
-                        // console.log(res)
+                        console.log("getAllExperience",res)
                         this.allExperiences = res.data.body
                     }
                 })
@@ -398,17 +418,72 @@
             async getAllProducts(){
                 await Api.general.getAllProductstoReviews().then((res)=>{
                     if(res.data.status){
-                        // console.log(res)
+                        console.log("getAllProducts",res)
                         this.allProducts = res.data.body
                     }else{
                         this.allProductsAllow = false
                     }
                 })
             },
+            async getAllsSuppliers(){
+                await Api.general.getAllSuppliers().then((res)=>{
+                    // console.log("Suppliers",res)
+                    if(res.data.status){
+                        // console.log("Suppliers",res)
+                        this.allSuppliers = res.data.body
+                    }
+                })
+            },
+            async getAllFollowsDataContent(){
+                if(cookie.get('token').length  > 0 && JSON.parse(cookie.get('logged_In'))){
+                    await Api.general.getAllFollowsData().then((res)=>{
+                    // console.log("Suppliers",res)
+                    if(res.data.status){
+                        console.log("getAllFollowsData",res)
+                        // this.alFollowsData = res.data.body
+                        this.allFollowExperiments = res.data.body.Allexperiments
+                        this.allFollowProducts = res.data.body.allProductsReviews
+                    }
+                })
+                }
+            },
+            async getAllsReviews(){
+                await Api.general.getShowAllReviewsAll().then((res)=>{
+                    // console.log("Suppliers",res)
+                    if(res.data.status){
+                        console.log("getAllsReviews",res)
+                        this.allReviews = res.data.body
+                    }
+                })
+            },
+            requestOffer(event){
+                this.idRequestOffer = event
+                this.showRequestOffer()
+                console.log(event)
+            },
+            async requstOfferUser(item){
+                const data = new FormData();
+                data.append('request_message',this.requestMess);
+                await Api.user.userRequstOfferDemand(item,data).then((res)=>{
+                    this.$router.go()
+                })
+            }
         }
     }
 </script>
 
 <style  scoped>
+.overlay_delete{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000000 0% 0% no-repeat padding-box;
+    opacity: 0.5;
+    z-index: 5;
+    height: 200vw;
+}
+
 
 </style>

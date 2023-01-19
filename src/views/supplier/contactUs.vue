@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -13,7 +16,7 @@
            </div>
            <div class="all__down">
             <div class="section">
-                <main class="_contact_us_content flex-column mb-5"> 
+                <main class="_contact_us_content mb-5"> 
                     <div class="left_contact_us_content">
                         <h1 class="left__title">{{ $t('get_in_touch') }} !</h1>
                         <p class="left__text">{{ $t('get_in_touch_con') }}</p>
@@ -79,6 +82,8 @@
                     </div>
                 </main>
             </div>
+           
+
            </div>
         </div>
     </div>
@@ -91,6 +96,7 @@
     import ListSupplier from "@/components/supplier/ListSupplier.vue"
     import HeaderImage from "@/components/supplier/HeaderImage.vue"
     import HeaderIcons from "@/components/supplier/HeaderIcons.vue"
+    // import ContactUs from "@/views/user/contactUs.vue"
     // import aboutUsVue from '../user/aboutUs.vue';
     export default {
         components: {
@@ -98,12 +104,13 @@
             ListSupplier,
             HeaderImage,
             HeaderIcons,
+            // ContactUs,
             // aboutUsVue,
             // ErrorList
         },
         data() {
             return {
-                
+                isActive: false,
                 sideList: [
                     {
                         id:1,
@@ -216,11 +223,12 @@
     margin: 0 auto;
 }
 .all .all__down {
-  width: 95%!important;
-  margin: 0 auto;
+    width: auto;
+    margin: 0;
 }
 .section{
-    width: 75vw;
-    margin-top: 50px;
+    /* width: 75vw; */
+    margin-top: 50px!important;
+    /* margin: 0 auto; */
 }
 </style>

@@ -23,7 +23,7 @@
             </form>
         </div>
 
-        <div class="item" v-for="item in filteredList" :key="item.id" v-if="filteredList.length > 0">
+        <div class="item" v-for="item in paginatedData" :key="item.id" v-if="paginatedData.length > 0">
             <!-- <item-review-product :item="item" /> -->
             <item-product-supplier :item="item" :user="user" />
         </div>
@@ -31,6 +31,17 @@
             <div class="alert alert-primary text-center mb-5" role="alert">
                 {{ $t('no_data_here') }}
             </div>
+        </div>
+
+
+        <div class="m-auto w-90" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+            <pagination 
+                v-if="products.length > 0" 
+                v-model="page_index" 
+                :records="products.length" 
+                :per-page="page_size" 
+                @paginate="myCallback"
+            />
         </div>
 
 
@@ -52,12 +63,15 @@ import FooterVue from '@/components/Footer.vue';
 import OnlyLogo from "@/components/OnlyLogo.vue"
 import ItemProductSupplier from "@/components/ItemProductSupplier.vue"
 import { useToast } from 'vue-toastification'
+import Pagination from 'v-pagination-3';
     export default {
         data() {
             return {
                 products: [],
                 search:'',
                 user:'user',
+                page_index: 1,
+                page_size: 4
             }
         },
         components:{
@@ -66,6 +80,7 @@ import { useToast } from 'vue-toastification'
             OnlyLogo,
             CreateAt,
             ItemProductSupplier,
+            Pagination,
         },
         computed: {
             filteredList() {
@@ -88,6 +103,11 @@ import { useToast } from 'vue-toastification'
                 } else {
                 return false
                 }
+            },
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.filteredList.slice(start, end);
             }
         },
         mounted() {
@@ -101,7 +121,11 @@ import { useToast } from 'vue-toastification'
                     console.log(res.data)
                     this.products = res.data.body
                 })
-            }
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
+            },
         },
     }
 </script>

@@ -7,25 +7,25 @@
         <div class="person__details">
             <div class="form mt-5" v-if="profile">
                 <div class="form__field input_sm">
-                    <label class="label">First Name</label>
+                    <label class="label">{{ $t('first_name') }}</label>
                     <input class="input" type="text" v-model="profile.f_name" placeholder="First Name" disabled>
                 </div><div class="offset_input"></div>
                 <div class="form__field input_sm">
-                    <label class="label">Last Name</label>
+                    <label class="label">{{ $t('last_name') }}</label>
                     <input class="input" type="text" v-model="profile.l_name" placeholder="Last Name"  disabled>
                 </div>
 
                 <div class="form__field input_sm">
-                    <label class="label">Phone</label>
+                    <label class="label">{{ $t('phone') }}</label>
                     <input class="input" type="number" v-model="profile.phone" placeholder="Phone"  disabled>
                 </div><div class="offset_input"></div>
                 <div class="form__field input_sm">
-                    <label class="label">E-mail</label>
+                    <label class="label">{{ $t('e_mail') }}</label>
                     <input class="input" type="text" v-model="profile.email" placeholder="E-mail"  disabled>
                 </div>
 
                 <div class="form__field">
-                    <label class="label">User Name</label>
+                    <label class="label">{{ $t('user_name') }}</label>
                     <input class="input" type="text" v-model="profile.username" placeholder="User Name"  disabled>
                 </div>
 
@@ -41,17 +41,19 @@
                 </div> -->
 
                 <div class="form__field input_sm">
-                    <label class="label">Gender</label>
+                    <label class="label">{{ $t('gender') }}</label>
                     <input class="input" type="text" v-model="profile.gender" placeholder="Gender" disabled>
                 </div><div class="offset_input"></div>
                 <div class="form__field input_sm">
-                    <label class="label">Marital status</label>
+                    <label class="label">{{ $t('matrial_status') }}</label>
                     <input class="input" type="text" v-model="profile.matrial_status" placeholder="Marital status" disabled>
                 </div>
                 
-                <div class="form__field mb-5">
-                    <span class="optional">(Optional)</span>
-                    <label class="label">Date Of Birth</label>
+                <div class="form__field mb-5"> 
+                    <div>
+                        <label class="label">{{ $t('date_of_birth') }}</label>
+                        <span class="optional">( {{ $t('optional') }} )</span>
+                    </div>
                     <input class="input" type="text" v-model="dateB" placeholder="Date Of Birth"  disabled>
                 </div>
 

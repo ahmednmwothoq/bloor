@@ -4,26 +4,26 @@
 
         <main class="__content">
             <img class="content__img" src="/assets/images/icon/forgot_passowd.png" alt="">
-            <h2 class="content__title">Forget Password</h2>
-            <p class="content__text">Please Enter email.</p>
+            <h2 class="content__title">{{ $t('forgot_password') }}</h2>
+            <p class="content__text">{{ $t('email_place') }}</p>
             <form @click.prevent action="" class="content__form">
                 <div class="form__feild">
-                    <label class="form__label" id="email_label" for="email">The Email</label>
+                    <label class="form__label" id="email_label" for="email">{{ $t('e_mail') }}</label>
                     <input placeholder="Enter The Email...." v-model="email" type="email" class="form__input" disabled />
                     <span class="feedback_error" v-if="v$.email.$error">{{ v$.email.$errors[0].$message }}</span>
                 </div>
                 <div class="form__feild">
-                    <label class="form__label" id="password_label" for="email">Password</label>
-                    <input placeholder="Enter Password...." v-model="password" type="password" class="form__input"  />
+                    <label class="form__label" id="password_label" >{{ $t('password_item') }}</label>
+                    <input :placeholder="$t('password_place')" v-model="password" type="password" class="form__input"  />
                     <span class="feedback_error" v-if="v$.password.$error">{{ v$.password.$errors[0].$message }}</span>
                 </div>
                 <div class="form__feild">
-                    <label class="form__label" id="email_label" for="email">Password Confirmation</label>
-                    <input placeholder="Enter Password Confirmation...." v-model="password_confirmation" type="password" class="form__input" />
+                    <label class="form__label" id="email_label" >{{ $t('password_confirmation') }}</label>
+                    <input :placeholder="$t('password_confirmation_place')" v-model="password_confirmation" type="password" class="form__input" />
                     <span class="feedback_error" v-if="v$.password_confirmation.$error">{{ v$.password_confirmation.$errors[0].$message }}</span>
                 </div>
                 <div class="">
-                    <button @click="resetPassForm()" class="form__btn" type="submit">Next</button>
+                    <button @click="resetPassForm()" class="form__btn" type="submit">{{ $t('next') }}</button>
                 </div>
             </form>
         </main>

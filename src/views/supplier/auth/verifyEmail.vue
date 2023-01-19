@@ -4,16 +4,16 @@
 
         <main class="__content">
             <img class="content__img" src="/assets/images/icon/forgot_passowd.png" alt="">
-            <h2 class="content__title">Verify Email Now</h2>
-            <p class="content__text">Please Enter The Activation Code that has been send to your email.</p>
+            <h2 class="content__title">{{ $t('verify_email_title') }}</h2>
+            <p class="content__text">{{ $t('verify_reset_subtitle') }}</p>
             <form @click.prevent action="" class="content__form">
                 <div class="form__feild">
-                    <label class="form__label" id="email_label" for="email">The verification code</label>
-                    <input placeholder="Enter The Code...." v-model="code" type="text" class="form__input" />
+                    <label class="form__label" id="email_label" for="email">{{ $t('verify_code') }}</label>
+                    <input :placeholder="$t('code_place')" v-model="code" type="text" class="form__input" />
                     <span class="feedback_error" v-if="v$.code.$error">{{ v$.code.$errors[0].$message }}</span>
                 </div>
                 <div class="">
-                    <button @click="verfiyEmailForm()" class="form__btn" type="submit">Next</button>
+                    <button @click="verfiyEmailForm()" class="form__btn" type="submit">{{ $t('next') }}</button>
                 </div>
             </form>
         </main>

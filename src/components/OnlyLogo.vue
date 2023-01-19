@@ -1,6 +1,6 @@
 <template>
     <div class="logo__content">
-        <img class="logo" src="/assets/images/logo/logo_user.png" alt="">
+        <img @click="this.$router.push('/')" class="logo" src="/assets/images/logo/logo_user.png" alt="">
         <!-- <img  class="icon__search" src="/assets/images/icon/search.png" alt=""> -->
     </div>
 </template>
@@ -24,6 +24,7 @@
 }
 .logo__content .logo{
     width: 3.64583vw;
+    cursor: pointer;
 }
 .logo__content .icon__search{
     width: 2.08vw;

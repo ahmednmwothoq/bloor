@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -14,250 +17,250 @@
            <div class="all__down">
                 <!-- <div class="section"></div> -->
                 <main class="profile_chat_content">
-        <div class="chats">
-            <div class="chat">
-                <dis class="date">
-                    Chats
-                </dis>
-                <dis class="chats_persons">
-                    <div
-                        v-for="chatHeader in chats" :key="chatHeader.id"
-                        :onclick="'openChat(event, `chats-'+ chatHeader.id +'`)'" class="chat_header online"
-                        @click="showChat(chatHeader.id)"
-                    >
-                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                        <div class="person_info">
-                            <span class="name">{{chatHeader.username}}</span>
-                            <span class="message">{{chatHeader.request_message}}</span>
-                        </div>
-                        <span class="time">09:08</span>
-                    </div>
-
-                </dis>
-            </div>
-        </div>
-        <div class="chat_details">
-            <div v-for="chatHeader in chats" :key="chatHeader.id">
-                <div :id="'chats-' + chatHeader.id" class="chat_person">
-                    <div class="messages">
-                        <div v-if="events.length == 0">
-                            <div
-                                v-for="item in chatList" :key="item.id" 
-                                :class="item.sender_id == userLogin.id ? `message_item sender` : `message_item receiver`"
+                    <div class="chats">
+                        <div class="chat">
+                            <dis class="date">
+                                Chats
+                            </dis>
+                            <dis class="chats_persons">
+                                <div
+                                    v-for="chatHeader in chats" :key="chatHeader.id"
+                                    :onclick="'openChat(event, `chats-'+ chatHeader.id +'`)'" class="chat_header online"
+                                    @click="showChat(chatHeader.id)"
                                 >
-                                <div class="d-flex" v-if="item.sender_id == userLogin.id">
+                                    <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                    <div class="person_info">
+                                        <span class="name">{{chatHeader.username}}</span>
+                                        <span class="message">{{chatHeader.request_message}}</span>
+                                    </div>
+                                    <span class="time">09:08</span>
+                                </div>
+
+                            </dis>
+                        </div>
+                    </div>
+                    <div class="chat_details">
+                        <div v-for="chatHeader in chats" :key="chatHeader.id">
+                            <div :id="'chats-' + chatHeader.id" class="chat_person">
+                                <div class="messages">
+                                    <div v-if="events.length == 0">
+                                        <div
+                                            v-for="item in chatList" :key="item.id" 
+                                            :class="item.sender_id == userLogin.id ? `message_item sender` : `message_item receiver`"
+                                            >
+                                            <div class="d-flex" v-if="item.sender_id == userLogin.id">
+                                                <div class="message">
+                                                    <p class="msg">{{item.message}}</p>
+                                                </div>
+                                                <div class="person">
+                                                    <span class="time">{{item.sendername}}</span>
+                                                    <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                                    <span class="time">09:08</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex" v-else>
+                                                <div class="person">
+                                                    <span class="time">{{item.recievername}}</span>
+                                                    <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                                    <span class="time">09:08</span>
+                                                </div>
+                                                <div class="message">
+                                                    <p class="msg">{{item.message}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-else-if="events.length > 0" v-for="item in events" :key="item.id" >
+                                        <div
+                                            :class="item.sender_id == userLogin.id ? `message_item sender` : `message_item receiver`"
+                                            v-if="item.main_chat_id === chatHeader.id"
+                                            >
+                                            <div class="d-flex" v-if="item.sender_id == userLogin.id">
+                                                <div class="message">
+                                                    <p class="msg">{{item.message}}</p>
+                                                </div>
+                                                <div class="person">
+                                                    <span class="time">{{item.sendername}}</span>
+                                                    <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                                    <span class="time">09:08</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex" v-else>
+                                                <div class="person">
+                                                    <span class="time">{{item.recievername}}</span>
+                                                    <img class="image" src="/assets/images/avatar/avatar-image.png" alt="">
+                                                    <span class="time">09:08</span>
+                                                </div>
+                                                <div class="message">
+                                                    <p class="msg">{{item.message}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="" class="send_form_msg">
+                                    <div class="input_form">
+                                        <input class="input" type="text" v-model="msgSender" placeholder="Type your message">
+                                        <span class="icons">
+                                            <i class="fal fa-smile"></i>
+                                        </span>
+                                        <span class="file">
+                                            <i class="far fa-paperclip"></i>
+                                        </span>
+                                    </div>
+                                    <span class="btn_submit_chat"  @click="sendMsgToUser(chatHeader.id)">
+                                        <img class="icon" src="/assets/images/icon/sent.png" alt="sent">
+                                    </span>
+                                </form>
+                                <!-- <span onclick="openRate('supplier1')" class="rate_review">Rate and review ?</span> -->
+                            </div>
+                        
+                            <div id="supplier1" class="rate_a_review">
+                                <span class="close">X</span>
+                                <h1 class="title">Rate and review</h1>
+                                <form action="" class="the_form">
+                                    <span class="label_form">How Would You Rate This Supplier*</span>
+                                    <div class="rating">
+                                        <label>
+                                        <input type="radio" name="stars" value="1" />
+                                        <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                        <input type="radio" name="stars" value="2" />
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                        <input type="radio" name="stars" value="3" />
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>   
+                                        </label>
+                                        <label>
+                                        <input type="radio" name="stars" value="4" />
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                        <input type="radio" name="stars" value="5" />
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        </label>
+                                    </div>
+                                    <span class="label_form">Leave A Comment</span>
+                                    <textarea class="comment" name="" id="" cols="30" rows="10"></textarea>
+                                    <span class="send_review">Done</span>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- <div id="chat2" class="chat_person">
+                            <div class="messages">
+                                <div class="message_item receiver">
+                                    <div class="person">
+                                        <img class="image" src="/assets/images/avatar/person4.jpg" alt="">
+                                        <span class="time">09:08</span>
+                                    </div>
                                     <div class="message">
-                                        <p class="msg">{{item.message}}</p>
+                                        <p class="msg">lorimmlipsumLoron random stat0uslori ?</p>
+                                        <p class="msg">lorimmlipsumLoron random stat0uslorimmli psumLoron random stalorimmlipsumLoron r andom statustus</p>
+                                    </div>
+                                </div>
+                                <div class="message_item sender">
+                                    <div class="message">
+                                        <p class="msg seen">lorimmlipsumLoron random stat0uslorimmlir andom statustus</p>
                                     </div>
                                     <div class="person">
-                                        <span class="time">{{item.sendername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
+                                        <img class="image" src="/assets/images/avatar/person1.jpg" alt="">
                                         <span class="time">09:08</span>
                                     </div>
                                 </div>
-                                <div class="d-flex" v-else>
+                                <div class="message_item receiver">
                                     <div class="person">
-                                        <span class="time">{{item.recievername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
+                                        <img class="image" src="/assets/images/avatar/person4.jpg" alt="">
                                         <span class="time">09:08</span>
                                     </div>
                                     <div class="message">
-                                        <p class="msg">{{item.message}}</p>
+                                        <p class="msg">lorimmlipsumLoron random stat0uslori ?</p>
+                                        <p class="msg">lorimmlipsumLoron random stat0uslorimmli psumLoron random stalorimmlipsumLoron r andom statustus</p>
+                                    </div>
+                                </div>
+                                <div class="message_item sender">
+                                    <div class="message">
+                                        <p class="msg">lorimmlipsumLoron random stat0uslorimmlir andom statustus</p>
+                                    </div>
+                                    <div class="person">
+                                        <img class="image" src="/assets/images/avatar/person1.jpg" alt="">
+                                        <span class="time">09:08</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div v-else-if="events.length > 0" v-for="item in events" :key="item.id" >
-                            <div
-                                :class="item.sender_id == userLogin.id ? `message_item sender` : `message_item receiver`"
-                                v-if="item.main_chat_id === chatHeader.id"
-                                >
-                                <div class="d-flex" v-if="item.sender_id == userLogin.id">
-                                    <div class="message">
-                                        <p class="msg">{{item.message}}</p>
-                                    </div>
-                                    <div class="person">
-                                        <span class="time">{{item.sendername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                                        <span class="time">09:08</span>
-                                    </div>
+                            <form action="" class="send_form_msg">
+                                <div class="input_form">
+                                    <input class="input" type="text" name="ahmed" id="" placeholder="Type your message">
+                                    <span class="icons">
+                                        <i class="fal fa-smile"></i>
+                                    </span>
+                                    <span class="file">
+                                        <i class="far fa-paperclip"></i>
+                                    </span>
                                 </div>
-                                <div class="d-flex" v-else>
-                                    <div class="person">
-                                        <span class="time">{{item.recievername}}</span>
-                                        <img class="image" src="/assets/images/avatar/user-img.jpg" alt="">
-                                        <span class="time">09:08</span>
-                                    </div>
-                                    <div class="message">
-                                        <p class="msg">{{item.message}}</p>
-                                    </div>
-                                </div>
-                            </div>
+                                <span class="btn_submit_chat" onclick="$(this).closest('form').submit();">
+                                    <img class="icon" src="/assets/images/icon/sent.png" alt="sent">
+                                </span>
+                                
+                            </form>
+                            <span onclick="openRate('supplier2')" class="rate_review">Rate and review ?</span>
                         </div>
-                    </div>
-                    <form action="" class="send_form_msg">
-                        <div class="input_form">
-                            <input class="input" type="text" v-model="msgSender" placeholder="Type your message">
-                            <span class="icons">
-                                <i class="fal fa-smile"></i>
-                            </span>
-                            <span class="file">
-                                <i class="far fa-paperclip"></i>
-                            </span>
-                        </div>
-                        <span class="btn_submit_chat"  @click="sendMsgToUser(chatHeader.id)">
-                            <img class="icon" src="/assets/images/icon/sent.png" alt="sent">
-                        </span>
-                    </form>
-                    <!-- <span onclick="openRate('supplier1')" class="rate_review">Rate and review ?</span> -->
-                </div>
-            
-                <div id="supplier1" class="rate_a_review">
-                    <span class="close">X</span>
-                    <h1 class="title">Rate and review</h1>
-                    <form action="" class="the_form">
-                        <span class="label_form">How Would You Rate This Supplier*</span>
-                        <div class="rating">
-                            <label>
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">★</span>
-                            </label>
-                            <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            </label>
-                            <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>   
-                            </label>
-                            <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            </label>
-                            <label>
-                            <input type="radio" name="stars" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            </label>
-                        </div>
-                        <span class="label_form">Leave A Comment</span>
-                        <textarea class="comment" name="" id="" cols="30" rows="10"></textarea>
-                        <span class="send_review">Done</span>
-                    </form>
-                </div>
-            </div>
-            <!-- <div id="chat2" class="chat_person">
-                <div class="messages">
-                    <div class="message_item receiver">
-                        <div class="person">
-                            <img class="image" src="/assets/images/avatar/person4.jpg" alt="">
-                            <span class="time">09:08</span>
-                        </div>
-                        <div class="message">
-                            <p class="msg">lorimmlipsumLoron random stat0uslori ?</p>
-                            <p class="msg">lorimmlipsumLoron random stat0uslorimmli psumLoron random stalorimmlipsumLoron r andom statustus</p>
-                        </div>
-                    </div>
-                    <div class="message_item sender">
-                        <div class="message">
-                            <p class="msg seen">lorimmlipsumLoron random stat0uslorimmlir andom statustus</p>
-                        </div>
-                        <div class="person">
-                            <img class="image" src="/assets/images/avatar/person1.jpg" alt="">
-                            <span class="time">09:08</span>
-                        </div>
-                    </div>
-                    <div class="message_item receiver">
-                        <div class="person">
-                            <img class="image" src="/assets/images/avatar/person4.jpg" alt="">
-                            <span class="time">09:08</span>
-                        </div>
-                        <div class="message">
-                            <p class="msg">lorimmlipsumLoron random stat0uslori ?</p>
-                            <p class="msg">lorimmlipsumLoron random stat0uslorimmli psumLoron random stalorimmlipsumLoron r andom statustus</p>
-                        </div>
-                    </div>
-                    <div class="message_item sender">
-                        <div class="message">
-                            <p class="msg">lorimmlipsumLoron random stat0uslorimmlir andom statustus</p>
-                        </div>
-                        <div class="person">
-                            <img class="image" src="/assets/images/avatar/person1.jpg" alt="">
-                            <span class="time">09:08</span>
-                        </div>
-                    </div>
-                </div>
-                <form action="" class="send_form_msg">
-                    <div class="input_form">
-                        <input class="input" type="text" name="ahmed" id="" placeholder="Type your message">
-                        <span class="icons">
-                            <i class="fal fa-smile"></i>
-                        </span>
-                        <span class="file">
-                            <i class="far fa-paperclip"></i>
-                        </span>
-                    </div>
-                    <span class="btn_submit_chat" onclick="$(this).closest('form').submit();">
-                        <img class="icon" src="/assets/images/icon/sent.png" alt="sent">
-                    </span>
-                    
-                </form>
-                <span onclick="openRate('supplier2')" class="rate_review">Rate and review ?</span>
-            </div>
 
-            <div id="supplier2" class="rate_a_review">
-                <span class="close">X</span>
-                <h1 class="title">Rate and review</h1>
-                <form action="" class="the_form">
-                    <span class="label_form">How Would You Rate This Supplier*</span>
-                    <div class="rating">
-                        <label>
-                          <input type="radio" name="stars" value="1" />
-                          <span class="icon">★</span>
-                        </label>
-                        <label>
-                          <input type="radio" name="stars" value="2" />
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                        </label>
-                        <label>
-                          <input type="radio" name="stars" value="3" />
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>   
-                        </label>
-                        <label>
-                          <input type="radio" name="stars" value="4" />
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                        </label>
-                        <label>
-                          <input type="radio" name="stars" value="5" />
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                          <span class="icon">★</span>
-                        </label>
+                        <div id="supplier2" class="rate_a_review">
+                            <span class="close">X</span>
+                            <h1 class="title">Rate and review</h1>
+                            <form action="" class="the_form">
+                                <span class="label_form">How Would You Rate This Supplier*</span>
+                                <div class="rating">
+                                    <label>
+                                    <input type="radio" name="stars" value="1" />
+                                    <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>   
+                                    </label>
+                                    <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    </label>
+                                </div>
+                                <span class="label_form">Leave A Comment</span>
+                                <textarea class="comment" name="" id="" cols="30" rows="10"></textarea>
+                                <span class="send_review">Done</span>
+                            </form>
+                        </div> -->
                     </div>
-                    <span class="label_form">Leave A Comment</span>
-                    <textarea class="comment" name="" id="" cols="30" rows="10"></textarea>
-                    <span class="send_review">Done</span>
-                </form>
-            </div> -->
-        </div>
-    </main>
+                </main>
            </div>
         </div>
     </div>
@@ -283,6 +286,7 @@
             return {
                 showDivAddProduct: false,
                 showOverlay: false,
+                isActive: false,
                 sideList: [
                     {
                         id:1,
@@ -418,9 +422,7 @@
     display: flex;
     flex-direction: column;
 }
-.content_slide .slidebar{
-    flex: 11%!important;
-}
+
 .content_slide .slidebar .list .item .item_link{
     font-size: 1.2vw;
 }

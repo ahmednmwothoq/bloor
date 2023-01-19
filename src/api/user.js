@@ -58,6 +58,24 @@ import $axios from "../store/axios-instance";
       return error
     }
   }
+  async function userUpdateSingleExperiments(id,payload) {
+    try {
+      return await $axios.post(`update/experiments/${id}`,payload).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  async function userDeleteExperiments(id) {
+    try {
+      return await $axios.delete(`delete/experiments/${id}`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
 
   async function userAddCommentToExper(id,payload) {
     try {
@@ -276,6 +294,25 @@ import $axios from "../store/axios-instance";
       return error
     }
   }
+  async function userAddAnswerInQues(id,payload) {
+    try {
+      return await $axios.post(`add-answer/${id}`,payload).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  
+  async function userGetAllReviews() {
+    try {
+      return await $axios.get(`user_Reviews`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
   
 
 
@@ -287,6 +324,8 @@ import $axios from "../store/axios-instance";
     userAddExperiments,
     userGetAllExperiments,
     userGetSingleExperiments,
+    userUpdateSingleExperiments,
+    userDeleteExperiments,
 
     userAddCommentToExper,
     userAddCommentToReview,
@@ -320,6 +359,10 @@ import $axios from "../store/axios-instance";
 
     userAddReviewAndRate,
     userShowReviewAndRate,
+
+    userAddAnswerInQues,
+
+    userGetAllReviews,
     
   };
   export default user;

@@ -1,6 +1,6 @@
 <template>
     <span>
-        {{ getLocales ? CreateAtDateAR(create) : CreateAtDateEN(create)}} &nbsp {{CreateAtTime(create)}}
+        {{ getLocales ? CreateAtDateAR(create) : CreateAtDateEN(create)}} &nbsp {{ getLocales ? CreateAtTimeAR(create) : CreateAtTimeEN(create)}}
     </span>
 </template>
 
@@ -34,7 +34,7 @@
                 const last = `${d.getDate()}, ${month}, ${d.getFullYear()}`
                 return last
             },
-            CreateAtTime(create_at){
+            CreateAtTimeEN(create_at){
 
                 const time = create_at.split(' ')[1]
 
@@ -46,6 +46,19 @@
                 return last
                 }else{
                 const last = `${timeHour}${timeMinSec} AM`
+                return last
+                }
+            },
+            CreateAtTimeAR(create_at){
+                const time = create_at.split(' ')[1]
+                const timeHour = time.slice(0, 2);
+                const timeMinSec = time.slice(2);
+                // const last = "";
+                if(timeHour > 12){
+                const last = `${timeHour - 12}${timeMinSec} مساءً`
+                return last
+                }else{
+                const last = `${timeHour}${timeMinSec} صباحا`
                 return last
                 }
             },

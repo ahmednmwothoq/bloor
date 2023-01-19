@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a style="text-decoration: none;" href="pages/user/reviews.html">
+        <a style="text-decoration: none;">
             <!-- <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="slider__img"> -->
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

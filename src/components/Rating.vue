@@ -6,7 +6,7 @@
           <i :class="star <= stars ? 'fas fa-star' : 'fas fa-star'"></i>
         </li>
       </ul>
-      <span v-if="hasCounter">{{ stars }} of {{ maxStars }}</span>
+      <span :class="color" v-if="hasCounter">{{ stars }} / {{ maxStars }}</span>
     </div>
 </template>
 
@@ -24,6 +24,10 @@
         hasCounter: {
           type: Boolean,
           default: true
+        },
+        color: {
+          type: String,
+          default: 'whiteColor'
         }
       },
       data() {
@@ -59,9 +63,11 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-size: 22px;
     color: #a7a8a8;
+    display: flex;
   }
   .rating span {
-    color: #fff;
+    margin: auto 1.5vw;
+    font-size: 1.5vw;
   }
   .list {
     margin: 0 0 5px 0;
@@ -87,4 +93,40 @@
   .active {
     color: $active-color;
   }
+
+
+  /****************************** Responsive ******************************/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .rating {
+    font-size: 28px;
+    margin: 1vw 0;
+  }
+  .rating span {
+    font-size: 15px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .rating {
+    font-size: 28px;
+    margin: 1vw 0;
+  }
+  .rating span {
+    font-size: 15px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
+
+/* Extra large devices (large laptops and desktops, 1500px and up) */
+@media only screen and (min-width: 1500px) {}
 </style>

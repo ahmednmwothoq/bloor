@@ -1,8 +1,14 @@
-.content_slide{
+.content_slide{ 
     display: flex;
     flex-wrap: wrap;
     height: auto;
+    position: relative;
 }
+
+.content_slide .toggle_side{
+    position: absolute;
+}
+
 .content_slide .slidebar{
     flex: 20%;
     background: #F2F2F2 0% 0% no-repeat padding-box;

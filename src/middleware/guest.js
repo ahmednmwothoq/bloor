@@ -1,9 +1,10 @@
 import cookie from "vue-cookie";
+import { useToast } from 'vue-toastification'
 export default function guest({next,store}){
     let isLoggedIn = JSON.parse(cookie.get('logged_In')) // Can be calculated through store
     if(isLoggedIn){
         const toast = useToast()
-    if (!token) {
+    if (!isLoggedIn) {
         if(cookie.get('lang') == 'en'){
             toast.error(`Login in first`, {
                 position: "top-right",

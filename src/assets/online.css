@@ -1,6 +1,10 @@
 
   /* content */
 
+  [dir='rtl'] ._online_content{
+    flex-direction: row-reverse;
+  }
+  
   ._online_content{
     width: 89%;
     margin: auto;

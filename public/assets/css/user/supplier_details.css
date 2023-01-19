@@ -204,14 +204,6 @@
   justify-content: space-between;
 }
 
-.page__right{
-  width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 70px;
-}
-
 .right_follow{
   padding: 0px 22px;
   background: #0043ff;
@@ -227,23 +219,33 @@
   font-size: 25px;
 }
 
-.right_details{
+.page_experience .page__right{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 70px;
+}
+
+
+
+.page_experience .page__right .right_details{
   padding: 15px;
     border: 1px solid #8f8f8f;
     margin-bottom: 30px;
 }
 
-.detail_text{
+.page_experience .page__right .right_details .detail_text{
   font-size: 20px;
 }
 
-.detail_text span{
+.page_experience .page__right .right_details .detail_text span{
   color: #4f8ed5;
 }
 
-.detail_btn{
+.page_experience .page__right .right_details .detail_btn{
   float: right;
-    color: #4f8ed5;
+  color: #4f8ed5;
 }
 
 

@@ -2,8 +2,12 @@
 
     <Header />
 
+    <div v-if="showOverlay" @click="showHide" class="overlay"></div>
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -16,16 +20,31 @@
                 <button type="button" class="btn btn-primary" @click="showAddProductRev">Add Product</button>
             </h2>
                 <div class="section">
-                    <div class="item" v-for="item in products" :key="item.id">
+                    <div class="item" v-for="item in paginatedData" :key="item.id" v-if="paginatedData.length > 0">
                         <!-- <item-review-product :item="item" /> -->
                         <item-product-supplier :item="item" :user="user" />
+                    </div>
+                    <div class="item" v-else>
+                        <div class="alert alert-primary text-center mb-5" role="alert">
+                            {{ $t('no_data_here') }}
+                        </div>
+                    </div>
+
+                    <div class="m-auto w-90" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+                        <pagination 
+                            v-if="products.length > 0" 
+                            v-model="page_index" 
+                            :records="products.length" 
+                            :per-page="page_size" 
+                            @paginate="myCallback"
+                        />
                     </div>
                 </div>
            </div>
         </div>
     </div>
 
-    <div v-if="showOverlay" @click="showHide" class="overlay"></div>
+    
     <div v-if="showDivAddProductRev" class="add_product">
         <h2 class="title_add">Add Product</h2>
         <div class="form">
@@ -49,11 +68,14 @@
                 <div class="raw">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
                         <!-- <input type="text" v-model="formPro.questionnaire_ar" placeholder="Question Ar *"  class="custome-input widthInputOffset"> -->
-                        <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_ar" contentType="html"  />
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_ar" contentType="html"  /> -->
+                        <textarea  class="custome-input" v-model="formPro.questionnaire_ar" cols="30" rows="3" placeholder="Questionnaire Ar Your Product........ *"></textarea>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
                         <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
-                        <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_en" contentType="html"  />
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_en" contentType="html"  /> -->
+                        <textarea  class="custome-input" v-model="formPro.questionnaire_en" cols="30" rows="3" placeholder="Questionnaire En Your Product........ *"></textarea>
+                        
                     </div>
                 </div>
                 <div class="raw">
@@ -91,6 +113,7 @@
     import HeaderIcons from "@/components/supplier/HeaderIcons.vue"
     import ItemReviewProduct from "@/components/ItemReviewProduct.vue"
     import ItemProductSupplier from "@/components/ItemProductSupplier.vue"
+    import Pagination from 'v-pagination-3';
     export default {
         components: {
             Header,
@@ -99,6 +122,7 @@
             HeaderIcons,
             ItemReviewProduct,
             ItemProductSupplier,
+            Pagination,
             // ErrorList
         },
         data() {
@@ -106,6 +130,9 @@
                 showDivAddProduct: false,
                 showOverlay: false,
                 showDivAddProductRev:false,
+                isActive:false,
+                page_index: 1,
+                page_size: 2,
                 sideList: [
                     {
                         id:1,
@@ -185,8 +212,15 @@
                 },
                 image_item_product: null,
                 image_add_product: null,
-                products:null,
+                products:[],
                 user:'supplier',
+            }
+        },
+        computed: {
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.products.slice(start, end);
             }
         },
         mounted() {
@@ -196,7 +230,7 @@
             async getDataProducts(){
                 await Api.supplier.supplierGetProducts().then((res)=>{
                     if(res.data.status){
-                        // console.log(res.data)
+                        console.log(res.data)
                         this.products = res.data.body
                     }
                 });
@@ -231,13 +265,18 @@
                 data.append('review_image', this.image_item_product);
                 
                 await Api.supplier.supplierAddProductRev(data).then((res)=>{
-                    // if(res.data.status){
-                    
-                    //     this.notifications = res.data.userData;
-                    // } 
+                    // this.$router.go()
+                    if(res.data.status){
+                        setTimeout(() => this.$router.go(), 2000)
+                        // this.notifications = res.data.userData;
+                    } 
                     // console.log(res)
                 })
-            }
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
+            },
         },
     }
 </script>
@@ -263,20 +302,120 @@
     font-size: 2.4vw;
 }
 .section{
-    width: 75vw;
-    margin-top: 50px;
+    width: 97%;
+    margin-top: 50px!important;
+    margin: 0 auto;
 }
 
 .overlay{
   position: absolute;
-  top: 3vw;
-  left: 20vw;
+  top: 7vw;
+  left: 0;
   right: 0;
   bottom: 0;
   background: #000000 0% 0% no-repeat padding-box;
   opacity: 0.5;
   z-index: 2;
   display: block !important;
-  height: 93vw;
+  /* height: 93vw; */
 }
+
+
+/****************************** Responsive ******************************/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .overlay{
+        position: absolute;
+        top: 7vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 230vw;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .overlay{
+        position: absolute;
+        top: 6vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 230vw;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .overlay{
+        position: absolute;
+        top: 5vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 130vw;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .overlay{
+        position: absolute;
+        top: 5vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 130vw;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .overlay{
+        position: absolute;
+        top: 4vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 105vw;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1500px and up) */
+@media only screen and (min-width: 1500px) {
+    .overlay{
+        position: absolute;
+        top: 3.2vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+        height: 97vw;
+    }
+}
+
 </style>

@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -19,7 +22,7 @@
                             <h2 class="sec__title">About</h2>
                             <h2 class="sect__subtitle">Us</h2>
                             <p class="sec__text">Explore our agency and goals Lorim lipsum lorim lipsum......</p>
-                            <a href="" class="sec__link">
+                            <a  class="sec__link">
                                 Show More
                                 <i class="fal fa-chevron-down"></i>
                             </a>
@@ -89,6 +92,7 @@
             return {
                 showDivAddProduct: false,
                 showOverlay: false,
+                isActive: false,
                 sideList: [
                     {
                         id:1,
@@ -202,6 +206,7 @@
 }
 .section{
     width: 75vw;
-    margin-top: 50px;
+    margin-top: 50px!important;
+    margin: 0 auto;
 }
 </style>

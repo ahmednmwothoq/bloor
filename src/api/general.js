@@ -114,6 +114,64 @@ async function sendContactUs(payload) {
 }
 
 
+async function getAllSuppliers() {
+    try {
+        return await $axios.get(`get-suppliers`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+
+async function getAllOffersSupplier(id) {
+    try {
+        return await $axios.get(`get-supplier/offers/${id}`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+
+async function getShowProductReviewsQuestions(id) {
+    try {
+        return await $axios.get(`showProductReviewsQuestions/${id}`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+async function getAllFollowsData() {
+    try {
+        return await $axios.get(`/AllFollowsData`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+async function getShowAllReviews() {
+    try {
+        return await $axios.get(`showAllReviews`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+async function getShowAllReviewsAll() {
+    try {
+        return await $axios.get(`showAllReviewsAll`).then((res) => {
+            return res;
+        });
+    } catch (error) {
+        return error
+    }
+}
+
+
 
   const general = {
     getOurMessages,
@@ -129,6 +187,15 @@ async function sendContactUs(payload) {
     getDetailsOffer,
     getSetting,
     sendContactUs,
+
+    getAllSuppliers,
+    getAllOffersSupplier,
+
+    getShowProductReviewsQuestions,
+
+    getAllFollowsData,
+    getShowAllReviews,
+    getShowAllReviewsAll,
     
   };
   export default general;

@@ -1,19 +1,19 @@
 <template>
     <div class="item__offer offer_edit">
         <div class="offer__img">
-            <!-- <img class="image" src="/assets/images/gallary/car_black.png" alt=""> -->
-            <div :id="`carouselExampleControls${item.id}`" class="carousel slide" data-bs-ride="carousel">
+            <img class="image" :src="item.media[0].original_url" alt="">
+            <!-- <div class="carousel-item active">
+            <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="image image_slider">
+            </div> -->
+            <!-- ,  {active: activeSlider.id != img.id ? '' : 'active' }  -->
+            <!-- <div class="carousel-item">
+            <img src="/assets/images/gallary/car_yellow.png" alt="" class="image image_slider">
+            </div> -->
+            <!-- <div :id="`carouselExampleControls${item.id}`" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- <div class="carousel-item active">
-                    <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="image image_slider">
-                    </div> -->
                     <div :class="activeSlider.id == img.id ? `carousel-item active` : `carousel-item` " v-for="img in item.media" :key="img.id">
                         <img :src="img.original_url" alt="img" class="image image_slider">
                     </div>
-                    <!-- ,  {active: activeSlider.id != img.id ? '' : 'active' }  -->
-                    <!-- <div class="carousel-item">
-                    <img src="/assets/images/gallary/car_yellow.png" alt="" class="image image_slider">
-                    </div> -->
                 </div>
                 <button class="carousel-control-prev" type="button" :data-bs-target="`#carouselExampleControls${item.id}`" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -23,14 +23,17 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>
-
+            </div> -->
 
 
             <div class="rate__offer" :style="{ display: item.offer_percentage > 0 ? '' : 'none' }">
                 <span  class="rate__num">{{item.offer_percentage}}% oFF</span>
                 <span class="rate__code">{{ $t('use_code') }} <span>{{item.offer_code.slice(0, 5)}}</span></span>
             </div>
+            <!-- <div class="rate__offer">
+                <span  class="rate__num">10% oFF</span>
+                <span class="rate__code">{{ $t('use_code') }} <span>54454</span></span>
+            </div> -->
         </div>
         <div class="offer__info">
             <h3 class="info__title">{{ getLocales ? item.product_ar : item.product_en}}</h3>
@@ -41,7 +44,7 @@
                     <p class="desc__text">{{ getLocales ? item.product_description_ar : item.product_description_en}}</p>
                 </div>
                 <div class="detail__added">
-                    <span class="detail_title">{{ $t('added_by') }} :</span>
+                    <span class="detail_title">{{ $t('added_by_off') }} :</span>
                     <div class="added__person">
                         <!-- <img src="/assets/images/avatar/person1.jpg" alt="" class="person"> -->
                         <div class="person_info">
@@ -56,6 +59,7 @@
                     <div class="price_info">
                         <span class="price">{{ $t('sar') }} {{item.original_price}}</span>
                         <span class="offer" v-if="item.offer_percentage > 0">{{ $t('sar') }} {{(item.offer_percentage/100)* item.original_price}}</span>
+                        <!-- <span class="offer">{{ $t('sar') }} 6514</span> -->
                     </div>
                 </div>
             </div>

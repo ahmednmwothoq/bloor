@@ -9,7 +9,7 @@
                         <h2 class="sec__title">{{ $t('about') }}</h2>
                         <h2 class="sect__subtitle">{{ $t('us') }}</h2>
                         <p class="sec__text">{{ $t('about_desc') }}</p>
-                        <a href="" class="sec__link">
+                        <a  class="sec__link">
                             {{ $t('show_more') }}
                             <i class="fal fa-chevron-down"></i>
                         </a>

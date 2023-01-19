@@ -12,12 +12,14 @@ import Classification from '../views/user/classification.vue'
 import ContactUs from '../views/user/contactUs.vue'
 import FAQs from '../views/user/faqs.vue'
 import OnlineComplaint from '../views/user/onlineComplaint.vue'
+import PathNotFound from '../views/NotFound.vue'
 
 
 
-/**  
- * User
-*/
+
+
+/** *User */
+
 // auth
 import userLogin from '../views/user/auth/login.vue'
 import userSignUp from '../views/user/auth/signUp.vue'
@@ -33,6 +35,7 @@ import EditProfile from '../views/user/profile/editProfile.vue'
 import ProfileReview from '../views/user/profile/profileReview.vue'
 import ProfileChat from '../views/user/profile/profileChat.vue'
 import ProfileExperiment from '../views/user/profile/profileExperiment.vue'
+import ProfileEditExperiment from '../views/user/profile/editExperiment.vue'
 
 import ExperienceDetails from '../views/user/experience/experienceDetails.vue'
 import ReviewDetails from '../views/user/review/reviewDetails.vue'
@@ -48,6 +51,9 @@ import OfferDetailsUser from '../views/user/offers/offerDetails.vue'
 
 import addReview from '../views/user/review/add.vue'
 import showReview from '../views/user/review/show.vue'
+
+import SupplierOffersUser from '../views/user/supplierOffers.vue'
+import allExperiencesUser from '../views/user/allExperience.vue'
 
 
 /**  
@@ -70,6 +76,9 @@ import SupplierComplaints from '../views/supplier/complaints.vue'
 import SupplierAbout from '../views/supplier/about.vue'
 import SupplierFAQS from '../views/supplier/faqs.vue'
 import SupplierContactUs from '../views/supplier/contactUs.vue'
+
+import SupplierProductQuestions from '../views/supplier/productQuestion.vue'
+import SupplierProductUsersAnswers from '../views/supplier/productUsersAnswers.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -98,8 +107,10 @@ const router = createRouter({
     { path: '/user-review', name: 'ProfileReview', component: ProfileReview, meta: { title: 'Profile Review' , middleware: auth } },
     { path: '/user-chat', name: 'ProfileChat', component: ProfileChat, meta: { title: 'Profile Chat' , middleware: auth } },
     { path: '/user-experiment', name: 'ProfileExperiment', component: ProfileExperiment, meta: { title: 'Profile Experiment' , middleware: auth } },
+    { path: '/user-edit-experiment/:id', name: 'ProfileEditExperiment', component: ProfileEditExperiment, meta: { title: 'Profile Edit Experiment' , middleware: auth } },
     // Experience
-    { path: '/experiment/:id', name: 'ExperienceDetails', component: ExperienceDetails, meta: { title: 'Experience Details' , middleware: auth } },
+    { path: '/experiment/:id', name: 'ExperienceDetails', component: ExperienceDetails, meta: { title: 'Experience Details' , middleware: log } },
+    { path: '/allExperiment', name: 'allExperiencesUser', component: allExperiencesUser, meta: { title: 'All Experiences' , middleware: log } },
     // Review
     { path: '/review/:id', name: 'ReviewDetails', component: ReviewDetails, meta: { title: 'Review Details' , middleware: log } },
     { path: '/add-review/:id', name: 'addReview', component: addReview, meta: { title: 'add Review' , middleware: auth } },
@@ -112,6 +123,7 @@ const router = createRouter({
     // Offer
     { path: '/allOffer', name: 'allOfferUser', component: allOfferUser, meta: { title: 'All Offers' , middleware: log  } },
     { path: '/offer/:id', name: 'OfferDetailsUser', component: OfferDetailsUser, meta: { title: 'Offer Details' , middleware: log  } },
+    { path: '/supplier/offers/:id', name: 'SupplierOffersUser', component: SupplierOffersUser, meta: { title: 'Supplier Offers' , middleware: log  } },
 
 
      /**  
@@ -130,15 +142,23 @@ const router = createRouter({
   
       // offers
       { path: '/supplier/offers', name: 'SupplierOffers', component: SupplierOffers, meta: { title: 'Supplier Offers' , middleware: auth } },
+      
+      // products
       { path: '/supplier/products', name: 'SupplierProducts', component: SupplierProducts, meta: { title: 'Supplier Products' , middleware: auth } },
+      { path: '/supplier/products/questions/:id', name: 'SupplierProductQuestions', component: SupplierProductQuestions, meta: { title: 'Product Questions' , middleware: auth } },
+      { path: '/supplier/products/users-answers/:id', name: 'SupplierProductUsersAnswers', component: SupplierProductUsersAnswers, meta: { title: 'Product Questions' , middleware: auth } },
+      
+      // chats
       { path: '/supplier/chats', name: 'SupplierChats', component: SupplierChats, meta: { title: 'Supplier Chats' , middleware: auth } },
       
+      // pages
       { path: '/supplier/complaints', name: 'SupplierComplaints', component: SupplierComplaints, meta: { title: 'Supplier Complaints' , middleware: auth } },
-      
       { path: '/supplier/about-us', name: 'SupplierAbout', component: SupplierAbout, meta: { title: 'Supplier About Us' , middleware: auth } },
       { path: '/supplier/faqs', name: 'SupplierFAQS', component: SupplierFAQS, meta: { title: 'Supplier FAQS' , middleware: auth } },
-      { path: '/supplier/contact-us', name: 'SupplierContactUs', component: SupplierContactUs, meta: { title: 'Supplier Contact Us' , middleware: auth } },
+      { path: '/supplier/contact-us', name: 'SupplierContactUs', component: SupplierContactUs , meta: { title: 'Supplier Contact Us' , middleware: auth } },
     
+
+      { path: '/:pathMatch(.*)*', name: 'PathNotFound', component: PathNotFound , meta: { title: 'Not Found' , middleware: log }}
   ]
 })
 

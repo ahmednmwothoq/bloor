@@ -4,11 +4,11 @@
   <!-- Header -->
     <header class="__header" v-if="isUser">
         <a v-if="RoleUser" @click="redirectToPath({ val: '/user-profile' })" class="header__item">
-            <i class="item__icon far fa-user-circle"></i>
+            <i class="item__icon far fa-user-circle" style="margin-left: 0.5vw;margin-right: 0.5vw;"></i>
             <span class="item__text custom_lang">{{ $t('profile') }}</span>
         </a>
         <a v-if="!RoleUser" @click="redirectToPath({ val: '/supplier' })" class="header__item">
-            <i class="item__icon far fa-user-circle"></i>
+            <i class="item__icon far fa-user-circle" style="margin-left: 0.5vw;margin-right: 0.5vw;"></i>
             <span class="item__text custom_lang">{{ $t('dashboard') }}</span>
         </a>
         <a @click="logoutUser()" class="header__item" >
@@ -22,6 +22,40 @@
             <span class="item__text custom_lang">{{ locale }}</span>
           </a>
         </div>
+        <div class="dropdown">
+          <a class="header__item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-question" style="margin-left: 0.5vw;margin-right: 0.5vw;" aria-hidden="true"></i>
+            <!-- <span class="item__text custom_lang">{{ $t('supplier_list') }}</span> -->
+          </a>
+
+          <ul class="dropdown-menu mt-1">
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/about-us')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('about_us') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/online-complaint')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('complaints') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/contact-us')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('contact_us') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/faqs')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('faqs') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/classification')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('classification') }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
         
         <!-- <nuxt-link
           class="header__item"
@@ -32,23 +66,26 @@
           ">
           <i class="item__icon far fa-globe"></i>
           <span class="item__text">{{ locale }}</span>
+
+        
+
         </nuxt-link> -->
     </header>
 
-    <header class="__header" v-if="!isUser">
+    <header class="__header" v-else>
         <div class="dropdown">
           <a class="header__item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="item__icon far fa-user-circle"></i>
+            <i class="item__icon far fa-user-circle" style="margin-left: 0.5vw;margin-right: 0.5vw;"></i>
             <span class="item__text custom_lang">{{ $t('user_list') }}</span>
           </a>
           <ul class="dropdown-menu">
-            <li>
+            <li class="cursor_pointer">
               <a @click="redirectTo({ val: 'userSignUp' })" class="dropdown-item">
                   <!-- <i class="item__icon far fa-user-circle"></i> -->
                   <span class="item__text custom_lang">{{ $t('sign_up') }}</span>
               </a>
             </li>
-            <li>
+            <li class="cursor_pointer">
               <a @click="redirectTo({ val: 'userLogin' })" class="dropdown-item">
                 <!-- <img class="logout_icon item__icon" src="/assets/images/icon/login.png"  alt="">
                 <img class="logout_hover_icon item__icon" src="/assets/images/icon/login_hover.png" alt=""> -->
@@ -60,20 +97,17 @@
 
         <div class="dropdown">
           <a class="header__item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="item__icon far fa-user-circle"></i>
+            <i class="item__icon far fa-user-circle" style="margin-left: 0.5vw;margin-right: 0.5vw;"></i>
             <span class="item__text custom_lang">{{ $t('supplier_list') }}</span>
           </a>
           <ul class="dropdown-menu">
-            <li>
+            <li class="cursor_pointer">
               <a @click="this.$router.push('/supplier-signup')" class="dropdown-item">
-                <!-- <i class="item__icon far fa-user-circle"></i> -->
                 <span class="item__text custom_lang">{{ $t('sign_up_supplier') }}</span>
               </a>
             </li>
-            <li>
+            <li class="cursor_pointer">
               <a @click="this.$router.push('/supplier-login')" class="dropdown-item">
-                <!-- <img class="logout_icon item__icon" src="/assets/images/icon/login.png"  alt="">
-                <img class="logout_hover_icon item__icon" src="/assets/images/icon/login_hover.png" alt=""> -->
                 <span class="item__text custom_lang">{{ $t('login_supplier') }}</span>
               </a>
             </li>
@@ -85,6 +119,40 @@
             <i class="item__icon far fa-globe"></i>
             <span class="item__text custom_lang">{{ locale }}</span>
           </a>
+        </div>
+
+        <div class="dropdown">
+          <a class="header__item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-question" style="margin-left: 0.5vw;margin-right: 0.5vw;" aria-hidden="true"></i>
+            <!-- <span class="item__text custom_lang">{{ $t('supplier_list') }}</span> -->
+          </a>
+          <ul class="dropdown-menu mt-1">
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/about-us')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('about_us') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/online-complaint')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('complaints') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/contact-us')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('contact_us') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/faqs')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('faqs') }}</span>
+              </a>
+            </li>
+            <li class="cursor_pointer">
+              <a @click="this.$router.push('/classification')" class="dropdown-item">
+                <span class="item__text custom_lang">{{ $t('classification') }}</span>
+              </a>
+            </li>
+          </ul>
         </div>
     </header>
     <!-- Supplier -->
@@ -235,9 +303,11 @@ export default {
   }
   .custom_lang{
     text-transform: capitalize;
-    margin-top: 3px!important;
+    margin-top: 0px!important;
     margin: 0 5px;
   }
+
+  
 
   /****************************** Responsive ******************************/
   /* Extra small devices (phones, 600px and down) */

@@ -151,6 +151,75 @@ import $axios from "../store/axios-instance";
     }
   }
 
+  async function supplierCountProduct() {
+    try {
+      return await $axios.get(`suplier/countProduct`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+
+  async function supplierCountOffer() {
+    try {
+      return await $axios.get(`suplier/countOffer`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  
+  async function supplierAddQuestionProduct(id ,payload) {
+    try {
+      return await $axios.post(`suplier/products/questions/store/${id}`, payload).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  
+  
+  async function supplierShowQuestionProduct(id) {
+    try {
+      return await $axios.get(`suplier/products/questions/${id}`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  async function supplierShowAllAnswersQuestion(id) {
+    try {
+      return await $axios.get(`suplier/allanswers/${id}`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  
+  async function supplierUpdateQuestionProduct(id ,payload) {
+    try {
+      return await $axios.post(`suplier/products/question/update/${id}`, payload).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  
+  async function supplierDeleteQuestionProduct(id) {
+    try {
+      return await $axios.delete(`suplier/products/question/delete/${id}`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
 
   const supplier = {
     getUser,
@@ -171,6 +240,15 @@ import $axios from "../store/axios-instance";
     userAllChatMessages,
     supplierAllChats,
     userSendMessageInChat,
+
+    supplierCountProduct,
+    supplierCountOffer,
+
+    supplierAddQuestionProduct,
+    supplierShowQuestionProduct,
+    supplierShowAllAnswersQuestion,
+    supplierUpdateQuestionProduct,
+    supplierDeleteQuestionProduct,
 
     
   };

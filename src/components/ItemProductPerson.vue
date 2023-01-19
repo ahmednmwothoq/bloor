@@ -1,45 +1,39 @@
 <template>
-    <div>
-        <a style="text-decoration: none;" href="pages/user/reviews.html">
-            <!-- <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="slider__img"> -->
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="slider__img">
-                </div>
-                <div class="carousel-item">
-                <img src="/assets/images/gallary/laborghini_urus.jpg" alt="" class="slider__img">
-                </div>
-                <div class="carousel-item">
-                <img src="/assets/images/gallary/car_yellow.png" alt="" class="slider__img">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            </div>
+    <div class="item__slider">
+        <a style="text-decoration: none;" >
 
-            <h2 class="slider__title">2020 Laborghini Huracan</h2>
+            <img :src="item.media[0].original_url" alt="" class="slider__img">
+            
+            <div v-for="product in allProducts" :key="product.id" >
+                <h2 class="slider__title" v-if="product.id == item.product_to_review_id">
+                    {{ getLocales ? product.product_ar : product.product_en }}
+                </h2>
+            </div>
             <p class="slider__text">
-                Lorim lipsumlorim lipsum lo rimlipsum lorim lipsum lorim lipsm, lorim lipsum lorim lorim loromlorimmm.
+                {{  item.review  }}
             </p>
         </a>
         <div class="slider__person">
             <div class="person__info">
-                <img src="/assets/images/avatar/person1.jpg" alt="" class="info_img">
+                <img src="/assets/images/avatar/avatar-image.png" alt="" class="info_img">
                 <div class="info_name">
-                    <span class="name">Emma Adam</span>
-                    <span class="job">news editor</span>
+                    <span class="name">{{ item.user.f_name }} {{ item.user.l_name }}</span>
+                    <!-- <span class="job">news editor</span> -->
                 </div>
             </div>
             <div class="person__rate">
-                <i class="fa fa-star yellow" aria-hidden="true"></i>
-                <span>4.7</span>
+                <!-- <i class="fa fa-star yellow" aria-hidden="true"></i> -->
+                <i
+                    v-if="item.bloor_colour != 'white'"
+                    :class="item.bloor_colour ? `fa fa-star ${item.bloor_colour} icon` : `fa fa-star icon`" 
+                    aria-hidden="true"
+                ></i>
+                <i
+                    v-else
+                    :class="item.bloor_colour ? `far fa-star ${item.bloor_colour} icon` : `far fa-star icon`" 
+                    aria-hidden="true"
+                ></i>
+                <span>{{ item.rate }}</span>
             </div>
         </div>
         
@@ -48,7 +42,32 @@
 
 <script>
     export default {
-        
+        props: {
+            item: {
+                type: Object,
+                required: true
+            },
+            allProducts: {
+                type: Array,
+                required: true
+            },
+        },
+        mounted() {
+            // console.log("this.allProducts this.allProducts",this.allProducts)
+        },
+        computed: {
+            getLocales () {
+                let local = this.$i18n.availableLocales.filter(i => i !== this.$i18n.locale)
+                // console.log("text",local)
+                if(local[0] == 'en'){
+                return true
+                } else {
+                return false
+                }
+            },
+
+            
+        },
     }
 </script>
 

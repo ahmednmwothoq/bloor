@@ -1,34 +1,48 @@
 <template>
     <link rel="stylesheet" href="/assets/css/user/sign.css">
 
+    <div class="lang_change">
+        <div v-for="(locale, index) in availableLocales">
+          <a class="header__item" @click="changeLocale(locale)" v-if="locale !== this.$i18n.locale">
+            <i class="item__icon far fa-globe"></i>
+            <span class="item__text custom_lang">{{ locale }}</span>
+          </a>
+        </div>
+    </div>
     
     <main class="__content">
         <div class="content__left">
-            <img class="left__img" src="/assets/images/logo/logo_blue.png" alt="Logo Bloor">
-            <p class="left__text">The Best place to find reviews...</p>
+            <div>
+                <img class="left__img" src="/assets/images/logo/logo_blue.png" alt="Logo Bloor">
+                <p class="left__text">{{ $t('login_subLogo') }}</p>
+            </div>
+            <div class="content_bottom">
+                <p class="left__help">{{ $t('help') }}</p>
+                <span class="icon__text">{{ $t('a_provider') }} <a class="cursor_pointer" @click="redirectTo({ val: 'supplierLogin' })">{{ $t('login_nav') }}</a></span>
+            </div>
         </div>     
         <div class="content__right">
             <div class="header__nav">
-                <a class="nav__item " @click="redirectTo({ val: 'supplierLogin' })">Login</a>
-                <a @click="redirectTo({ val: 'supplierSignUp' })" class="nav__item item__active">Sign up</a>
+                <a class="nav__item " @click="redirectTo({ val: 'supplierLogin' })">{{ $t('login_nav') }}</a>
+                <a @click="redirectTo({ val: 'supplierSignUp' })" class="nav__item item__active">{{ $t('sign_up_nav') }}</a>
                 <!-- <RouterLink to="/user-signup" class="nav__item">Sign up</RouterLink> -->
             </div>
             <div class="form">
                 <div class="form__up">
-                    <h2 class="right__title">Welcome to Crystal !</h2>
-                    <p class="right__text">Please Register Your Account</p>
+                    <h2 class="right__title">{{ $t('sign_up_title') }}</h2>
+                    <p class="right__text">{{ $t('sign_up_subtitle') }}</p>
                 </div>
                 <form @click.prevent action="" class="right__down form__down">
                     <div class="form__inputs">
                         <div class="form__field input_sm">
-                            <label class="label">First Name</label>
-                            <input class="input" type="text" v-model="f_name" placeholder="First Name">
+                            <label class="label">{{ $t('first_name') }}</label>
+                            <input class="input" type="text" v-model="f_name" :placeholder="$t('first_name_place')">
                             <span class="feedback_error" v-if="v$.f_name.$error">{{ v$.f_name.$errors[0].$message }}</span>
                         </div>
                         <div class="offset_input"></div>
                         <div class="form__field input_sm">
-                            <label class="label">Last Name</label>
-                            <input class="input" type="text" v-model="l_name" placeholder="Last Name">
+                            <label class="label">{{ $t('last_name') }}</label>
+                            <input class="input" type="text" v-model="l_name" :placeholder="$t('last_name_place')">
                             <span class="feedback_error" v-if="v$.l_name.$error">{{ v$.l_name.$errors[0].$message }}</span>
                         </div>
                         <!-- <div class="form_check_field">
@@ -37,19 +51,19 @@
                         </div> -->
 
                         <div class="form__field input_sm">
-                            <label class="label">Phone</label>
-                            <input class="input" type="text" v-model="phone" placeholder="Phone">
+                            <label class="label">{{ $t('phone') }}</label>
+                            <input class="input" type="text" v-model="phone" :placeholder="$t('Phone_place')">
                             <span class="feedback_error" v-if="v$.phone.$error">{{ v$.phone.$errors[0].$message }}</span>
                         </div><div class="offset_input"></div>
                         <div class="form__field input_sm">
-                            <label class="label">E-mail</label>
-                            <input class="input" type="email" v-model="email" placeholder="E-mail">
+                            <label class="label">{{ $t('e_mail') }}</label>
+                            <input class="input" type="email" v-model="email" :placeholder="$t('email_place')">
                             <span class="feedback_error" v-if="v$.email.$error">{{ v$.email.$errors[0].$message }}</span>
                         </div>
 
                         <div class="form__field">
-                            <label class="label">User Name</label>
-                            <input class="input" type="text" v-model="username" placeholder="User Name">
+                            <label class="label">{{ $t('user_name') }}</label>
+                            <input class="input" type="text" v-model="username" :placeholder="$t('user_name_place')">
                             <span class="feedback_error" v-if="v$.username.$error">{{ v$.username.$errors[0].$message }}</span>
                         </div>
 
@@ -64,28 +78,33 @@
                         </div> -->
 
                         <div class="form__field input_sm">
-                            <label class="label">Gender</label>
+                            <label class="label">{{ $t('gender') }}</label>
                             <!-- <input class="input" type="text" v-model="gender" placeholder="Gender" value="Female" > -->
                             <select class="input" v-model="gender">
-                                <option value="female">Female</option>
-                                <option value="male">Male</option>
+                                <option selected disabled>{{ $t('gender_place') }}</option>
+                                <option value="female">{{ $t('female') }}</option>
+                                <option value="male">{{ $t('male') }}</option>
                             </select>
                             <span class="feedback_error" v-if="v$.gender.$error">{{ v$.gender.$errors[0].$message }}</span>
                         </div>
                         <div class="offset_input"></div>
                         <div class="form__field input_sm">
-                            <label class="label">Marital status</label>
+                            <label class="label">{{ $t('matrial_status') }}</label>
                             <!-- <input class="input" type="text" v-model="marital" placeholder="Marital status" value="Single" > -->
                             <select class="input" v-model="matrial_status">
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
+                                <option selected disabled>{{ $t('matrial_status_place') }}</option>
+                                <option value="single">{{ $t('single') }}</option>
+                                <option value="married">{{ $t('married') }}</option>
                             </select>
                             <span class="feedback_error" v-if="v$.matrial_status.$error">{{ v$.matrial_status.$errors[0].$message }}</span>
                         </div>
                         
                         <div class="form__field">
-                            <span class="optional">(Optional)</span>
-                            <label class="label">Date Of Birth</label>
+                            <div>
+                                <label class="label">{{ $t('date_of_birth') }}</label>
+                                <span class="optional">( {{ $t('optional') }} )</span>
+                            </div>
+                            
                             <input class="input" type="date" v-model="date_of_birth" placeholder="Date Of Birth">
                             <!-- <span class="feedback_error" v-if="v$.date_of_birth.$error">{{ v$.date_of_birth.$errors[0].$message }}</span> -->
                         </div>
@@ -95,30 +114,27 @@
                         </div> -->
 
                         <div class="form__field input_sm">
-                            <label class="label">Password</label>
-                            <input id="txtPassword_profile" class="input" type="password" v-model="password">
+                            <label class="label">{{ $t('password_item') }}</label>
+                            <input id="txtPassword_profile" class="input" type="password" v-model="password" :placeholder="$t('password_place')">
                             <span class="feedback_error" v-if="v$.password.$error">{{ v$.password.$errors[0].$message }}</span>
                             <!-- <span id="toggle_pwd_profile" class="fa fa-fw fa-eye field_icon"></span> -->
                         </div>
                         <div class="offset_input"></div>
                         <div class="form__field input_sm">
-                            <label class="label">Confrim Password</label>
-                            <input class="input" type="password" v-model="password_confirmation">
+                            <label class="label">{{ $t('password_confirmation') }}</label>
+                            <input class="input" type="password" v-model="password_confirmation" :placeholder="$t('password_confirmation_place')">
                             <span class="feedback_error" v-if="v$.password_confirmation.$error">{{ v$.password_confirmation.$errors[0].$message }}</span>
                             <!-- <span id="toggle_pwd_profile" class="fa fa-fw fa-eye field_icon"></span> -->
                         </div>
                     </div>
                     <div class="form__submit">
-                        <button class="submit__btn" @click="signUpForm()" type="submit">Sign Up</button>
-                        <a class="btn__forgot" href="forgot.html" target="_blank">Forgot Password</a>
+                        <button class="submit__btn" @click="signUpForm()" type="submit">{{ $t('sign_up_nav') }}</button>
+                        <a class="btn__forgot cursor_pointer" @click="redirectTo({ val: 'supplierSignUp' })">{{ $t('forgot_password') }}</a>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="content_bottom">
-            <p class="left__help">help!</p>
-            <span class="icon__text">A New Member? <a href="">Sign up</a></span>
-        </div>
+        
     </main>
     
     
@@ -132,6 +148,7 @@ import { mapActions } from 'vuex'
 import useValidate from '@vuelidate/core'
 import { required , minLength , maxLength , numeric , email , sameAs  } from '@vuelidate/validators'
 import { useToast } from 'vue-toastification'
+import cookie from "vue-cookie";
 
 
 export default {
@@ -199,12 +216,28 @@ export default {
         //     this.redirectTo({ val: "Home" })
         // }
     },
+    computed:{
+        availableLocales () {
+        if(cookie.get("lang") == null){
+          return ['ar']
+        }else{
+          return this.$i18n.availableLocales.filter(i => i !== this.$i18n.locale)
+        }
+        
+      },
+    },
     methods:{
         ...mapActions(['redirectTo']),
         ...mapActions(['redirectToPath']),
         // ...mapActions('authUser' , {
         //     signUpApi:"signUpApi",
         // }),
+        changeLocale(locale) {
+        // i18nn.locale = locale;
+            this.$store.dispatch("user/switchLang", locale)
+            this.$i18n.locale = locale;
+            this.$router.go()
+        },
         async signUpForm(){
             // console.log("sign now")
             const toast = useToast()

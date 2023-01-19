@@ -2,11 +2,11 @@
     <Header />
     <logo-search/>
     <div class="contentStander mt-1 w-100">
-        <div  v-for="item in reviews" :key="item.id" v-if="reviews">
+        <div  v-for="item in paginatedData" :key="item.id" v-if="paginatedData">
             <div class="item_review">
                 <div class="review__up">
                     <div class="contan">
-                        <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
+                        <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
                         <div class="up__info">
                             <span class="name">{{item.username}}</span>
                             <div v-if="userLogin">
@@ -14,7 +14,7 @@
                                     v-if="userLogin.id != item.user_id"
                                     class="follow"
                                     @click="makeUserFollowUser(item.user_id)"
-                                    >Follow
+                                    >{{ $t('follow') }}
                                 </span>
                             </div>
                             
@@ -47,7 +47,34 @@
                     </div>
                 </div>
                 <div class="review__down" style="word-break: break-word;">
-                    <div class="down__comment" v-html="item.review"></div>
+                    <!-- <div class="down__comment" v-html="item.review"></div> -->
+                    <div class="down__comment" v-for="question in singleProduct.questions" :key="item.id" v-if="singleProduct">
+                        <div v-for="answer in question.answers" :key="answer.id">
+                            <div class="comment_up" v-if="answer.user_id == item.user_id">
+                                <div class="left">
+                                    <span class="dot"></span>
+                                    <span class="text">{{ getLocales ? question.question_ar : question.question_en }}</span>
+                                </div>
+                                <div class="right">
+                                    <star-rating
+                                        v-if="question.answer_has_rate == 1"
+                                        v-bind:star-size="15"
+                                        v-bind:read-only="true"
+                                        v-bind:show-rating="false"
+                                        v-model:rating="answer.rate"
+                                    ></star-rating>
+                                </div>
+                            </div>
+                        
+                            <div class="comment_mid" v-if="answer.user_id == item.user_id">
+                                <p class="text" v-if="question.answer_has_text == 1">{{ answer.text }}</p>
+                            </div>
+                        </div>
+                        <div class="comment_down">
+                            <a  class="read">Read Answer</a>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="experience__down">
                     <!-- <a @click="showMoreBody"  v-if="showMoreDetails" class="down__details">More Details</a> -->
@@ -72,13 +99,13 @@
                     <div class="list">
                         <div v-for="comment in item.comments" :key="comment.id">
                             <div class="item">
-                                <img src="/assets/images/avatar/user-img.jpg" alt="" class="image">
+                                <img src="/assets/images/avatar/avatar-image.png" alt="" class="image">
                                 <div class="info">
                                     <span class="name">{{comment.username}}</span>
                                     <span class="comment">{{comment.body}}</span>
                                     <span class="reply">
-                                        <span class="show" @click="showReplyComment('theDivRep-'+ comment.id , comment.id)">Show Reply</span>
-                                        <span class="add" @click="showAddReplyComment('theDivCom-'+ comment.id)">add Reply</span>
+                                        <span class="show" @click="showReplyComment('theDivRep-'+ comment.id , comment.id)">{{ $t('show_reply') }}</span>
+                                        <span class="add" @click="showAddReplyComment('theDivCom-'+ comment.id)">{{ $t('add_reply') }}</span>
                                     </span>
                                 </div>
                                 <div class="date">
@@ -102,11 +129,11 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                     <div class="modal-body" style="text-align: center;font-size: 2.1vw;">
-                                        Are You Sure ?
+                                        {{ $t('are_you_sure') }}
                                     </div>
                                     <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                        <button type="button" class="btn btn-primary" @click="sentDeleteComment(comment.id)">Yes</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t('no') }}</button>
+                                        <button type="button" class="btn btn-primary" @click="sentDeleteComment(comment.id)">{{ $t('yes') }}</button>
                                     </div>
                                     </div>
                                 </div>
@@ -117,8 +144,8 @@
                                     <!-- <textarea v-model="comment.body" :value=""   class="input"></textarea> -->
                                     <textarea :value="comment.body" @input="event => bodyCommentEdit = event.target.value"  class="input"></textarea>
                                     <div class="btn">
-                                        <a class="btn_comment" @click="SendEditComment('theDivComEdit-'+ comment.id , comment.id)">Edit</a>
-                                        <a class="btn_comment cancel_btn" @click="showEditCommentDiv('theDivComEdit-'+ comment.id)">Cancel</a>
+                                        <a class="btn_comment" @click="SendEditComment('theDivComEdit-'+ comment.id , comment.id)">{{ $t('edit') }}</a>
+                                        <a class="btn_comment cancel_btn" @click="showEditCommentDiv('theDivComEdit-'+ comment.id)">{{ $t('cancel') }}</a>
                                     </div>
                                 </form>
                             </div>
@@ -127,15 +154,15 @@
                                     <input type="text" class="name_person" v-model="comment.username" disabled>
                                     <textarea v-model="bodyReplayCom" class="input"></textarea>
                                     <div class="btn">
-                                        <a class="btn_comment" @click="addReplayInComment('theDivCom-'+ comment.id , comment.id)">Post</a>
-                                        <a class="btn_comment cancel_btn" @click="closeDivReplay">Cancel</a>
+                                        <a class="btn_comment" @click="addReplayInComment('theDivCom-'+ comment.id , comment.id)">{{ $t('post') }}</a>
+                                        <a class="btn_comment cancel_btn" @click="closeDivReplay">{{ $t('cancel') }}</a>
                                     </div>
                                 </form>
                             </div>
                             <div v-if="showReplayCommentDiv" :id="'theDivRep-'+ comment.id">
                                 <div v-for="com in replaysComments" :key="com.id" v-if="ReplayCommentId == comment.id">
                                     <div class="item_reply">
-                                        <img src="/assets/images/avatar/user-img.jpg" alt="" class="image">
+                                        <img src="/assets/images/avatar/avatar-image.png" alt="" class="image">
                                         <div class="info">
                                             <span class="name">{{ com.username }}</span>
                                             <span class="comment">{{ com.body }}</span>
@@ -162,11 +189,11 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                             <div class="modal-body" style="text-align: center;font-size: 2.1vw;">
-                                                Are You Sure ?
+                                                {{ $t('are_you_sure') }}
                                             </div>
                                             <div class="modal-footer justify-content-center">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                                <button type="button" class="btn btn-primary" @click="sentDeleteReplayComment(com.id)">Yes</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t('no') }}</button>
+                                                <button type="button" class="btn btn-primary" @click="sentDeleteReplayComment(com.id)">{{ $t('yes') }}</button>
                                             </div>
                                             </div>
                                         </div>
@@ -177,8 +204,8 @@
                                             <!-- <textarea v-model="comment.body" :value=""   class="input"></textarea> -->
                                             <textarea :value="com.body" @input="event => bodyReplayCommentEdit = event.target.value"  class="input"></textarea>
                                             <div class="btn">
-                                                <a class="btn_comment" @click="SendEditReplayComment('theDivReplayComEdit-'+ com.id , com.id)">Edit</a>
-                                                <a class="btn_comment cancel_btn" @click="showEditReplayCommentDiv('theDivReplayComEdit-'+ com.id)">Cancel</a>
+                                                <a class="btn_comment" @click="SendEditReplayComment('theDivReplayComEdit-'+ com.id , com.id)">{{ $t('edit') }}</a>
+                                                <a class="btn_comment cancel_btn" @click="showEditReplayCommentDiv('theDivReplayComEdit-'+ com.id)">{{ $t('cancel') }}</a>
                                             </div>
                                         </form>
                                     </div>
@@ -198,15 +225,26 @@
                         <input type="text" class="name_person" :value="`@`+ item.username" disabled>
                         <textarea v-model="bodyComment" class="input"></textarea>
                         <div class="btn">
-                            <a class="btn_comment" @click="SendCommentInExp(item.id)">Post</a>
-                            <a class="btn_comment cancel_btn" @click="showAddCommentInExp(`TheDivShowAddComment`+item.id)">Cancel</a>
+                            <a class="btn_comment" @click="SendCommentInExp(item.id)">{{ $t('post') }}</a>
+                            <a class="btn_comment cancel_btn" @click="showAddCommentInExp(`TheDivShowAddComment`+item.id)">{{ $t('cancel') }}</a>
                         </div>
                     </form>
                 </div>
                 
             
-                <button class="add_comment" @click="showAddCommentInExp(`TheDivShowAddComment`+item.id)">add comment</button>
+                <button class="add_comment" @click="showAddCommentInExp(`TheDivShowAddComment`+item.id)">{{ $t('add_comment') }}</button>
             </div>
+        </div>
+
+
+        <div class="m-auto w-90" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+            <pagination 
+                v-if="allProductReviewsData.length > 0" 
+                v-model="page_index" 
+                :records="allProductReviewsData.length" 
+                :per-page="page_size" 
+                @paginate="myCallback"
+            />
         </div>
         
         
@@ -224,11 +262,15 @@ import FooterVue from '@/components/Footer.vue';
 import LogoSearch from "@/components/LogoSearch.vue"
 import CreateAt from "@/components/CreateAt.vue"
 import { useToast } from 'vue-toastification'
+import StarRating from 'vue-star-rating';
+import Pagination from 'v-pagination-3';
     export default {
         data() {
             return {
                 idRev: this.$route.params.id,
                 reviews:[],
+                allProductReviewsData:[],
+                singleProduct:{},
                 showComments: false,
                 showAddComments: false,
                 showMoreDetails: false,
@@ -243,6 +285,8 @@ import { useToast } from 'vue-toastification'
                 replaysComments: [],
                 indexx:1,
                 userLogin: JSON.parse(cookie.get('userData')),
+                page_index: 1,
+                page_size: 2
             }
         },
         components:{
@@ -250,17 +294,39 @@ import { useToast } from 'vue-toastification'
             FooterVue,
             LogoSearch,
             CreateAt,
+            StarRating,
+            Pagination,
         },
         mounted() {
             this.showReviews()
+        },
+        computed: {
+            getLocales () {
+                let local = this.$i18n.availableLocales.filter(i => i !== this.$i18n.locale)
+                // console.log("text",local)
+                if(local[0] == 'en'){
+                return true
+                } else {
+                return false
+                }
+            },
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.allProductReviewsData.slice(start, end);
+            }
         },
         methods: {
             async showReviews(){
                 await Api.user.userShowReviewAndRate(this.idRev).then((res)=>{
                     console.log(res);
+                    
                     if(res.data.status){
                         this.reviews = res.data.body
+                        this.allProductReviewsData = res.data.body.allProductReviews
+                        this.singleProduct = res.data.body.allReviewData[0]
                     } 
+                    // console.log(this.singleProduct);
                 })
             },
             showCommentsDiv(txtDivID) {
@@ -409,7 +475,7 @@ import { useToast } from 'vue-toastification'
                     if(res.data.status){
                         // this.$router.go()
                         // console.log(res.data)
-                        toast.success(`Follow ${res.data.msg}`,{
+                        toast.success(`${res.data.msg}`,{
                             position: "top-right",
                             timeout: 3048,
                             closeOnClick: true,
@@ -425,38 +491,15 @@ import { useToast } from 'vue-toastification'
                         })
                     }
                 });
-            }
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
+            },
         }
     }
 </script>
 
 <style  scoped>
-.experience__down{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    margin-top: 1.56331vw;
-    margin-bottom: 1.56331vw;
-}
-.down__icons{
-    display: flex;
-    margin-right: 2.8661vw;
-}
-.down__icons .icons{
-    margin-left: 2.34497vw;
-    display: flex;
-    align-items: center;
-}
 
-.icon{
-    font-size: 2vw;
-    /* margin-left: 92px; */
-    opacity: 0.3;
-}
-
-.icons span{
-    font-size: 1.3vw;
-    color: #0136EE;
-    margin-left: 0.312663vw;
-}
 </style>

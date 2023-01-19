@@ -1,6 +1,6 @@
 <template>
     <div class="cardProfile">
-        <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
+        <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
         <div class="up__info">
             <span class="name" v-if="supplierLogin">{{supplierLogin.f_name}} {{supplierLogin.l_name}}</span>
         </div>

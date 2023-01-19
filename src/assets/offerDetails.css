@@ -88,8 +88,13 @@
   color: #D1D1D1;
   word-break: break-word;
   overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
+.offer__details .details__desc .desc__text::-webkit-scrollbar {
+  display: none;
+}
 
 
 .offer__details .details__cars{

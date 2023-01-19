@@ -5,7 +5,7 @@
         <div class="item_review" v-if="review">
             <div class="review__up">
                 <div class="contan">
-                    <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
+                    <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
                     <div class="up__info">
                         <span class="name">Supplier Name #{{ review.username }}</span>
                         <!-- <span class="follow">Follow</span> -->

@@ -30,15 +30,38 @@
                 <div class="review__down" style="width: 80%!important;">
                     <form action="">
                         <div class="row">
-                            <div class="form-group col-12 mb-3 bg-white">
+                            <!-- <div class="form-group col-12 mb-3 bg-white">
                                Review
+                            </div> -->
+                            <div class="form-group col-12 mb-3 bg-white" style="margin-bottom: 1vw!important;margin-top: 1vw!important;">
+                                <label for="">Your overall review</label>
+                                <input v-model="reviewBody" type="text"  placeholder="What is your rating *"  class="custome-input">
                             </div>
-                            <div class="form-group col-12 mb-3 bg-white" style="margin-bottom: 10vw!important;">
-                                <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
-                                <QuillEditor theme="snow" toolbar="full" v-model:content="reviewBody" contentType="html"  />
+
+                            <br>
+                            <div class="form-group col-12 mt-3 mb-1 bg-white">
+                                Questions
                             </div>
-                            <div class="form-group col-12 mb-3 bg-white">
-                               Rate
+                            <div 
+                                class="form-group col-12 mb-3 bg-white" 
+                                style="margin-bottom: 1vw!important;margin-top: 1vw!important;"
+                                v-for="ques in allQuestions.questions" :key="ques.id"
+                            >
+                                <label for="">{{ getLocales ? ques.question_ar : ques.question_en }}</label>
+                                <input v-model="answer_id[ques.id]" v-if="ques.answer_has_text == 1" type="text"  placeholder="Answer *"  class="custome-input">
+                                <star-rating
+                                    v-if="ques.answer_has_rate == 1"
+                                    v-bind:star-size="40"
+                                    v-model:rating="rating_id[ques.id]"
+                                ></star-rating>
+                                <!-- <span v-if="rating_id[ques.id]">{{ rating_id[ques.id] }}</span> -->
+                                <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="reviewBody" contentType="html"  /> -->
+                            </div>
+                            <!-- <span @click="here(allQuestions.questions)">view</span> -->
+                            <!-- <span @click="addAnswerQues">submit</span> -->
+                            <br>
+                            <div class="form-group col-12 mt-3 mb-1 bg-white">
+                                Your overall rating
                             </div>
                             <div class="form-group col-12 mb-3 bg-white">
                                 <Rating @rate="rate" :grade="0"/>
@@ -85,6 +108,8 @@ import Header from "@/components/Header.vue"
 import FooterVue from '@/components/Footer.vue';
 import LogoSearch from "@/components/LogoSearch.vue"
 import Rating from '@/components/Rating.vue';
+
+import StarRating from 'vue-star-rating';
     export default {
         data() {
             return {
@@ -92,7 +117,11 @@ import Rating from '@/components/Rating.vue';
                 reviewBody:'',
                 rateValue:0,
                 preview_image_file:null,
-                image_item_file:null
+                image_item_file:null,
+                allQuestions:[],
+                rating: 0,
+                rating_id: [],
+                answer_id: [],
 
             }
         },
@@ -102,8 +131,65 @@ import Rating from '@/components/Rating.vue';
             LogoSearch,
             CreateAt,
             Rating,
+            StarRating,
+        },
+        mounted(){
+            this.getAllQuestions()
+            console.log(this.rating)
+        },
+        computed: {
+            getLocales () {
+                let local = this.$i18n.availableLocales.filter(i => i !== this.$i18n.locale)
+                // console.log("text",local)
+                if(local[0] == 'en'){
+                return true
+                } else {
+                return false
+                }
+            }
+            
         },
         methods: {
+            here(even){
+                console.log(this.rating_id)
+                console.log(this.answer_id)
+
+                const ques = even
+
+                // ques.map((value, index) => {
+                //     return console.log(value,index);
+                // });
+
+                this.allQuestions.questions.filter((value, index) => {
+                    console.log(value,index);
+                    console.log(value.id);
+                    console.log(value.question);
+                });
+                
+                // ques.forEach((item, index) => {
+                //     console.log(item, index)
+                // })
+
+                // return this.allQuestions.questions.filter(post => {
+                //     return console.log(post)
+                // })
+
+
+
+                // Array.from(this.allQuestions).forEach(element => {
+                //     console.log("sadsa",element)
+                // });
+                // let filtered = this.allQuestions.filter((el) => {
+                //     return console.log(el)
+                // })
+                // console.log(filtered)
+
+
+            },
+            setRating(rating) {
+                this.rating = rating;
+                console.log(this.rating)
+            },
             rate(event){
                 this.rateValue = event
                 // console.log(this.rateValue)
@@ -126,13 +212,48 @@ import Rating from '@/components/Rating.vue';
                 data.append('file', this.image_item_file);
 
                 await Api.user.userAddReviewAndRate(this.idRev,data).then((res)=>{
-                    console.log(res);
+                    console.log("addReview",res);
                     if(res.data.status){
-                        this.$router.go()
+                        this.addAnswerQues()
+                        // this.$router.go()
                     } 
                     
                 })
-            }
+                
+            },
+            async addAnswerQues(){
+                this.allQuestions.questions.filter((value, index) => {
+                    // return console.log(value,index);
+                    let data = new FormData();
+                    if(this.rating_id[value.id]){
+                        data.append('rate', parseInt(this.rating_id[value.id]));
+                    }
+                    if(this.answer_id[value.id]){
+                        data.append('text', this.answer_id[value.id]);
+                    }
+                    
+                    
+
+                        Api.user.userAddAnswerInQues(value.id , data).then((res)=>{
+                            console.log("addAnswerQues",res);
+                            if(res.data.status){
+                                // this.$router.go()
+                            } 
+                            
+                        })
+                });
+
+            },
+            async getAllQuestions(){
+                await Api.general.getShowProductReviewsQuestions(this.idRev).then((res)=>{
+                    // console.log("Suppliers",res)
+                    if(res.data.status){
+                        console.log("Suppliers",res)
+                        this.allQuestions = res.data.body
+                    }
+                })
+            },
+
         },
     }
 </script>

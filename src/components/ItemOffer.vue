@@ -1,19 +1,20 @@
 <template>
     <div class="item__offer">
-        <div class="offer__img">
+        <div class="offer__img" @click="this.$router.push({ name: 'OfferDetailsUser', params: { id: item.id }})">
             <!-- <img class="image" src="/assets/images/gallary/car_black.png" alt=""> -->
-            <div :id="`carouselExampleControls${item.id}`" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- <div class="carousel-item active">
+            <!-- <div class="carousel-item active">
                     <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="image image_slider">
-                    </div> -->
-                    <div :class="activeSlider.id == img.id ? `carousel-item active` : `carousel-item` " v-for="img in item.media" :key="img.id">
+                </div> -->
+            <!-- ,  {active: activeSlider.id != img.id ? '' : 'active' }  -->
+            <!-- <div class="carousel-item">
+            <img src="/assets/images/gallary/car_yellow.png" alt="" class="image image_slider">
+            </div> -->
+
+            <!-- <div :id="`carouselExampleControls${item.id}`" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div :class="activeSlider.id == img.id ? `carousel-item active` : `carousel-item`" v-for="img in item.media" :key="img.id">
                         <img :src="img.original_url" alt="img" class="image image_slider" @click="this.$router.push({ name: 'OfferDetailsUser', params: { id: item.id }})">
                     </div>
-                    <!-- ,  {active: activeSlider.id != img.id ? '' : 'active' }  -->
-                    <!-- <div class="carousel-item">
-                    <img src="/assets/images/gallary/car_yellow.png" alt="" class="image image_slider">
-                    </div> -->
                 </div>
                 <button class="carousel-control-prev" type="button" :data-bs-target="`#carouselExampleControls${item.id}`" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -24,6 +25,8 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+            -->
+            <img class="image" :src="item.media[0].original_url" alt="">
 
 
 
@@ -31,6 +34,11 @@
                 <span  class="rate__num">{{item.offer_percentage}}% oFF</span>
                 <span class="rate__code">{{ $t('use_code') }} <span>{{item.offer_code.slice(0, 5)}}</span></span>
             </div>
+
+            <!-- <div class="rate__offer">
+                <span  class="rate__num">10% oFF</span>
+                <span class="rate__code">{{ $t('use_code') }} <span>54454</span></span>
+            </div> -->
         </div>
         <div class="offer__info">
             <h3 class="info__title">{{ getLocales ? item.product_ar : item.product_en}}</h3>
@@ -43,9 +51,10 @@
                 <div class="detail__added">
                     <span class="detail_title">{{ $t('added_by') }} :</span>
                     <div class="added__person">
-                        <!-- <img src="/assets/images/avatar/person1.jpg" alt="" class="person"> -->
+                        <img src="/assets/images/avatar/avatar-image.png" alt="" class="person">
                         <div class="person_info">
-                            <span class="name">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
+                            <span class="name" v-if="user == 'supplier'">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
+                            <span class="name" v-if="user == 'user'">{{ item.user.f_name }} {{ item.user.l_name }}</span>
                             <span class="number">
                                 <span> {{ $t('marouf_number') }} :</span>
                                 <span> {{item.known_number}} </span>
@@ -71,9 +80,29 @@
         <div class="offer_request">
             <a class="request__btn btn_supplier" @click="$emit('editOffer', item.id)" v-if="user == 'supplier'">{{ $t('edit') }}</a>
             <a class="request__btn btn_supplier" data-bs-toggle="modal" :data-bs-target="`#exampleModal${item.id}`"  v-if="user == 'supplier'">{{ $t('delete') }}</a>
-            <a class="request__btn" v-if="user == 'user'" @click="requstOfferUser(item.id)">{{ $t('request') }}</a>
+            <!-- <a class="request__btn" v-if="user == 'user'" data-bs-toggle="modal" :data-bs-target="`#requstModalOffer${item.id}`">{{ $t('request') }}</a> -->
+            <a class="request__btn" v-if="user == 'user'" @click="$emit('requestOffer', item.id)">{{ $t('request') }}</a>
         </div>
     </div>
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" :id="`requstModalOffer${item.id}`" tabindex="-1" :aria-labelledby="`requstModalLabel${item.id}`" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" :id="`requstModalLabel${item.id}`">{{ $t('enter_your_message') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            <div class="modal-body" style="text-align: center;font-size: 2.1vw;">
+                <input type="text" class="form-control" placeholder="name@example.com">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t('no') }}</button>
+                <button type="button" class="btn btn-primary" @click="requstOfferUser(item.id)">{{ $t('yes') }}</button>
+            </div>
+            </div>
+        </div>
+    </div> -->
     <!-- </div> -->
     <!-- <div class="offer__rate">
         <i class="fa fa-star yellow icon" aria-hidden="true"></i>
@@ -106,7 +135,7 @@ import cookie from "vue-cookie";
                 userLogin: JSON.parse(cookie.get('userData')),
             }
         },
-        emits: ["editOffer","deleteOffer"],
+        emits: ["editOffer","deleteOffer","requestOffer"],
         props: {
             item: {
                 type: Object,

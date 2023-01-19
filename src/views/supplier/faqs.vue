@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -77,6 +80,7 @@
             return {
                 bodyPrivacy:'',
                 bodyTerms:'',
+                isActive: false,
                 bodyFAQ:[],
                 fristFAQ:{},
                 sideList: [
@@ -211,6 +215,7 @@
 }
 .section{
     width: 75vw;
-    margin-top: 50px;
+    margin-top: 50px!important;
+    margin: 0 auto;
 }
 </style>

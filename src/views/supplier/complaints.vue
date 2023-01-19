@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -49,7 +52,7 @@
         },
         data() {
             return {
-                
+                isActive: false,
                 sideList: [
                     {
                         id:1,
@@ -137,11 +140,12 @@
     margin: 0 auto;
 }
 .all .all__down {
-  width: 95%!important;
-  margin: 0 auto;
+  /* width: 95%!important;
+  margin: 0 auto; */
 }
 .section{
-    width: 75vw;
-    margin-top: 50px;
+    /* width: 75vw; */
+    margin-top: 50px!important;
+    /* margin: 0 auto; */
 }
 </style>

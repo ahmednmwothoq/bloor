@@ -1,7 +1,7 @@
 <template>
      <div class="list">
         <div class="item" v-for="item in sideList" :key="item.id">
-            <a @click="redirectToPath({ val: item.url })" :class="item.active == `active` ? `item_link active` : `item_link`">{{item.name}}</a>
+            <a @click="redirectToPath({ val: item.url })" :class="item.active == `active` ? `item_link active` : `item_link`">{{ $t(`${item.name}`) }}</a>
         </div>
     </div>
 </template>

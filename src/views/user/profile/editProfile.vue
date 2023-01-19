@@ -1,5 +1,5 @@
 <template>
-    <link rel="stylesheet" href="/assets/css/user/edit_profile.css">
+    <!-- <link rel="stylesheet" href="/assets/css/user/edit_profile.css"> -->
 
     <profile-nav-vue :sideList="sideList" />
 
@@ -7,37 +7,37 @@
         <form>
             <div class="person__info mt-5">
                 <div class="btns mt-2">
-                    <a @click="redirectToPath({ val: '/user-profile' })" class="btn_form btn_cancel">Cancel</a>
-                    <a @click="updateDataUser" class="btn_form btn_save">Save</a>
+                    <a @click="redirectToPath({ val: '/user-profile' })" class="btn_form btn_cancel">{{ $t('cancel') }}</a>
+                    <a @click="updateDataUser" class="btn_form btn_save">{{ $t('save') }}</a>
                 </div>
             </div>
             <div class="person__details mt-5">
                 <div class="form " v-if="profile">
                     <div class="form__field input_sm">
-                        <label class="label">First Name</label>
-                        <input class="input" type="text" v-model="profile.f_name" placeholder="First Name">
+                        <label class="label">{{ $t('first_name') }}</label>
+                        <input class="input" type="text" v-model="profile.f_name" :placeholder="$t('first_name_place')">
                         <span class="feedback_error" v-if="v$.profile.f_name.$error">{{ v$.profile.f_name.$errors[0].$message }}</span>
                     </div><div class="offset_input"></div>
                     <div class="form__field input_sm">
-                        <label class="label">Last Name</label>
-                        <input class="input" type="text" v-model="profile.l_name" placeholder="Last Name">
+                        <label class="label">{{ $t('last_name') }}</label>
+                        <input class="input" type="text" v-model="profile.l_name" :placeholder="$t('last_name_place')">
                         <span class="feedback_error" v-if="v$.profile.l_name.$error">{{ v$.profile.l_name.$errors[0].$message }}</span>
                     </div>
 
                     <div class="form__field input_sm">
-                        <label class="label">Phone</label>
-                        <input class="input" type="text" v-model="profile.phone" placeholder="Phone">
+                        <label class="label">{{ $t('phone') }}</label>
+                        <input class="input" type="text" v-model="profile.phone" :placeholder="$t('Phone_place')">
                         <span class="feedback_error" v-if="v$.profile.phone.$error">{{ v$.profile.phone.$errors[0].$message }}</span>
                     </div><div class="offset_input"></div>
                     <div class="form__field input_sm">
-                        <label class="label">E-mail</label>
-                        <input class="input" type="text" v-model="profile.email" placeholder="E-mail">
+                        <label class="label">{{ $t('e_mail') }}</label>
+                        <input class="input" type="text" v-model="profile.email" :placeholder="$t('email_place')">
                         <span class="feedback_error" v-if="v$.profile.email.$error">{{ v$.profile.email.$errors[0].$message }}</span>
                     </div>
 
                     <div class="form__field">
-                        <label class="label">User Name</label>
-                        <input class="input" type="text" v-model="profile.username" placeholder="User Name">
+                        <label class="label">{{ $t('user_name') }}</label>
+                        <input class="input" type="text" v-model="profile.username" :placeholder="$t('user_name_place')">
                         <span class="feedback_error" v-if="v$.profile.username.$error">{{ v$.profile.username.$errors[0].$message }}</span>
                     </div>
 
@@ -53,25 +53,29 @@
                     </div> -->
 
                     <div class="form__field input_sm">
-                        <label class="label">Gender</label>
+                        <label class="label">{{ $t('gender') }}</label>
                         <select class="input" v-model="profile.gender">
-                            <option value="female" :selected="profile.gender =='female'">Female</option>
-                            <option value="male" :selected="profile.gender =='male'">Male</option>
+                            <option disabled>{{ $t('gender_place') }}</option>
+                            <option value="female" :selected="profile.gender =='female'">{{ $t('female') }}</option>
+                            <option value="male" :selected="profile.gender =='male'">{{ $t('male') }}</option>
                         </select>
                         <span class="feedback_error" v-if="v$.profile.gender.$error">{{ v$.profile.gender.$errors[0].$message }}</span>
                     </div><div class="offset_input"></div>
                     <div class="form__field input_sm">
-                        <label class="label">Marital status</label>
+                        <label class="label">{{ $t('matrial_status') }}</label>
                         <select class="input" v-model="profile.matrial_status">
-                            <option value="single" :selected="profile.matrial_status =='single'">Single</option>
-                            <option value="married" :selected="profile.matrial_status =='married'">Married</option>
+                            <option disabled>{{ $t('matrial_status_place') }}</option>
+                            <option value="single" :selected="profile.matrial_status =='single'">{{ $t('single') }}</option>
+                            <option value="married" :selected="profile.matrial_status =='married'">{{ $t('married') }}</option>
                         </select>
                         <span class="feedback_error" v-if="v$.profile.matrial_status.$error">{{ v$.profile.matrial_status.$errors[0].$message }}</span>
                     </div>
                     
                     <div class="form__field mb-5">
-                        <span class="optional">(Optional)</span>
-                        <label class="label">Date Of Birth</label>
+                        <div>
+                            <label class="label">{{ $t('date_of_birth') }}</label>
+                            <span class="optional">( {{ $t('optional') }} )</span>
+                        </div>
                         <input class="input" type="date" v-model="profile.date_of_birth" placeholder="Date Of Birth" >
                     </div>
 
@@ -113,7 +117,12 @@ import { useToast } from 'vue-toastification'
                         active: 'active',
                         url:'/user-profile'
                     },
-                
+                    // {
+                    //     id:2,
+                    //     name: "reviews",
+                    //     active: '',
+                    //     url:'/user-review'
+                    // },
                     {
                         id:3,
                         name: "chats",

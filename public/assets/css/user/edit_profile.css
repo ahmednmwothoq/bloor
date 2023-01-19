@@ -202,6 +202,7 @@ input[type=number]::-webkit-inner-spin-button {
 .nav__content .nav__list .item{
     color: #B1B1B1;
     font-size: 1.5625vw;
+    cursor: pointer;
 }
 
 .nav__content .nav__list .active{

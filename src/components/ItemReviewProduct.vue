@@ -2,7 +2,7 @@
     <div class="item_review">
         <div class="review__up">
             <div class="contan">
-                <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
+                <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
                 <div class="up__info">
                     <span class="name">Supplier Name #{{ item.user_id }}</span>
                     <!-- <span class="follow">Follow</span> -->
@@ -42,7 +42,7 @@
                     <p class="text">Lorem ipsum dolorsicexplicabo cupiditate sit nihil quisquam voluptas, elige</p>
                 </div>
                 <div class="comment_down">
-                    <a href="" class="read">Read Answer</a>
+                    <a  class="read">Read Answer</a>
                 </div>
             </div> -->
             
@@ -64,6 +64,9 @@ import CreateAt from "@/components/CreateAt.vue"
         components:{
             CreateAt,
             // VueEditor,
+        },
+        mounted() {
+            // console.log('saaaaaa',this.item)
         },
         computed: {
             getLocales () {

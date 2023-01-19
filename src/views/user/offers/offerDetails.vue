@@ -18,7 +18,7 @@
                 </div>
                 <div class="nav__right">
                     <img  class="icon__search" src="/assets/images/icon/search.png" alt="">
-                    <!-- <a class="add__review" href="">Add Review</a> -->
+                    <!-- <a class="add__review" >Add Review</a> -->
                 </div>
             </div>
             <div class="details__desc">

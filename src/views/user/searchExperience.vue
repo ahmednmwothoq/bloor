@@ -24,13 +24,23 @@
             </form>
         </div>
 
-        <div class="item" v-for="item in filteredList" :key="item.id" v-if="filteredList.length > 0">
+        <div class="item" v-for="item in paginatedData" :key="item.id" v-if="paginatedData.length > 0">
             <item-experience :item="item" />
         </div>
         <div class="item" v-else>
             <div class="alert alert-primary text-center mb-5" role="alert">
                 {{ $t('no_data_here') }}
             </div>
+        </div>
+
+        <div class="m-auto w-90" style="margin-top: 4vw!important;margin-bottom: 17vw!important;">
+            <pagination 
+                v-if="allExperiences.length > 0" 
+                v-model="page_index" 
+                :records="allExperiences.length" 
+                :per-page="page_size" 
+                @paginate="myCallback"
+            />
         </div>
 
         <!-- <div class="item" v-for="item in allExperiences" :key="item.id">
@@ -60,6 +70,7 @@ import FooterVue from '@/components/Footer.vue';
 import OnlyLogo from "@/components/OnlyLogo.vue"
 import ItemExperience from "@/components/ItemExperience.vue"
 import { useToast } from 'vue-toastification'
+import Pagination from 'v-pagination-3';
     export default {
         data() {
             return {
@@ -67,6 +78,8 @@ import { useToast } from 'vue-toastification'
                 search:'',
                 typeBloor:'',
                 user:'user',
+                page_index: 1,
+                page_size: 4
             }
         },
         components:{
@@ -75,6 +88,7 @@ import { useToast } from 'vue-toastification'
             OnlyLogo,
             CreateAt,
             ItemExperience,
+            Pagination,
         },
         computed: {
             filteredList() {
@@ -105,6 +119,11 @@ import { useToast } from 'vue-toastification'
                 } else {
                 return false
                 }
+            },
+            paginatedData(){
+                const start = (this.page_index - 1) * this.page_size,
+                    end = start + this.page_size;
+                return this.filteredList.slice(start, end);
             }
         },
         mounted() {
@@ -121,7 +140,11 @@ import { useToast } from 'vue-toastification'
             onChange(event) {
                 console.log(event.target.value)
                 this.typeBloor = event.target.value
-            }
+            },
+            myCallback(event){
+                // console.log(event);
+                this.page_index = event
+            },
         },
     }
 </script>

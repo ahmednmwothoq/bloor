@@ -2,7 +2,7 @@
     <div class="item__experience">
         <div class="experience__up">
             <div class="contan">
-                <img class="up__img" src="/assets/images/avatar/user-img.jpg" alt="">
+                <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
                 <div class="up__info">
                     <span class="name" v-if="user.id == item.user_id">{{user.f_name}} {{user.l_name}}</span>
                 </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="up__time">
-                <!-- <a class="follow" href="">Follow</a> fa fa-star yellow icon -->
+                <!-- <a class="follow" >Follow</a> fa fa-star yellow icon -->
                 <span class="time">
                     <CreateAt :create="item.created_at" />
                 </span>
@@ -37,12 +37,15 @@
             <a @click="showMoreBody" v-if="showMoreDetails" class="down__details">{{ $t('more_details') }}</a>
             <a data-bs-toggle="modal" :data-bs-target="`#exampleModal${item.id}`" class="down__details show_image">{{ $t('show_images') }}</a>
             <div class="down__icons">
-                <div class="icons">
+                <div class="icons" data-bs-toggle="modal" :data-bs-target="`#deleteModalExper${item.id}`" >
                     <i class="fas fa-trash icon"></i>
                 </div>
-                <div class="icons" @click="showEditOpinion">
+                <div class="icons" @click="this.$router.push({ name: 'ProfileEditExperiment', params: { id: item.id }})">
                     <i class="fas fa-edit icon"></i>
                 </div>
+                <!-- <div class="icons" @click="showEditOpinion">
+                    <i class="fas fa-edit icon"></i>
+                </div> -->
                 <div class="icons" @click="this.$router.push({ name: 'ExperienceDetails', params: { id: item.id }})">
                     <i class="fas fa-eye icon"></i>
                     <span>{{ $t('show') }}</span>
@@ -68,13 +71,13 @@
         <div class="modal fade" :id="`exampleModal${item.id}`" tabindex="-1" :aria-labelledby="`exampleModalLabel${item.id}`" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" style="max-width: 750px!important;">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div :class="this.$i18n.locale === 'ar' ?`modal-header flex-row-reverse`: `modal-header`">
                         <h1 class="modal-title fs-5" :id="`exampleModalLabel${item.id}`">{{ $t('image_experience') }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-6 show_image_ex" v-for="img in item.media" :key="img.id">
+                            <div class="col-6 show_image_ex d-flex flex-column align-items-start" v-for="img in item.media" :key="img.id">
                                 <span class="text" v-if="img.collection_name == 'product'">{{ $t('product') }}</span>
                                 <span class="text" v-else-if="img.collection_name == 'proof'">{{ $t('proof') }}</span>
                                 <img class="image" :src="img.original_url" alt="" />
@@ -84,11 +87,29 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" :id="`deleteModalExper${item.id}`" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-body" style="text-align: center;font-size: 2.1vw;">
+                    {{ $t('are_you_sure') }}
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t('no') }}</button>
+                    <button type="button" class="btn btn-primary" @click="sentDeleteExper(item.id)">{{ $t('yes') }}</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
     
 </template>
 
 <script>
+import Api from "@/api"
 import CreateAt from "@/components/CreateAt.vue"
 import useValidate from '@vuelidate/core'
 import { required , minLength  } from '@vuelidate/validators'
@@ -197,6 +218,16 @@ import { useToast } from 'vue-toastification'
                         rtl: false
                     })
                 }
+            },
+            async sentDeleteExper(id){
+                await Api.user.userDeleteExperiments(id).then((res)=>{
+                    console.log(res);
+                    if(res.data.status){
+                        this.$router.push('/user-experiment')
+                        setTimeout(() => this.$router.go(), 2000)
+                        
+                    } 
+                })
             }
         },
         

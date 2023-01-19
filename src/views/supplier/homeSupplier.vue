@@ -3,7 +3,10 @@
     <Header />
 
     <div class="content_slide">
-        <div class="slidebar">
+        <span class="toggle_side"  @click="isActive =! isActive" >
+            <i class="fas fa-list-ul icon"></i>
+        </span>
+        <div :class="isActive ? `slidebar openNavClass` : `slidebar `">
            <list-supplier :sideList="sideList" />
         </div>
         <div class="all">
@@ -12,13 +15,13 @@
             <header-icons />
            </div>
            <div class="all__down">
-            <h2 class="title">Over View</h2>
+            <h2 class="title">{{ $t('over_view') }}</h2>
             <div class="raw mt-5 d-flex">
                 <div class="col-3 mar-50 width-30">
                     <div class="card_info">
                         <div class="card_info_con">
-                            <span class="num">708</span>
-                            <span class="text">Offers</span>
+                            <span class="num">{{ numCountOffer }}</span>
+                            <span class="text">{{ $t('offers') }}</span>
                         </div>
                         <div @click="showAddOffer" class="add_card_info">+</div>
                     </div>  
@@ -26,19 +29,20 @@
                 <div class="col-3 mar-90 width-30">
                     <div class="card_info">
                         <div class="card_info_con">
-                            <span class="num">708</span>
-                            <span class="text">Products</span>
+                            <span class="num">{{ numCountProduct }}</span>
+                            <span class="text">{{ $t('products') }}</span>
                         </div>
                         <div @click="showAddProductRev" class="add_card_info">+</div>
                     </div>  
                 </div>
                 <div class="col-4">
-                    <chats />
+                    <!-- <chats /> -->
                 </div>
                 <!-- <div class="col-4"></div> -->
+                <!-- <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="slider__img"> -->
             </div>
             <div class="section section_slider">
-                <h2 class="sec__title"><a style="text-decoration: none;color: #707070;" href="pages/user/reviews.html">Recent Products</a></h2>
+                <!-- <h2 class="sec__title"><a style="text-decoration: none;color: #707070;" href="pages/user/reviews.html">Recent Products</a></h2>
                 <div class="sec__slider">
                     <div class="owl-carousel owl-theme">
                         <div class="item item__slider">
@@ -50,8 +54,14 @@
                         <div class="item item__slider">
                             <item-product/>
                         </div>
+                        <div class="item item__slider">
+                            <item-product/>
+                        </div>
+                        <div class="item item__slider">
+                            <item-product/>
+                        </div>
                     </div>
-                </div>
+                </div> -->
             </div>
            </div>
         </div>
@@ -59,7 +69,7 @@
 
     <div v-if="showOverlay" @click="showHide" class="overlay"></div>
     <div v-if="showDivAddProduct" class="add_product">
-        <h2 class="title_add">Add Offer</h2>
+        <h2 class="title_add">{{ $t('add_Offer') }}</h2>
         <div class="form">
             <form>
                 <div class="raw d-flex justify-content-between">
@@ -178,11 +188,13 @@
                 <div class="raw">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
                         <!-- <input type="text" v-model="formPro.questionnaire_ar" placeholder="Question Ar *"  class="custome-input widthInputOffset"> -->
-                        <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_ar" contentType="html"  />
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_ar" contentType="html"  /> -->
+                        <textarea  class="custome-input" v-model="formPro.questionnaire_ar" cols="30" rows="3" placeholder="Questionnaire Ar Your Product........ *"></textarea>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
                         <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
-                        <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_en" contentType="html"  />
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_en" contentType="html"  /> -->
+                        <textarea  class="custome-input" v-model="formPro.questionnaire_en" cols="30" rows="3" placeholder="Questionnaire En Your Product........ *"></textarea>
                     </div>
                 </div>
                 <div class="raw">
@@ -247,6 +259,7 @@
                 showDivAddProduct: false,
                 showDivAddProductRev: false,
                 showOverlay: false,
+                isActive: false,
                 sideList: [
                     {
                         id:1,
@@ -322,6 +335,10 @@
                 image_file: null,
                 image_item_product: null,
                 image_file_product: null,
+
+                numCountOffer: '',
+                numCountProduct: '',
+
                 form:{
                     company_name_ar: '',
                     company_name_en: '',
@@ -353,6 +370,8 @@
             // }
             // $("#editor1").CKEDITOR;
             // CKEDITOR.replace( 'editor1' );
+            this.getCountProduct()
+            this.getCountOffer()
         },
         methods:{
             ...mapActions(['redirectTo']),
@@ -458,7 +477,26 @@
                     // } 
                     console.log(res)
                 })
-            }
+            },
+            async getCountProduct(){
+                await Api.supplier.supplierCountProduct().then((res)=>{
+                    // console.log("Suppliers",res)
+                    if(res.data.status){
+                        // console.log("Suppliers",res)
+                        this.numCountProduct = res.data.body
+                    }
+                })
+            },
+
+            async getCountOffer(){
+                await Api.supplier.supplierCountOffer().then((res)=>{
+                    // console.log("Suppliers 2",res)
+                    if(res.data.status){
+                        // console.log("Suppliers",res)
+                        this.numCountOffer = res.data.body
+                    }
+                })
+            },
         }
     }
 </script>
@@ -553,18 +591,301 @@
 }
 .section_slider{
     width: 75vw;
+    margin: auto;
 }
 
 .overlay{
   position: absolute;
-  top: 3vw;
-  left: 20vw;
+  top: 7vw;
+  left: 0;
   right: 0;
   bottom: 0;
   background: #000000 0% 0% no-repeat padding-box;
   opacity: 0.5;
   z-index: 2;
   display: block !important;
+}
+
+/****************************** Responsive ******************************/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .all .all__down .title{
+        letter-spacing: 0px;
+        color: #B1B1B1;
+        font-size: 4.5vw;
+        margin-top: 2vw;
+    }
+    .width-30{
+        width: 42% !important;
+    }
+    .mar-50{
+        margin-right: 5vw;
+    }
+    .mar-90{
+        margin-right: 7vw;
+    }
+    .card_info{
+        height: 25vw;
+    }
+
+    .card_info .card_info_con .num{
+        font-size: 4vw;
+    }
+    .card_info .card_info_con .text{
+        font-size: 4vw;
+    }
+    .card_info .add_card_info{
+        height: 6vw;
+        font-size: 5vw;
+        margin: 0.9vw 2.263054vw;
+        padding: 0px 1.4vw;
+    }
+
+    .overlay{
+        position: absolute;
+        top: 7vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+    }
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .all .all__down .title{
+        letter-spacing: 0px;
+        color: #B1B1B1;
+        font-size: 4.5vw;
+        margin-top: 2vw;
+    }
+    .width-30{
+        width: 42% !important;
+    }
+    .mar-50{
+        margin-right: 5vw;
+    }
+    .mar-90{
+        margin-right: 7vw;
+    }
+    .card_info{
+        height: 25vw;
+    }
+
+    .card_info .card_info_con .num{
+        font-size: 4vw;
+    }
+    .card_info .card_info_con .text{
+        font-size: 4vw;
+    }
+    .card_info .add_card_info{
+        height: 6vw;
+        font-size: 5vw;
+        margin: 0.9vw 2.263054vw;
+        padding: 0px 1.3vw;
+    }
+    .overlay{
+        position: absolute;
+        top: 6vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .all .all__down .title{
+        letter-spacing: 0px;
+        color: #B1B1B1;
+        font-size: 3.5vw;
+        margin-top: 2vw;
+    }
+    .width-30{
+        width: 40% !important;
+    }
+    .mar-50{
+        margin-right: 5vw;
+    }
+    .mar-90{
+        margin-right: 7vw;
+    }
+    .card_info{
+        height: 23vw;
+    }
+
+    .card_info .card_info_con .num{
+        font-size: 3.5vw;
+    }
+    .card_info .card_info_con .text{
+        font-size: 3.5vw;
+    }
+    .card_info .add_card_info{
+        height: 5vw;
+        font-size: 4vw;
+        margin: 0.9vw 2.263054vw;
+        padding: 0px 1.3vw;
+    }
+
+    .overlay{
+        position: absolute;
+        top: 5vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .all .all__down .title{
+        letter-spacing: 0px;
+        color: #B1B1B1;
+        font-size: 3vw;
+        margin-top: 2vw;
+    }
+    .width-30{
+        width: 40% !important;
+    }
+    .mar-50{
+        margin-right: 5vw;
+    }
+    .mar-90{
+        margin-right: 7vw;
+    }
+    .card_info{
+        height: 21vw;
+    }
+
+    .card_info .card_info_con .num{
+        font-size: 3vw;
+    }
+    .card_info .card_info_con .text{
+        font-size: 3vw;
+    }
+    .card_info .add_card_info{
+        height: 5vw;
+        font-size: 3.54vw;
+        margin: 0.9vw 2.263054vw;
+        padding: 0px 1.3vw;
+    }
+    .overlay{
+        position: absolute;
+        top: 5vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .all .all__down .title{
+        letter-spacing: 0px;
+        color: #B1B1B1;
+        font-size: 2vw;
+        margin-top: 2vw;
+    }
+    .width-30{
+        width: 30% !important;
+    }
+    .mar-50{
+        margin-right: 5vw;
+    }
+    .mar-90{
+        margin-right: 7vw;
+    }
+    .card_info{
+        height: 16vw;
+    }
+
+    .card_info .card_info_con .num{
+        font-size: 2vw;
+    }
+    .card_info .card_info_con .text{
+        font-size: 2vw;
+    }
+    .card_info .add_card_info{
+        height: 4vw;
+        font-size: 3vw;
+        margin: 0.9vw 2.263054vw;
+        padding: 0px 1vw;
+    }
+
+    .overlay{
+        position: absolute;
+        top: 4vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1500px and up) */
+@media only screen and (min-width: 1500px) {
+    .all .all__down .title{
+        letter-spacing: 0px;
+        color: #B1B1B1;
+        font-size: 1.7vw;
+        margin-top: 2vw;
+    }
+    .width-30{
+        width: 30% !important;
+    }
+    .mar-50{
+        margin-right: 5vw;
+    }
+    .mar-90{
+        margin-right: 7vw;
+    }
+    .card_info{
+        height: 13vw;
+    }
+
+    .card_info .card_info_con .num{
+        font-size: 1.6vw;
+    }
+    .card_info .card_info_con .text{
+        font-size: 1.6vw;
+    }
+    .card_info .add_card_info{
+        height: 3vw;
+        font-size: 2vw;
+        margin: 0.9vw 2.263054vw;
+        padding: 0px 0.9vw;
+    }
+    .overlay{
+        position: absolute;
+        top: 3.2vw;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000 0% 0% no-repeat padding-box;
+        opacity: 0.5;
+        z-index: 2;
+        display: block !important;
+    }
 }
 
 
