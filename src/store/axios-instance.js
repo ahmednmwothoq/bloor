@@ -29,7 +29,7 @@ $axios.interceptors.request.use(function (config) {
     }
     return config;
   }, function (error) {
-    console.log('axios request error', error)
+    // console.log('axios request error', error)
     return Promise.reject(error);
   });
 

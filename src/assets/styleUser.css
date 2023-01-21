@@ -459,6 +459,9 @@
     display: flex;
 }
 
+[dir="rtl"] ._Home_content .content__offers .item__offer .offer__info .info__details .detail__desc .desc__text{
+    text-align: right;
+}
 ._Home_content .content__offers .item__offer .offer__info .info__details .detail__desc .desc__text{
     margin-left: 0.46899vw;
     margin-bottom: 0;

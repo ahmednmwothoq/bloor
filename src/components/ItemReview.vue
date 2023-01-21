@@ -35,7 +35,7 @@
         </div>
         <div class="review_mid">
             <div class="mid__left">
-                <!-- <span class="car">approval</span> -->
+                {{ getLocales ? itemProduct.product_ar : itemProduct.product_en }}
                 <!-- <span class="edit">{{item.admin_approval}}</span> -->
             </div>
             <div class="mid__rigth">
@@ -46,10 +46,10 @@
             <!-- <div class="down__comment" v-html="item.review"></div> -->
             <div class="down__comment" v-for="question in itemProduct.questions" :key="question.id" v-if="itemProduct">
                 <div v-for="answer in question.answers" :key="answer.id">
-                    <div class="comment_up">
-                        <div class="left">
-                            <span class="dot"></span>
-                            <span class="text">{{ getLocales ? question.question_ar : question.question_en }}</span>
+                    <div :class="question.answer_has_text == 1 ? 'comment_up' : 'comment_up align-items-start'" v-if="answer.user_id == itemReview.user_id">
+                        <div :class="question.answer_has_text == 1 ? 'left' : 'left align-items-start'" >
+                            <span :class="question.answer_has_text == 1 ? 'dot' : 'dot mt-1'"></span>
+                            <span :class="question.answer_has_text == 1 ?'text' : 'text pb-5'">{{ getLocales ? question.question_ar : question.question_en }}</span>
                         </div>
                         <div class="right">
                             <star-rating
@@ -62,12 +62,15 @@
                         </div>
                     </div>
                 
-                    <div class="comment_mid" >
-                        <p class="text" v-if="question.answer_has_text == 1">{{ answer.text }}</p>
+                    <div class="comment_mid" v-if="answer.user_id == itemReview.user_id">
+                        <p class="text" v-if="question.answer_has_text == 1">{{ answerText(answer.text ,answer.id , answer.user_id , answer.question_id,itemReview.id) }}</p>
                     </div>
-                </div>
-                <div class="comment_down">
-                    <a  class="read">Read Answer</a>
+                
+                    <div class="comment_down" v-if="answer.user_id == itemReview.user_id">
+                        <a class="read" v-if="question.answer_has_text == 1" @click="showHideAnswer_id[answer.question_id+answer.id+answer.user_id+itemReview.id] = !showHideAnswer_id[answer.question_id+answer.id+answer.user_id+itemReview.id]">Read Answer</a>
+                        <!-- <a class="read">Read Answer</a> -->
+                        <!-- showHideAnswer_id[answer.id , answer.user_id , answer.question_id] -->
+                    </div>
                 </div>
             </div>
             
@@ -80,10 +83,10 @@
                     <i class="fas fa-handshake icon"></i>
                     <span>{{itemReview.admin_approval}}</span>
                 </div>
-                <div class="icons" @click="">
+                <!-- <div class="icons">
                     <i class="fas fa-comment-alt icon"></i>
-                    <span></span>
-                </div>
+                    <span>{{item.comments.length}}</span>
+                </div> -->
             </div>
         </div>
     </div>
@@ -91,7 +94,13 @@
 
 <script>
 import CreateAt from "@/components/CreateAt.vue"
+import StarRating from 'vue-star-rating';
     export default {
+        data() {
+            return {
+                showHideAnswer_id: [],
+            }
+        },
         props: {
             itemProduct: {
                 type: Object,
@@ -103,6 +112,7 @@ import CreateAt from "@/components/CreateAt.vue"
             }
         },
         components:{
+            StarRating,
             CreateAt,
         },
         computed: {
@@ -113,6 +123,23 @@ import CreateAt from "@/components/CreateAt.vue"
                 return true
                 } else {
                 return false
+                }
+            }
+        },
+        methods: {
+            answerText(answer_text ,answer_id , answer_user_id , answer_question_id ,item_id){
+                if(answer_text){
+                    if(this.showHideAnswer_id[answer_question_id+answer_id+answer_user_id+item_id] == true){
+                        return answer_text
+                    }else{
+                            if(answer_text.length > 50){
+                                return answer_text.slice(0,50)
+                            }
+                            else{
+                                return answer_text
+                            }
+                        
+                    }
                 }
             }
         },

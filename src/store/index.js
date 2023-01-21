@@ -37,7 +37,7 @@ export default createStore({
     mutations,
     actions,
     modules: {
-        authUser: authUserModule,
+        // authUser: authUserModule,
         user: userModule,
     }
 })

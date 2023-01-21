@@ -360,7 +360,7 @@
             async getDataOffers(){
                 await Api.supplier.supplierGetOffers().then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         this.offers = res.data.body
                     }
                 });
@@ -388,7 +388,7 @@
                     
                         this.$router.go()
                     } 
-                    console.log(res)
+                    // console.log(res)
                 })
             },
             async editOffer(event){
@@ -426,7 +426,7 @@
 
             },
             async deleteOffer(event){
-                console.log(event)
+                // console.log(event)
                 await Api.supplier.supplierOfferDelete(event).then((res)=>{
                     if(res.data.status){
                         this.$router.go()

@@ -133,12 +133,12 @@ import Pagination from 'v-pagination-3';
         methods: {
             async getAllExperience(){
                 await Api.general.getAllExperiments().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.allExperiences = res.data.body
                 })
             },
             onChange(event) {
-                console.log(event.target.value)
+                // console.log(event.target.value)
                 this.typeBloor = event.target.value
             },
             myCallback(event){

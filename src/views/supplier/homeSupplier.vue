@@ -35,9 +35,7 @@
                         <div @click="showAddProductRev" class="add_card_info">+</div>
                     </div>  
                 </div>
-                <div class="col-4">
-                    <!-- <chats /> -->
-                </div>
+                
                 <!-- <div class="col-4"></div> -->
                 <!-- <img src="/assets/images/gallary/laborghini_huracan.jpg" alt="" class="slider__img"> -->
             </div>
@@ -185,18 +183,18 @@
                         <input type="text" v-model="formPro.link" placeholder="Link *"  class="custome-input widthInputOffset">
                     </div>
                 </div>
-                <div class="raw">
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
-                        <!-- <input type="text" v-model="formPro.questionnaire_ar" placeholder="Question Ar *"  class="custome-input widthInputOffset"> -->
                         <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_ar" contentType="html"  /> -->
+                        <!-- <input type="text" v-model="formPro.questionnaire_ar" placeholder="Question Ar *"  class="custome-input widthInputOffset"> -->
+                <!-- <div class="raw">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
                         <textarea  class="custome-input" v-model="formPro.questionnaire_ar" cols="30" rows="3" placeholder="Questionnaire Ar Your Product........ *"></textarea>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
-                        <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
-                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_en" contentType="html"  /> -->
                         <textarea  class="custome-input" v-model="formPro.questionnaire_en" cols="30" rows="3" placeholder="Questionnaire En Your Product........ *"></textarea>
                     </div>
-                </div>
+                </div> -->
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="formPro.questionnaire_en" contentType="html"  /> -->
+                        <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
                 <div class="raw">
                     <div class="upload-images mb-4">
                         <div class="imgs-uploaded" v-if="image_file_product">
@@ -356,8 +354,8 @@
                     product_ar:'',
                     product_en:'',
                     date:'',
-                    questionnaire_ar:'',
-                    questionnaire_en:'',
+                    questionnaire_ar:'All the official contents of the based carmaker: all the cars in the range and the great historic cars, the official Ferrari dealers',
+                    questionnaire_en:'All the official contents of the based carmaker: all the cars in the range and the great historic cars, the official Ferrari dealers',
                     link:'',
                 }
             }
@@ -457,7 +455,7 @@
                     
                     //     this.notifications = res.data.userData;
                     // } 
-                    console.log(res)
+                    // console.log(res)
                 })
             },
             async addProductForm(){
@@ -475,7 +473,7 @@
                     
                     //     this.notifications = res.data.userData;
                     // } 
-                    console.log(res)
+                    // console.log(res)
                 })
             },
             async getCountProduct(){

@@ -118,7 +118,7 @@ import Pagination from 'v-pagination-3';
             async GetAllProduct(){
                 await Api.general.getAllProductstoReviews().then((res)=>{
                     // this.$router.go()
-                    console.log(res.data)
+                    // console.log(res.data)
                     this.products = res.data.body
                 })
             },

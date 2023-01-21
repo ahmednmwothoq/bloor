@@ -67,8 +67,8 @@
                 this.v$.$validate();
                 const toast = useToast()
                 if(!this.v$.$error){
-                    console.log("Success")
-                    console.log(this.code , this.$route.query.email)
+                    // console.log("Success")
+                    // console.log(this.code , this.$route.query.email)
                     const payload ={
                         code: this.code,
                         email: this.$route.query.email
@@ -90,7 +90,7 @@
                             
                         })
                     } catch (error) {
-                        console.log(error);
+                        // console.log(error);
                     }
 
                 }else{

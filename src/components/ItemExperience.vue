@@ -119,7 +119,7 @@ import { useToast } from 'vue-toastification'
                 // console.log(id)
                 const toast = useToast()
                 await Api.user.userFollowAnotherUser(id).then((res)=>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     if(res.data.status){
                         // this.$router.go()
                         

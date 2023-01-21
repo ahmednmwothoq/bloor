@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory , createWebHashHistory } from 'vue-router'
 
 import store from '../store'
 
@@ -82,7 +82,10 @@ import SupplierProductQuestions from '../views/supplier/productQuestion.vue'
 import SupplierProductUsersAnswers from '../views/supplier/productUsersAnswers.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
+  // mode: 'history',
+  // history: createWebHistory(),
   routes: [
     // { path: '/', name: 'Home', component: Home, meta: { title: 'Home' , middleware: false } },
     
@@ -160,7 +163,9 @@ const router = createRouter({
       { path: '/supplier/contact-us', name: 'SupplierContactUs', component: SupplierContactUs , meta: { title: 'Supplier Contact Us' , middleware: auth } },
     
 
-      { path: '/:pathMatch(.*)*', name: 'PathNotFound', component: PathNotFound , meta: { title: 'Not Found' , middleware: log }}
+      // { path: '/:pathMatch(.*)*', name: 'PathNotFound', component: PathNotFound , meta: { title: 'Not Found' , middleware: log }},
+      // { path: '/:catchAll(.*)', name: 'CatchNotFound', component: PathNotFound , meta: { title: 'Not Found' , middleware: log }},
+      // { path: '/:*', name: 'AllCatchNotFound', component: PathNotFound , meta: { title: 'Not Found' , middleware: log }}
   ]
 })
 

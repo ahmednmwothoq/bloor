@@ -81,7 +81,7 @@ import Pagination from 'v-pagination-3';
         methods: {
             async getAllOffer(){
                 await Api.general.getAllOffers().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.allOffer = res.data.body
                 })
             },

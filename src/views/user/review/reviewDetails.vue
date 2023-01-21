@@ -28,8 +28,8 @@
             </div>
             
                 
-            <div class="review__down" v-if="getLocales" v-html="review.questionnaire_ar"></div>
-            <div class="review__down" v-if="!getLocales" v-html="review.questionnaire_en"></div>
+            <!-- <div class="review__down" v-if="getLocales" v-html="review.questionnaire_ar"></div>
+            <div class="review__down" v-if="!getLocales" v-html="review.questionnaire_en"></div> -->
         </div>
     </div>
 
@@ -89,7 +89,7 @@ import LogoSearch from "@/components/LogoSearch.vue"
             async getSingleExperience(){
                 await Api.user.userGetSingleExperiments(this.idRev).then((res)=>{
                     if(res.data.status){
-                        console.log("user",res.data)
+                        // console.log("user",res.data)
                         this.review = res.data.body;
                     }
                 })

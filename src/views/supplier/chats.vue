@@ -372,9 +372,9 @@
             // channel.bind('pusher:subscription_succeeded', () => console.log('subscription succeeded'))
 
             channel.bind('chat', event => {
-                console.log('chat', event)
+                // console.log('chat', event)
                 this.events.push(event.message)
-                console.log('events', this.events)
+                // console.log('events', this.events)
             })
         },
         methods: {
@@ -389,7 +389,7 @@
             async showChat(id){
                 await Api.supplier.userAllChatMessages(id).then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         this.chatList = res.data.body;
 
                         this.chatList.sort((a,b) => {
@@ -406,7 +406,7 @@
 
                 await Api.supplier.userSendMessageInChat(id,data).then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         // this.showChat(id)
                         this.msgSender = ''
                     }

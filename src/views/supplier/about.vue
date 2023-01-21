@@ -19,11 +19,11 @@
                 <main class="_aboutus_content_sup">
                     <div class="section__upper">
                         <div class="section__home">
-                            <h2 class="sec__title">About</h2>
-                            <h2 class="sect__subtitle">Us</h2>
-                            <p class="sec__text">Explore our agency and goals Lorim lipsum lorim lipsum......</p>
+                            <h2 class="sec__title">{{ $t('about') }}</h2>
+                            <h2 class="sect__subtitle">{{ $t('us') }}</h2>
+                            <p class="sec__text">{{ $t('about_desc') }}</p>
                             <a  class="sec__link">
-                                Show More
+                                {{ $t('show_more') }}
                                 <i class="fal fa-chevron-down"></i>
                             </a>
                         </div>
@@ -38,14 +38,14 @@
                             <div class="sec_rect rect_small rect_left"></div>
                         </div>
                         <div class="section__info">
-                            <h2 class="sec__title mb-5">Who We Are?</h2>
+                            <h2 class="sec__title mb-5">{{ $t('who_we_are') }}</h2>
                             <!-- <p class="sect__subtitle">Welcome To <img src="/assets/images/logo/logo2.png" alt=""> Lives Here!</p> -->
                             <p class="sec__text" v-html="aboutUs"></p>
                         </div>
                     </div>
                     <div class="section__second">
                         <div class="section__info">
-                            <h2 class="sec__title">Our Message</h2>
+                            <h2 class="sec__title">{{ $t('our_message') }}</h2>
                             <p class="sec__text" v-html="OurMessages"></p>
                             <!-- <img class="sec_shape" src="/assets/images/gallary/Path.png" alt="" > -->
                         </div>
@@ -59,7 +59,7 @@
                             <img src="/assets/images/gallary/kisspngvision.png" alt="" class="sec__img">
                         </div>
                         <div class="section__info">
-                            <h2 class="sec__title">Business Vision</h2>
+                            <h2 class="sec__title">{{ $t('business_vision') }}</h2>
                             <p class="sec__text" v-html="OurVission"></p>
                         </div>
                     </div>
@@ -173,15 +173,15 @@
         methods: {
             async getAboutUs(){
                 await Api.general.getAboutUs().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.aboutUs = res.data.body
                 });
                 await Api.general.getOurMessages().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.OurMessages = res.data.body
                 });
                 await Api.general.getOurVission().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.OurVission = res.data.body
                 });
             }

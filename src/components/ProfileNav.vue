@@ -48,8 +48,9 @@
             <!-- <a class="item" id="open_profile_notif">
                 <i class="fas fa-bell icon"></i>
             </a> -->
-            <a class="item cursor_pointer" @click="showNotifications">
+            <a class="item cursor_pointer position-relative" @click="showNotifications">
                 <i class="fas fa-bell icon"></i>
+                <span class="notif_length" v-if="notifications.length > 0">{{ notifications.length }}</span>
             </a>
         </div>
     </div>
@@ -80,120 +81,17 @@
         <div class="Title">{{ $t('notifications') }}</div>
         <div class="content">
             <div class="notif_day">
-                <span class="day">Info</span>
+                <span class="day">{{ $t('notice') }}</span>
                 <div class="lists" >
                     <div class="item__list" v-for="item in notifications" :key="item.id">
                         <span class="circle"></span>
                         <span class="list_text">
-                            <span class="notify_person">{{ item.owner_id }}</span>
+                            <!-- <span class="notify_person">{{ item.owner_id }}</span> -->
                             {{ item.message }}
                         </span>
                         <span class="time">{{ item.created_at }}</span>
                     </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
-                    <div class="item__list">
-                        <span class="circle"></span>
-                        <span class="list_text">
-                            <span class="notify_person">Lorim</span>
-                            commented on your review for lorim product.
-                        </span>
-                        <span class="time">2:00 pm</span>
-                    </div>
+                    
                     
                     
                 </div>
@@ -252,7 +150,7 @@ import { useToast } from 'vue-toastification'
         },
         mounted(){
             this.getNotificationsUser()
-            console.log(this.$store.getters["user/getToken"])
+            // console.log(this.$store.getters["user/getToken"])
         },
         methods:{
             ...mapActions(['redirectTo']),
@@ -328,7 +226,7 @@ import { useToast } from 'vue-toastification'
                     data.append('product_image', this.image_item);
                     
                     await Api.user.userAddExperiments(data).then((res)=>{
-                        console.log(res);
+                        // console.log(res);
                         if(res.data.status){
                             this.showOverlayOpi = false
                             this.showOpi = false
@@ -599,6 +497,7 @@ import { useToast } from 'vue-toastification'
     color: #818181;
     font-size: 1.3830028vw;
     width: 85%;
+    margin: 0 1vw;
   }
 
 .notif_profile .content .notif_day .lists .item__list .list_text .notify_person{
@@ -607,9 +506,29 @@ import { useToast } from 'vue-toastification'
     font-weight: 500;
 }
 
+  [dir='rtl'] .notif_profile .content .notif_day .lists .item__list .time{
+    text-align: left;
+  }
   .notif_profile .content .notif_day .lists .item__list .time{
     color: #6e6e6e;
     font-size: 1.11643059vw;
+    text-align: right;
+  }
+
+  .notif_length{
+    background: #d40000;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 0.5vw;
+    left: 0.5vw;
   }
 
 
@@ -715,8 +634,7 @@ import { useToast } from 'vue-toastification'
         right: auto;
     }
     .notif_profile{
-        width: 80vw;
-        
+        width: 85vw;
         z-index: 6;
         right: 1vw;
         top: 22vw;
@@ -801,6 +719,24 @@ import { useToast } from 'vue-toastification'
 
     .notif_profile .content .notif_day .lists .item__list .time{
         font-size: 3vw;
+    }
+
+    [dir='rtl'].notif_length{
+        right: 2vw;
+        left: auto;
+    }
+    .notif_length{
+        font-size: 2.5vw;
+        width: 3vw;
+        height: 3.5vw;
+        top:2vw;
+        left: 2vw;
+    }
+
+    .overlay_not{
+        position: absolute;
+        top: 17.5vw;
+        height: 200vw;
     }
 }
 
@@ -905,7 +841,7 @@ import { useToast } from 'vue-toastification'
         right: auto;
     }
     .notif_profile{
-        width: 70vw;
+        width: 75vw;
         z-index: 6;
         right: 4vw;
         top: 18vw;
@@ -989,6 +925,24 @@ import { useToast } from 'vue-toastification'
 
     .notif_profile .content .notif_day .lists .item__list .time{
         font-size: 2.7vw;
+    }
+
+    [dir='rtl'].notif_length{
+        right: 2vw;
+        left: auto;
+    }
+    .notif_length{
+        font-size: 2.3vw;
+        width: 2.7vw;
+        height: 3.2vw;
+        top:2vw;
+        left: 2vw;
+    }
+
+    .overlay_not{
+        position: absolute;
+        top: 15vw;
+        height: 150vw;
     }
 }
 
@@ -1178,6 +1132,18 @@ import { useToast } from 'vue-toastification'
     .notif_profile .content .notif_day .lists .item__list .time{
         font-size: 2.4vw;
     }
+
+    [dir='rtl'].notif_length{
+        right: 1.2vw;
+        left: auto;
+    }
+    .notif_length{
+        font-size: 2vw;
+        width: 2.2vw;
+        height: 2.5vw;
+        top:1.5vw;
+        left: 1.2vw;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -1364,6 +1330,18 @@ import { useToast } from 'vue-toastification'
 
     .notif_profile .content .notif_day .lists .item__list .time{
         font-size: 1.7vw;
+    }
+
+    [dir='rtl'].notif_length{
+        right: 1vw;
+        left: auto;
+    }
+    .notif_length{
+        font-size: 1.5vw;
+        width: 1.7vw;
+        height: 1.9vw;
+        top:1vw;
+        left: 1vw;
     }
 }
 
@@ -1552,6 +1530,18 @@ import { useToast } from 'vue-toastification'
 
     .notif_profile .content .notif_day .lists .item__list .time{
         font-size: 1.2vw;
+    }
+
+    [dir='rtl'].notif_length{
+        right: 1vw;
+        left: auto;
+    }
+    .notif_length{
+        font-size: 1.3vw;
+        width: 1.3vw;
+        height: 1.5vw;
+        top:1vw;
+        left: 1vw;
     }
 }
 
@@ -1747,11 +1737,18 @@ import { useToast } from 'vue-toastification'
         top: 3vw;
         height: 100vw;
     }
+
+    [dir='rtl'].notif_length{
+        right: 0.7vw;
+        left: auto;
+    }
+    .notif_length{
+        font-size: 1vw;
+        width: 1vw;
+        height: 1.2vw;
+        top: 0.7vw;
+        left: 0.7vw;
+    }
 }
-
-
-
-  
-
 
 </style>

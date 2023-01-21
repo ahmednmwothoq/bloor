@@ -41,13 +41,13 @@
                                 @click="makeUserFollowUser(experience.user_id)"
                             >{{ $t('follow') }}</a>
                         </div>
-                        <div class="mb-3 follow_details">
+                        <!-- <div class="mb-3 follow_details">
                             <a 
                                 
                                 class="follow cursor_pointer" 
                                 @click="makeUserFollowUser(experience.user_id)"
                             >{{ $t('follow') }}</a>
-                        </div>
+                        </div> -->
                         <span class="time">
                             <CreateAt :create="experience.created_at" />
                         </span>
@@ -402,7 +402,7 @@ import { useToast } from 'vue-toastification'
 
                     await Api.user.ShowAllRepleyCommentInEx(id).then((res)=>{
                         if(res.data.status){
-                            console.log(res.data)
+                            // console.log(res.data)
                             if(res.data.body.length > 0){
                                 this.replaysComments = res.data.body
                                 this.showReplayCommentDiv = true
@@ -517,7 +517,7 @@ import { useToast } from 'vue-toastification'
                 // console.log(id)
                 const toast = useToast()
                 await Api.user.userFollowAnotherUser(id).then((res)=>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     if(res.data.status){
                         // this.$router.go()
                         

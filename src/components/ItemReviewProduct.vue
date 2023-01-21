@@ -46,8 +46,8 @@
                 </div>
             </div> -->
             
-        <div class="review__down" v-if="getLocales" v-html="item.questionnaire_ar"></div>
-        <div class="review__down" v-if="!getLocales" v-html="item.questionnaire_en"></div>
+        <!-- <div class="review__down" v-if="getLocales" v-html="item.questionnaire_ar"></div>
+        <div class="review__down" v-if="!getLocales" v-html="item.questionnaire_en"></div> -->
     </div>
 </template>
 

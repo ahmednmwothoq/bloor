@@ -67,8 +67,8 @@
                 this.v$.$validate();
                 const toast = useToast()
                 if(!this.v$.$error){
-                    console.log("Success")
-                    console.log(this.code , this.$route.query.email)
+                    // console.log("Success")
+                    // console.log(this.code , this.$route.query.email)
                     const payload ={
                         code: this.code,
                         email: this.$route.query.email
@@ -77,7 +77,7 @@
                         await Api.authUser.verifyRestPassCode(payload).then((res) => {
                             // console.log("success fetch", res)
                             if(res?.data?.status){
-                                console.log(res.data)
+                                // console.log(res.data)
                                 this.$store.dispatch("user/addToken", res.data.body.token)
                                 this.$store.dispatch("user/switchStatus", true)
                                 this.$router.push({ path: '/user-reset-password', query: { email: this.$route.query.email } })
@@ -85,7 +85,7 @@
                             
                         })
                     } catch (error) {
-                        console.log(error);
+                        // console.log(error);
                     }
 
                 }else{

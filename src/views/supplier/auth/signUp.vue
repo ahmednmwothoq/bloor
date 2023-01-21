@@ -12,12 +12,12 @@
     
     <main class="__content">
         <div class="content__left">
-            <div>
+            <div @click="this.$router.push('/')">
                 <img class="left__img" src="/assets/images/logo/logo_blue.png" alt="Logo Bloor">
                 <p class="left__text">{{ $t('login_subLogo') }}</p>
             </div>
             <div class="content_bottom">
-                <p class="left__help">{{ $t('help') }}</p>
+                <p class="left__help" @click="this.$router.push('/faqs')">{{ $t('help') }}</p>
                 <span class="icon__text">{{ $t('a_provider') }} <a class="cursor_pointer" @click="redirectTo({ val: 'supplierLogin' })">{{ $t('login_nav') }}</a></span>
             </div>
         </div>     
@@ -243,7 +243,7 @@ export default {
             const toast = useToast()
             this.v$.$validate();
             if(!this.v$.$error){
-                console.log("Success");
+                // console.log("Success");
                 const payload = {
                     f_name: this.f_name,
                     l_name: this.l_name,
@@ -257,7 +257,7 @@ export default {
                     password_confirmation: this.password_confirmation,
                 }
                 await Api.authSupplier.register(payload).then((res) => {
-                    console.log("success fetch", res)
+                    // console.log("success fetch", res)
                     if(res?.data?.status){
                         router.push({ path: '/supplier-verify-email', query: { email: this.email } })
                     }

@@ -62,8 +62,23 @@
                 <!-- <router-link class="request__btn" :to="`/add-review/${item.id}`">{{ $t('review') }}</router-link> -->
                 <!-- <router-link class="request__btn btn_supplier" :to="`/show-review/${item.id}`">{{ $t('show_reviews') }}</router-link> -->
                 <div>
-                    <a class="request__btn" @click="this.$router.push({ name: 'addReview', params: { id: item.id }})">{{ $t('review') }}</a>
+                    <!-- <a class="request__btn" @click="this.$router.push({ name: 'addReview', params: { id: item.id }})">{{ $t('review') }}</a> -->
+                    <a class="request__btn"
+                        @click="this.$router.push({ path: `/add-review/${item.id}`, query: { name: item.product_ar }})"
+                        v-if="this.$i18n.locale === 'ar'"
+                    >
+                        {{ $t('review') }}
+                    </a>
+                    
+                    <a class="request__btn" 
+                        @click="this.$router.push({ path: `/add-review/${item.id}`, query: { name: item.product_ar }})" 
+                        v-else
+                    >
+                        {{ $t('review') }}
+                    </a>
+                    
                     <a class="request__btn btn_supplier" @click="this.$router.push({ name: 'showReview', params: { id: item.id }})" >{{ $t('show_reviews') }}</a>
+        
                 </div>
             </div>
         </div>
@@ -107,24 +122,24 @@
                         <input type="text" v-model="item.link" :placeholder="$t('link')+` *`"  class="custome-input widthInputOffset">
                     </div>
                 </div>
-                <div class="raw">
+                        <!-- <input type="text" v-model="formPro.questionnaire_ar" placeholder="Question Ar *"  class="custome-input widthInputOffset"> -->
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="item.questionnaire_ar" contentType="html"  /> -->
+                <!-- <div class="raw">
                     <div class="col-12 text-white">
                         <label for="">{{ $t('questionnaire_ar') }}</label>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
-                        <!-- <input type="text" v-model="formPro.questionnaire_ar" placeholder="Question Ar *"  class="custome-input widthInputOffset"> -->
-                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="item.questionnaire_ar" contentType="html"  /> -->
                         <textarea  class="custome-input" v-model="item.questionnaire_ar" cols="30" rows="3" placeholder="Questionnaire Ar Your Product........ *"></textarea>
                     </div>
                     <div class="col-12 text-white">
                         <label for="">{{ $t('questionnaire_en') }}</label>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3 bg-white">
-                        <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
-                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="item.questionnaire_en" contentType="html"  /> -->
                         <textarea  class="custome-input" v-model="item.questionnaire_en" cols="30" rows="3" placeholder="Questionnaire En Your Product........ *"></textarea>
                     </div>
-                </div>
+                </div> -->
+                        <!-- <input type="text" v-model="formPro.questionnaire_en" placeholder="Question En *"  class="custome-input widthInputOffset"> -->
+                        <!-- <QuillEditor theme="snow" toolbar="full" v-model:content="item.questionnaire_en" contentType="html"  /> -->
                 <div class="raw">
                     <div class="col-12 text-white">
                         <label for="">{{ $t('upload_image') }}</label>
@@ -379,7 +394,7 @@ import Api from "@/api"
                 await Api.supplier.supplierAddQuestionProduct(id , data).then((res)=>{
                     // this.$router.go()
                     setTimeout(() => this.$router.go(), 2000)
-                    console.log(res)
+                    // console.log(res)
                 })
                 // console.log(data ,id)
             },

@@ -314,6 +314,16 @@ import $axios from "../store/axios-instance";
     }
   }
   
+  async function userGeneralNotfications() {
+    try {
+      return await $axios.get(`general-notfications`).then((res) => {
+        return res;
+      });
+    } catch (error) {
+      return error
+    }
+  }
+  
 
 
   const user = {
@@ -363,6 +373,8 @@ import $axios from "../store/axios-instance";
     userAddAnswerInQues,
 
     userGetAllReviews,
+
+    userGeneralNotfications,
     
   };
   export default user;

@@ -7,8 +7,8 @@
             <h1 class="left__title">{{ $t('online_complaint_po') }}</h1>
             <p class="left__text">{{ $t('online_complaint_con') }}</p>
             <form action="" class="left__form">
-                <textarea placeholder="Type Here Your Complaint" class="form__textarea" name="" id="" cols="30" rows="10"></textarea>
-                <button class="form__btn" type="submit">Register</button>
+                <textarea :placeholder="$t('type_here_your_complaint')+'...'" class="form__textarea" name="" id="" cols="30" rows="10"></textarea>
+                <button class="form__btn" type="submit">{{ $t('register') }}</button>
             </form>
         </div>
         <img class="right__image" src="/assets/images/gallary/online2.png" alt="">

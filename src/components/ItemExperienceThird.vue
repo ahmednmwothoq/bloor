@@ -221,7 +221,7 @@ import { useToast } from 'vue-toastification'
             },
             async sentDeleteExper(id){
                 await Api.user.userDeleteExperiments(id).then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     if(res.data.status){
                         this.$router.push('/user-experiment')
                         setTimeout(() => this.$router.go(), 2000)

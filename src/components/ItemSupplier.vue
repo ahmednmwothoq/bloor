@@ -38,7 +38,7 @@ import { useToast } from 'vue-toastification'
                 await Api.user.userFollowAnotherUser(id).then((res)=>{
                     if(res.data.status){
                         // this.$router.go()
-                        console.log(res.data)
+                        // console.log(res.data)
                         toast.success(`Follow ${res.data.msg}`,{
                             position: "top-right",
                             timeout: 3048,

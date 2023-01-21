@@ -117,12 +117,12 @@ import { useToast } from 'vue-toastification'
                         active: 'active',
                         url:'/user-profile'
                     },
-                    // {
-                    //     id:2,
-                    //     name: "reviews",
-                    //     active: '',
-                    //     url:'/user-review'
-                    // },
+                    {
+                        id:2,
+                        name: "reviews",
+                        active: '',
+                        url:'/user-review'
+                    },
                     {
                         id:3,
                         name: "chats",

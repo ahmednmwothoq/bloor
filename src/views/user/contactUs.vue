@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="btn_submit">
-                        <button type="submit" @click="sendMessage">Submit</button>
+                        <button type="submit" @click="sendMessage">{{ $t('send') }}</button>
                     </div>
                 </form>
             </div>

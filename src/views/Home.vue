@@ -447,7 +447,7 @@
             async getAllOffer(){
                 await Api.general.getAllOffers().then((res)=>{
                     if(res.data.status){
-                        console.log("getAllOffer",res)
+                        // console.log("getAllOffer",res)
                         this.allOffer = res.data.body
                     }
                     
@@ -456,7 +456,7 @@
             async getAllExperience(){
                 await Api.general.getAllExperiments().then((res)=>{
                     if(res.data.status){
-                        console.log("getAllExperience",res)
+                        // console.log("getAllExperience",res)
                         this.allExperiences = res.data.body
                     }
                 })
@@ -464,7 +464,7 @@
             async getAllProducts(){
                 await Api.general.getAllProductstoReviews().then((res)=>{
                     if(res.data.status){
-                        console.log("getAllProducts",res)
+                        // console.log("getAllProducts",res)
                         this.allProducts = res.data.body
                     }else{
                         this.allProductsAllow = false
@@ -481,11 +481,12 @@
                 })
             },
             async getAllFollowsDataContent(){
-                if(cookie.get('token').length  > 0 && JSON.parse(cookie.get('logged_In'))){
+                // console.log(cookie.get('token') == null ? "null" : "no null")
+                if(cookie.get('token') != null && JSON.parse(cookie.get('logged_In'))){
                     await Api.general.getAllFollowsData().then((res)=>{
                     // console.log("Suppliers",res)
                     if(res.data.status){
-                        console.log("getAllFollowsData",res)
+                        // console.log("getAllFollowsData",res)
                         // this.alFollowsData = res.data.body
                         this.allFollowExperiments = res.data.body.Allexperiments
                         this.allFollowProducts = res.data.body.allProductsReviews
@@ -497,7 +498,7 @@
                 await Api.general.getShowAllReviewsAll().then((res)=>{
                     // console.log("Suppliers",res)
                     if(res.data.status){
-                        console.log("getAllsReviews",res)
+                        // console.log("getAllsReviews",res)
                         this.allReviews = res.data.body
                     }
                 })
@@ -505,13 +506,51 @@
             requestOffer(event){
                 this.idRequestOffer = event
                 this.showRequestOffer()
-                console.log(event)
+                // console.log(event)
             },
             async requstOfferUser(item){
                 const data = new FormData();
                 data.append('request_message',this.requestMess);
                 await Api.user.userRequstOfferDemand(item,data).then((res)=>{
-                    this.$router.go()
+                    if(res.data.status){
+                        if(this.$i18n.locale === 'ar'){
+                            toast.success('ستتم إعادة تحويلك إلى الدردشة',{
+                                position: "top-right",
+                                timeout: 3048,
+                                closeOnClick: true,
+                                pauseOnFocusLoss: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                draggablePercent: 0.6,
+                                showCloseButtonOnHover: false,
+                                hideProgressBar: true,
+                                closeButton: "button",
+                                icon: true,
+                                rtl: false
+                            })
+                        }else{
+                            toast.success('You will be redirected to the chat',{
+                                position: "top-right",
+                                timeout: 3048,
+                                closeOnClick: true,
+                                pauseOnFocusLoss: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                draggablePercent: 0.6,
+                                showCloseButtonOnHover: false,
+                                hideProgressBar: true,
+                                closeButton: "button",
+                                icon: true,
+                                rtl: false
+                            })
+                        }
+                        
+                        setTimeout(() =>{
+                            this.$router.push('/user-chat')
+                        } , 4000)
+                    }
+                    
+                    
                 })
             }
         }

@@ -67,15 +67,15 @@
                 this.v$.$validate();
                 const toast = useToast()
                 if(!this.v$.$error){
-                    console.log("Success")
-                    console.log(this.code , this.$route.query.email)
+                    // console.log("Success")
+                    // console.log(this.code , this.$route.query.email)
                     const payload ={
                         code: this.code,
                         email: this.$route.query.email
                     }
                     try {
                         await Api.authSupplier.verifyEmail(payload).then((res) => {
-                            console.log("success fetch", res)
+                            // console.log("success fetch", res)
                             if(res?.data?.status){
                                 this.$store.dispatch("user/addToken", res.data.body.token)
                                 this.$store.dispatch("user/switchStatus", true)
@@ -90,7 +90,7 @@
                             
                         })
                     } catch (error) {
-                        console.log(error);
+                        // console.log(error);
                     }
 
                 }else{

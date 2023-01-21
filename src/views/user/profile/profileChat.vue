@@ -336,12 +336,12 @@ import FooterVue from '@/components/Footer.vue';
                         active: '',
                         url:'/user-profile'
                     },
-                    // {
-                    //     id:2,
-                    //     name: "reviews",
-                    //     active: '',
-                    //     url:'/user-review'
-                    // },
+                    {
+                        id:2,
+                        name: "reviews",
+                        active: '',
+                        url:'/user-review'
+                    },
                     {
                         id:3,
                         name: "chats",
@@ -377,9 +377,9 @@ import FooterVue from '@/components/Footer.vue';
             // channel.bind('pusher:subscription_succeeded', () => console.log('subscription succeeded'))
 
             channel.bind('chat', event => {
-                console.log('chat', event)
+                // console.log('chat', event)
                 this.events.push(event.message)
-                console.log('events', this.events)
+                // console.log('events', this.events)
             })
 
         },
@@ -389,7 +389,7 @@ import FooterVue from '@/components/Footer.vue';
             async getDataUserChat(){
                 await Api.user.userAllChats().then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         // this.addUser()
                         // this.$store.dispatch("user/addUser", res.data.userData)
                         // console.log("user",this.$store.getters["user/getUser"])
@@ -405,7 +405,7 @@ import FooterVue from '@/components/Footer.vue';
                 // this.activeChat = !this.activeChat
                 await Api.user.userAllChatMessages(id).then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         this.chatList = res.data.body;
                         // this.CreateAtDate(this.profile.date_of_birth)
                         this.chatList.sort((a,b) => {
@@ -428,7 +428,7 @@ import FooterVue from '@/components/Footer.vue';
 
                 await Api.user.userSendMessageInChat(id,data).then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         // this.showChat(id)
                         this.msgSender = ''
                     }
@@ -471,6 +471,6 @@ import FooterVue from '@/components/Footer.vue';
     }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 
 </style>

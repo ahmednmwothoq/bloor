@@ -54,7 +54,8 @@
                         <div class="person_info edit_in_person">
                             <img src="/assets/images/avatar/avatar-image.png" alt="" class="person">
                             <span class="name" style="margin-right: 0.2vw;margin-left: 0.2vw;" v-if="user == 'supplier'">{{ getLocales ? item.company_name_ar : item.company_name_en}}</span>
-                            <span class="name" style="margin-right: 0.2vw;margin-left: 0.2vw;" v-if="user == 'user'">{{ item.user.f_name }} {{ item.user.l_name }}</span>
+                            <span class="name" style="margin-right: 0.2vw;margin-left: 0.2vw;" v-if="user == 'user' && item.user">{{ item.user.f_name }} {{ item.user.l_name }}</span>
+                            <span class="name" style="margin-right: 0.2vw;margin-left: 0.2vw;" v-if="user == 'user' && !item.user">{{ getLocales ? item.company_name_ar : item.company_name_en }}</span>
                         </div>
                         <div class="person_info">
                             <span class="number">

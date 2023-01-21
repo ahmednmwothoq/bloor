@@ -173,7 +173,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
         methods: {
             async getAllOffer(){
                 await Api.general.getDetailsOffer(this.idOf).then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.offerDetails = res.data.body
                 })
                 $("#showImageOffer").attr("src",`${this.offerDetails.media[0].original_url}`);

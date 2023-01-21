@@ -81,15 +81,15 @@
         methods: {
             async getAboutUs(){
                 await Api.general.getAboutUs().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.aboutUs = res.data.body
                 });
                 await Api.general.getOurMessages().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.OurMessages = res.data.body
                 });
                 await Api.general.getOurVission().then((res)=>{
-                    console.log(res)
+                    // console.log(res)
                     this.OurVission = res.data.body
                 });
             }

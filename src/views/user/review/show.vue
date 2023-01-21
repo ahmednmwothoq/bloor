@@ -2,13 +2,33 @@
     <Header />
     <logo-search/>
     <div class="contentStander mt-1 w-100">
+        <div class="m-auto w-75" v-if="this.$i18n.locale === 'ar'">
+            <button 
+                type="button" 
+                class="btn btn-primary" 
+                @click="this.$router.push({ path: `/add-review/${idRev}`, query: { name: singleProduct.product_ar }})"
+                v-if="userLogin"
+            >
+                {{ $t('review') }}
+            </button>
+        </div>
+        <div class="m-auto w-75" v-else>
+            <button 
+                type="button" 
+                class="btn btn-primary" 
+                @click="this.$router.push({ path: `/add-review/${idRev}`, query: { name: singleProduct.product_en }})"
+                v-if="userLogin"
+            >
+                {{ $t('review') }}
+            </button>
+        </div>
         <div  v-for="item in paginatedData" :key="item.id" v-if="paginatedData">
             <div class="item_review">
                 <div class="review__up">
                     <div class="contan">
                         <img class="up__img" src="/assets/images/avatar/avatar-image.png" alt="">
                         <div class="up__info">
-                            <span class="name">{{item.username}}</span>
+                            <span class="name">{{item.user.f_name}} {{item.user.l_name}}</span>
                             <div v-if="userLogin">
                                 <span
                                     v-if="userLogin.id != item.user_id"
@@ -39,8 +59,8 @@
                 </div>
                 <div class="review_mid">
                     <div class="mid__left">
-                        <!-- <span class="car">approval</span> -->
-                        <!-- <span class="edit">{{item.admin_approval}}</span> -->
+                        <span class="car">{{ getLocales ? singleProduct.product_ar : singleProduct.product_en }}</span>
+                        <!-- <span class="edit"></span> -->
                     </div>
                     <div class="mid__rigth">
                         <img :src="item.media[0].original_url" alt="" class="image">
@@ -50,10 +70,10 @@
                     <!-- <div class="down__comment" v-html="item.review"></div> -->
                     <div class="down__comment" v-for="question in singleProduct.questions" :key="item.id" v-if="singleProduct">
                         <div v-for="answer in question.answers" :key="answer.id">
-                            <div class="comment_up" v-if="answer.user_id == item.user_id">
-                                <div class="left">
-                                    <span class="dot"></span>
-                                    <span class="text">{{ getLocales ? question.question_ar : question.question_en }}</span>
+                            <div :class="question.answer_has_text == 1 ? 'comment_up' : 'comment_up align-items-start'" v-if="answer.user_id == item.user_id">
+                                <div :class="question.answer_has_text == 1 ? 'left' : 'left align-items-start'" >
+                                    <span :class="question.answer_has_text == 1 ? 'dot' : 'dot mt-1'"></span>
+                                    <span :class="question.answer_has_text == 1 ?'text' : 'text pb-5'">{{ getLocales ? question.question_ar : question.question_en }}</span>
                                 </div>
                                 <div class="right">
                                     <star-rating
@@ -67,11 +87,14 @@
                             </div>
                         
                             <div class="comment_mid" v-if="answer.user_id == item.user_id">
-                                <p class="text" v-if="question.answer_has_text == 1">{{ answer.text }}</p>
+                                <p class="text" v-if="question.answer_has_text == 1">{{ answerText(answer.text ,answer.id , answer.user_id , answer.question_id,item.id) }}</p>
                             </div>
-                        </div>
-                        <div class="comment_down">
-                            <a  class="read">Read Answer</a>
+                        
+                            <div class="comment_down" v-if="answer.user_id == item.user_id">
+                                <a class="read" v-if="question.answer_has_text == 1" @click="showHideAnswer_id[answer.question_id+answer.id+answer.user_id+item.id] = !showHideAnswer_id[answer.question_id+answer.id+answer.user_id+item.id]">Read Answer</a>
+                                <!-- <a class="read">Read Answer</a> -->
+                                <!-- showHideAnswer_id[answer.id , answer.user_id , answer.question_id] -->
+                            </div>
                         </div>
                     </div>
                     
@@ -286,7 +309,8 @@ import Pagination from 'v-pagination-3';
                 indexx:1,
                 userLogin: JSON.parse(cookie.get('userData')),
                 page_index: 1,
-                page_size: 2
+                page_size: 2,
+                showHideAnswer_id: [],
             }
         },
         components:{
@@ -319,7 +343,7 @@ import Pagination from 'v-pagination-3';
         methods: {
             async showReviews(){
                 await Api.user.userShowReviewAndRate(this.idRev).then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     
                     if(res.data.status){
                         this.reviews = res.data.body
@@ -357,7 +381,7 @@ import Pagination from 'v-pagination-3';
 
                     await Api.user.ShowAllRepleyCommentInReview(id).then((res)=>{
                         if(res.data.status){
-                            console.log(res.data)
+                            // console.log(res.data)
                             if(res.data.body.length > 0){
                                 this.replaysComments = res.data.body
                                 this.showReplayCommentDiv = true
@@ -496,6 +520,21 @@ import Pagination from 'v-pagination-3';
                 // console.log(event);
                 this.page_index = event
             },
+            answerText(answer_text ,answer_id , answer_user_id , answer_question_id ,item_id){
+                if(answer_text){
+                    if(this.showHideAnswer_id[answer_question_id+answer_id+answer_user_id+item_id] == true){
+                        return answer_text
+                    }else{
+                            if(answer_text.length > 50){
+                                return answer_text.slice(0,50)
+                            }
+                            else{
+                                return answer_text
+                            }
+                        
+                    }
+                }
+            }
         }
     }
 </script>

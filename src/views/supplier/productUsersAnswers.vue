@@ -189,7 +189,7 @@
             async showAllAnswersQuestion(){
                 await Api.supplier.supplierShowAllAnswersQuestion(this.idProd).then((res)=>{
                     if(res.data.status){
-                        console.log(res.data)
+                        // console.log(res.data)
                         this.answers = res.data.body.answers
                         this.singleQuestion = res.data.body.question
                     }

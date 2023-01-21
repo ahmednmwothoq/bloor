@@ -7,7 +7,21 @@
             <img src="/assets/images/avatar/avatar-image.png" alt="" class="image">
             <span class="name">{{ nameSupplier }}</span>
         </div>
-        <a  class="follow">{{ $t('follow') }}</a>
+        <!-- <a  class="follow">{{ $t('follow') }}</a> -->
+        <div  v-if="userLogin != null">
+        <a 
+            v-if="userLogin.id != idSupplier"
+            class="follow cursor_pointer" 
+            @click="makeUserFollowUser(idSupplier)"
+            >{{ $t('follow') }}</a>
+        </div>
+        <div v-else-if="supplierLogin != null">
+            <a 
+                v-if="supplierLogin.id != idSupplier"
+                class="follow cursor_pointer" 
+                @click="makeUserFollowUser(idSupplier)"
+            >{{ $t('follow') }}</a>
+        </div>
     </div>
 
     <div class="search__content">
@@ -73,6 +87,7 @@ import FooterVue from '@/components/Footer.vue';
 import OnlyLogo from "@/components/OnlyLogo.vue"
 import ItemOffer from "@/components/ItemOffer.vue"
 import Pagination from 'v-pagination-3';
+import { useToast } from 'vue-toastification'
 // import ItemProductSupplier from "@/components/ItemProductSupplier.vue"
     export default {
         data() {
@@ -83,7 +98,9 @@ import Pagination from 'v-pagination-3';
                 nameSupplier: this.$route.query.name,
                 user:'user',
                 page_index: 1,
-                page_size: 4
+                page_size: 4,
+                userLogin: JSON.parse(cookie.get('userData')) ,
+                supplierLogin: JSON.parse(cookie.get('SupplierData')) ,
             }
         },
         components:{
@@ -125,8 +142,8 @@ import Pagination from 'v-pagination-3';
         mounted() {
             // console.log(this.idEx)
             this.getAllOffer()
-            console.log(this.$route.params.id)
-            console.log(this.$route.query.name)
+            // console.log(this.$route.params.id)
+            // console.log(this.$route.query.name)
         },
         methods: {
             async getAllOffer(){
@@ -139,6 +156,31 @@ import Pagination from 'v-pagination-3';
                 // console.log(event);
                 this.page_index = event
             },
+            async makeUserFollowUser(id){
+                // console.log(id)
+                const toast = useToast()
+                await Api.user.userFollowAnotherUser(id).then((res)=>{
+                    // console.log(res.data)
+                    if(res.data.status){
+                        // this.$router.go()
+                        
+                        toast.success(`${res.data.msg}`,{
+                            position: "top-right",
+                            timeout: 3048,
+                            closeOnClick: true,
+                            pauseOnFocusLoss: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            draggablePercent: 0.6,
+                            showCloseButtonOnHover: false,
+                            hideProgressBar: true,
+                            closeButton: "button",
+                            icon: true,
+                            rtl: false
+                        })
+                    }
+                });
+            } 
         },
     }
 </script>

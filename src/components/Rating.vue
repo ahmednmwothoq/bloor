@@ -1,12 +1,14 @@
 <template>
     <div class="rating">
-      <ul class="list">
-        <li :key="star" v-for="star in maxStars" :class="{ 'active': star <= stars }" @click="rate(star)" class="star">
-          <!-- <icon scale="2" :name="star <= stars ? 'star' : 'star-o'"/> -->
-          <i :class="star <= stars ? 'fas fa-star' : 'fas fa-star'"></i>
-        </li>
-      </ul>
-      <span :class="color" v-if="hasCounter">{{ stars }} / {{ maxStars }}</span>
+      <div :class="size">
+        <ul class="list">
+          <li :key="star" v-for="star in maxStars" :class="{ 'active': star <= stars }" @click="rate(star)" class="star">
+            <!-- <icon scale="2" :name="star <= stars ? 'star' : 'star-o'"/> -->
+            <i :class="star <= stars ? 'fas fa-star' : 'fas fa-star'"></i>
+          </li>
+        </ul>
+        <span :class="color" v-if="hasCounter">{{ stars }} / {{ maxStars }}</span>
+      </div>
     </div>
 </template>
 
@@ -28,7 +30,12 @@
         color: {
           type: String,
           default: 'whiteColor'
+        },
+        size: {
+          type: String,
+          default: 'fs-3'
         }
+
       },
       data() {
         return {

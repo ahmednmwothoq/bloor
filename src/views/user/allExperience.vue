@@ -764,7 +764,7 @@
         },
         mounted() {
             this.getData()
-            console.log(this.allExperiences.length)
+            // console.log(this.allExperiences.length)
             
 
         },
@@ -772,7 +772,7 @@
             async getData(){
                 await Api.general.getAllExperiments().then((res)=>{
                     if(res.data.status){
-                        console.log("getAllExperience",res)
+                        // console.log("getAllExperience",res)
                         this.allExperiences = res.data.body
                         this.record = this.allExperiences.length
                     }

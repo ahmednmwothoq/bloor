@@ -1,9 +1,9 @@
 <template>
-    <link rel="stylesheet" href="/assets/css/user/profile_reviews.css">
+    <!-- <link rel="stylesheet" href="/assets/css/user/profile_reviews.css"> -->
 
     <profile-nav-vue :sideList="sideList" />
 
-    <div class="contentStander">
+    <div class="contentStander w-100" style="margin-top: 15vw;">
         <div v-for="item in paginatedData" :key="item.id" v-if="paginatedData.length > 0">
             <item-review :itemProduct="item.product[0]" :itemReview="item.review[0]"  />
         </div>
@@ -52,12 +52,12 @@
                         active: '',
                         url:'/user-profile'
                     },
-                    // {
-                    //     id:2,
-                    //     name: "reviews",
-                    //     active: 'active',
-                    //     url:'/user-review'
-                    // },
+                    {
+                        id:2,
+                        name: "reviews",
+                        active: 'active',
+                        url:'/user-review'
+                    },
                     {
                         id:3,
                         name: "chats",

@@ -72,12 +72,12 @@ import Rating from '@/components/Rating.vue';
                         active: '',
                         url:'/user-profile'
                     },
-                    // {
-                    //     id:2,
-                    //     name: "reviews",
-                    //     active: '',
-                    //     url:'/user-review'
-                    // },
+                    {
+                        id:2,
+                        name: "reviews",
+                        active: '',
+                        url:'/user-review'
+                    },
                     {
                         id:3,
                         name: "chats",
@@ -114,7 +114,7 @@ import Rating from '@/components/Rating.vue';
             async getDataExperiment(){
                 await Api.user.userGetSingleExperiments(this.idEx).then((res)=>{
                     if(res.data.status){
-                        console.log("user",res.data)
+                        // console.log("user",res.data)
                         this.experiment = res.data.body
                         // this.preview_image = res.data.body
                         // this.experiments = res.data.body;
@@ -165,7 +165,7 @@ import Rating from '@/components/Rating.vue';
                     }
 
                     await Api.user.userUpdateSingleExperiments(this.idEx,data).then((res)=>{
-                        console.log(res);
+                        // console.log(res);
                         if(res.data.status){
                             this.$router.push('/user-experiment')
                         } 

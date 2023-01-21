@@ -1,10 +1,10 @@
 <template>
     <div class="item__slider">
-        <a style="text-decoration: none;" >
+        <a style="text-decoration: none;" @click="this.$router.push({ name: 'showReview', params: { id: item.product_to_review_id }})">
 
             <img :src="item.media[0].original_url" alt="" class="slider__img">
             
-            <div v-for="product in allProducts" :key="product.id" >
+            <div v-for="product in allProducts" :key="product.id" @click="this.$router.push({ name: 'showReview', params: { id: item.product_to_review_id }})">
                 <h2 class="slider__title" v-if="product.id == item.product_to_review_id">
                     {{ getLocales ? product.product_ar : product.product_en }}
                 </h2>
